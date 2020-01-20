@@ -1,0 +1,172 @@
+﻿<div id="TextBox_longkey" data-tchmi-type="tchmi-user-control" 
+     data-tchmi-top="0" data-tchmi-left="0" 
+     data-tchmi-width="100" data-tchmi-height="35" data-tchmi-width-unit="%" data-tchmi-height-unit="px"
+     data-tchmi-creator-viewport-width="500" data-tchmi-creator-viewport-height="500" data-tchmi-zindex="4" data-tchmi-top-unit="px">
+
+<div id="TcHmiTextbox_32" data-tchmi-type="tchmi-textbox" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-text-horizontal-alignment="Center" data-tchmi-zindex="8" data-tchmi-text="%pp%Value%/pp%" data-tchmi-auto-focus-out="True" data-tchmi-text-font-size="24" data-tchmi-visibility="Visible">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiTextbox_32.onFocusOut",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%ctrl%Keyboard_Long::PressedKeys%/ctrl%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/KeyList",
+              "value": [
+                {
+                  "code": "Enter",
+                  "key": "Enter",
+                  "location": "standard",
+                  "unmodifiedKey": "Enter"
+                }
+              ]
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%pp%Value%/pp%",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": {
+              "objectType": "Symbol",
+              "symbolExpression": "%ctrl%TcHmiTextbox_32::Text%/ctrl%"
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%Keyboard_Long::Visibility%/ctrl%",
+        "valueType": "tchmi:framework#/definitions/Visibility",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:framework#/definitions/Visibility",
+          "value": "Collapsed"
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "TcHmiTextbox_32.onPressed",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%pp%Top_Pos%/pp%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 180.0
+            },
+            "compareOperator": "<",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%i%Key_UP_Long%/i%",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 300.0
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%i%Key_UP_Long%/i%",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 60.0
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%Keyboard_Long::Visibility%/ctrl%",
+        "valueType": "tchmi:framework#/definitions/Visibility",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:framework#/definitions/Visibility",
+          "value": "Visible"
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "TcHmiTextbox_32.onAttached",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%TcHmiTextbox_32::Text%/ctrl%",
+        "valueType": "tchmi:general#/definitions/String",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/String",
+          "value": ""
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+
+
+</div>
+
+</div>

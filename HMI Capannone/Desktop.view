@@ -1,0 +1,223 @@
+﻿<div id="Desktop" data-tchmi-type="tchmi-view" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width-mode="Value" data-tchmi-min-width="100" data-tchmi-min-width-unit="%" data-tchmi-height-mode="Value" data-tchmi-min-height="100" data-tchmi-min-height-unit="%" data-tchmi-background-image-height="100" data-tchmi-background-image-width="100" data-tchmi-background-image-height-unit="%" data-tchmi-background-image-width-unit="%" data-tchmi-width="1920" data-tchmi-zindex="6" data-tchmi-width-unit="px" data-tchmi-height="1337" data-tchmi-creator-viewport-width="1920" data-tchmi-creator-viewport-height="1200">
+
+<div id="TcHmiRegion" data-tchmi-type="tchmi-region" data-tchmi-height="1230" data-tchmi-height-unit="px" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-top="110" data-tchmi-top-unit="px" data-tchmi-width="1900" data-tchmi-width-unit="px" data-tchmi-zindex="2" data-tchmi-target-content="Main.content">
+
+</div>
+
+<div id="TcHmiRectangle" data-tchmi-type="tchmi-rectangle" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-stroke-thickness="1" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="1910" data-tchmi-width-unit="px" data-tchmi-zindex="1" data-tchmi-creator-locked="True">
+
+<script data-tchmi-target-attribute="data-tchmi-stroke-color" type="application/json">
+{
+  "color": "Black"
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "angle": 0.0,
+  "stopPoints": [
+    {
+      "color": "rgba(0, 0, 0, 1)",
+      "stop": "0%"
+    },
+    {
+      "color": "rgba(255, 255, 255, 1)",
+      "stop": "100%"
+    }
+  ]
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+</div>
+
+<div id="TcHmiImage" data-tchmi-type="tchmi-image" data-tchmi-height="65" data-tchmi-height-unit="px" data-tchmi-left="20" data-tchmi-left-unit="px" data-tchmi-src="Images/Logo Mechatronic Lineare Bianco.png" data-tchmi-top="17.5" data-tchmi-top-unit="px" data-tchmi-width="700" data-tchmi-width-unit="px" data-tchmi-zindex="8">
+
+</div>!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" width="84.6px" height="71.5px" viewbox="0 0 84.6 71.5" style="enable-background:new 0 0 84.6 71.5;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#4D4D4D;}
+</style>
+<defs>
+</defs>
+<g>
+	<polygon class="st0" points="7.2,67.8 3.6,58 7.3,56.6 6.4,54 0,56.3 5.5,71.4 11.9,69.1 10.9,66.4 	"></polygon>
+	<path class="st0" d="M30.8,35.9C30.8,35.9,30.9,35.9,30.8,35.9c0.9-0.1,1.5-0.7,1.4-1.5c-0.2-3.6,2.6-7.5,7.2-10.1l0.7-0.4V2.8h6.2
+		V22l1.5-0.1c4.1-0.2,7.7,1,9.4,3.4c0.5,0.6,1.3,0.8,2,0.3c0.6-0.5,0.8-1.3,0.3-2c-2.1-2.8-5.9-4.5-10.3-4.6V0H37.4v22.3
+		c-5.1,3.1-8.3,7.8-8,12.3C29.4,35.3,30.1,35.9,30.8,35.9z"></path>
+	<path class="st0" d="M84.3,47.6L76,24.7c-0.7-1.9-2.5-3.1-4.5-3.1c-0.6,0-1.1,0.1-1.6,0.3L21.2,39.6c-1.2,0.4-2.1,1.3-2.5,2.4
+		c-0.3,1-0.1,2.1,0.6,3.1l0,0c0.1,0.2,9.7,16,13.4,20.9c0.2,0.3,0.4,0.5,0.6,0.8c1.3,1.8,2.1,2.7,3.5,2.7c0.5,0,1.1-0.1,1.8-0.4
+		l42.8-15.6c1.2-0.4,2.1-1.3,2.7-2.5C84.7,50.1,84.7,48.8,84.3,47.6z M81.6,50c-0.2,0.5-0.6,0.8-1.1,1L37.7,66.6
+		c-0.4,0.1-0.6,0.2-0.7,0.2c-0.3-0.3-0.9-1.1-1.3-1.6c-0.2-0.3-0.4-0.6-0.6-0.8c-2.6-3.4-8.7-13.2-13.2-20.6l0-0.1l0,0l0,0l0,0
+		l0-0.1l0,0c-0.1-0.2-0.3-0.4-0.2-0.7c0.1-0.2,0.4-0.5,0.7-0.6l48.7-17.7c0.2-0.1,0.4-0.1,0.7-0.1c0.8,0,1.5,0.5,1.8,1.3l8.3,22.8
+		C81.8,49,81.8,49.5,81.6,50z"></path>
+	<path class="st0" d="M18.1,68.5c-0.3,0.1-0.5,0.1-0.8,0.1c-1,0-1.9-0.6-2.3-1.6l-5-13.8C9.7,52.6,9.8,52,10,51.4
+		c0.3-0.6,0.8-1,1.4-1.2l7-2.5l-1-2.7l-7,2.5c-1.3,0.5-2.4,1.4-3,2.7c-0.6,1.3-0.7,2.7-0.2,4l5,13.8c0.8,2.1,2.7,3.4,4.9,3.4
+		c0.6,0,1.2-0.1,1.8-0.3L30.5,67l-1-2.7L18.1,68.5z"></path>
+</g>
+</svg>
+
+<div id="TcHmiRegion_1" data-tchmi-type="tchmi-region" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="1200" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="710" data-tchmi-width-unit="px" data-tchmi-target-content="MB_Main.content" data-tchmi-zindex="2">
+
+</div>
+
+<div id="TcHmiKeyboard" data-tchmi-type="tchmi-keyboard" data-tchmi-height="250" data-tchmi-height-unit="px" data-tchmi-label-font-size="14" data-tchmi-layout="Numpad" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-scale-mode="ScaleToFit" data-tchmi-top="190" data-tchmi-top-unit="px" data-tchmi-width="245" data-tchmi-width-unit="px" data-tchmi-zindex="11" data-tchmi-visibility="Collapsed">
+<script data-tchmi-target-attribute="data-tchmi-keyboard-padding" type="application/json">
+{
+  "top": 10,
+  "topUnit": "px",
+  "right": 10,
+  "rightUnit": "px",
+  "bottom": 10,
+  "bottomUnit": "px",
+  "left": 10,
+  "leftUnit": "px"
+}
+</script>
+<script data-tchmi-target-attribute="data-tchmi-key-padding" type="application/json">
+{
+  "top": 4,
+  "topUnit": "px",
+  "right": 4,
+  "rightUnit": "px",
+  "bottom": 4,
+  "bottomUnit": "px",
+  "left": 4,
+  "leftUnit": "px"
+}
+</script>
+<script data-tchmi-target-attribute="data-tchmi-additional-key-backdrop-padding" type="application/json">
+{
+  "top": 10,
+  "topUnit": "px",
+  "right": 10,
+  "rightUnit": "px",
+  "bottom": 10,
+  "bottomUnit": "px",
+  "left": 10,
+  "leftUnit": "px"
+}
+</script>
+
+</div>
+
+<div id="TcHmiButton_31" data-tchmi-type="tchmi-button" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="920" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="270" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text="%s%GetCurrentUser::name%/s%" data-tchmi-zindex="10" data-tchmi-text-font-size="28">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiButton_31.onMouseClick",
+    "actions": [
+      {
+        "objectType": "Function",
+        "active": true,
+        "fn": "Logout",
+        "fnParams": [],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+</div>
+
+<div id="Keyboard_Long" data-tchmi-type="tchmi-keyboard" data-tchmi-height="290" data-tchmi-height-unit="px" data-tchmi-label-font-size="14" data-tchmi-layout="EN-US_QWERTY_compact" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-scale-mode="ScaleToFit" data-tchmi-top="200" data-tchmi-top-unit="px" data-tchmi-width="812" data-tchmi-width-unit="px" data-tchmi-visibility="Collapsed" data-tchmi-zindex="12">
+<script data-tchmi-target-attribute="data-tchmi-keyboard-padding" type="application/json">
+{
+  "top": 10,
+  "topUnit": "px",
+  "right": 10,
+  "rightUnit": "px",
+  "bottom": 10,
+  "bottomUnit": "px",
+  "left": 10,
+  "leftUnit": "px"
+}
+</script>
+<script data-tchmi-target-attribute="data-tchmi-key-padding" type="application/json">
+{
+  "top": 4,
+  "topUnit": "px",
+  "right": 4,
+  "rightUnit": "px",
+  "bottom": 4,
+  "bottomUnit": "px",
+  "left": 4,
+  "leftUnit": "px"
+}
+</script>
+<script data-tchmi-target-attribute="data-tchmi-additional-key-backdrop-padding" type="application/json">
+{
+  "top": 10,
+  "topUnit": "px",
+  "right": 10,
+  "rightUnit": "px",
+  "bottom": 10,
+  "bottomUnit": "px",
+  "left": 10,
+  "leftUnit": "px"
+}
+</script>
+
+</div>
+
+<div id="Textblock_Ora" data-tchmi-type="tchmi-textblock" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="750" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="150" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-size="28" data-tchmi-text="%f%Format2digit(%s%PLC1.GVL.ora_plc.TIMESTR.wDay%/s%)+'/'+Format2digit(%s%PLC1.GVL.ora_plc.TIMESTR.wMonth%/s%)+'/'+Format2digit(%s%PLC1.GVL.ora_plc.TIMESTR.wYear%/s%)+'\n'+Format2digit(%s%PLC1.GVL.ora_plc.TIMESTR.wHour%/s%)+':'+Format2digit(%s%PLC1.GVL.ora_plc.TIMESTR.wMinute%/s%)+':'+Format2digit(%s%PLC1.GVL.ora_plc.TIMESTR.wSecond%/s%)%/f%" data-tchmi-zindex="13">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+</div>

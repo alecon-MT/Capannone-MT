@@ -1,0 +1,9 @@
+﻿{
+  "locale": "it-IT",
+  "localizedText": {
+    "Text1": "abc abc",
+    "Text2": "xyz xyz",
+    "Spazio_2punti_spazio": " : "
+  },
+  "$schema": "C:/TwinCAT/Functions/TE2000-HMI-Engineering/Infrastructure/TcHmiFramework/Latest/Schema/LocalizationDescription.Schema.json"
+}

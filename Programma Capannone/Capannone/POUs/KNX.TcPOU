@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="KNX" Id="{5421e77a-b5ec-4322-8923-37030e9b791b}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM KNX
+VAR
+	KNX_COMM: KL6301;
+	KL6301_PHYS_ADDR: EIB_PHYS_ADDR;
+	KNX_FILTERS: ARRAY [1..8] OF EIB_GROUP_FILTER;
+	KNX_BUFFER: EIB_REC;
+	KNX_IN AT %I*: ARRAY [1..24] OF BYTE;
+	KNX_OUT AT %Q*: ARRAY [1..24] OF BYTE;
+	Leggi_Temp: EIB_2OCTET_FLOAT_REC;
+	Leggi_luxf: EIB_2OCTET_FLOAT_REC;
+	Leggi_luxR: EIB_2OCTET_FLOAT_REC;
+	Leggi_luxL: EIB_2OCTET_FLOAT_REC;
+	Leggi_wind: EIB_2OCTET_FLOAT_REC;
+	Leggi_rain:EIB_BIT_REC;
+	Leggi_stato_temp: EIB_BIT_REC;
+	GROUP_ADDR_MAIN: INT;
+	G_t1: EIB_GROUP_ADDR;
+	G_luxF: EIB_GROUP_ADDR;
+	G_luxR: EIB_GROUP_ADDR;
+	G_luxL: EIB_GROUP_ADDR;
+	G_wind: EIB_GROUP_ADDR;
+	G_rain: EIB_GROUP_ADDR;
+	G_stato_temp: EIB_GROUP_ADDR;
+	G_t0: EIB_GROUP_ADDR;
+	G_P1: EIB_GROUP_ADDR;
+	G_P2: EIB_GROUP_ADDR;
+	G_P3: EIB_GROUP_ADDR;
+	G_P4: EIB_GROUP_ADDR;
+	Leggi_p1:EIB_BIT_REC;
+	Leggi_p2:EIB_BIT_REC;
+	Leggi_p3:EIB_BIT_REC;
+	Leggi_p4:EIB_BIT_REC;
+	Leggi_Temp0: EIB_2OCTET_FLOAT_REC;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[KL6301_PHYS_ADDR.Area:=1;
+KL6301_PHYS_ADDR.Device:=1;
+KL6301_PHYS_ADDR.Line:=254;
+
+KNX_FILTERS[1].GROUP_ADDR.MAIN:=0;
+KNX_FILTERS[1].GROUP_ADDR.SUB_MAIN:=0;
+KNX_FILTERS[1].GROUP_ADDR.NUMBER:=1;
+KNX_FILTERS[1].GROUP_LEN:=32;
+
+
+KNX_COMM(
+	bActivate:=TRUE , 
+	idx:= 1, 
+	EIB_PHYS_ADDR:= KL6301_PHYS_ADDR, 
+	EIB_GROUP_FILTER:=KNX_FILTERS, 
+	iMode:= , 
+	bActive=> , 
+	bReady=> , 
+	bError=> , 
+	iErrorId=> , 
+	str_Data_Rec=>KNX_BUFFER , 
+	KL6301_IN:=KNX_IN , 
+	KL6301_OUT:= KNX_OUT);
+// Indirizzo Temperatura Esterna
+	G_T1.MAIN:=0;
+	G_T1.SUB_MAIN:=0;
+	G_T1.NUMBER:=2;
+// Indirizzo lux Frontale	
+	G_luxF.MAIN:=0;
+	G_luxF.SUB_MAIN:=0;
+	G_luxF.NUMBER:=3;
+// Indirizzo lux Frontale	
+	G_luxR.MAIN:=0;
+	G_luxR.SUB_MAIN:=0;
+	G_luxR.NUMBER:=4;
+// Indirizzo lux Frontale	
+	G_luxL.MAIN:=0;
+	G_luxL.SUB_MAIN:=0;
+	G_luxL.NUMBER:=5;	
+// Indirizzo Sensore Vento
+	G_wind.MAIN:=0;
+	G_wind.SUB_MAIN:=0;
+	G_wind.NUMBER:=6;
+// Indirizzo sensore pioggia
+	G_rain.MAIN:=0;
+	G_rain.SUB_MAIN:=0;
+	G_rain.NUMBER:=7;	
+// Indirizzo temperatura interna
+	G_t0.MAIN:=0;
+	G_t0.SUB_MAIN:=0;
+	G_t0.NUMBER:=1;	
+// Indirizzo pulsante1
+	G_p1.MAIN:=0;
+	G_p1.SUB_MAIN:=0;
+	G_p1.NUMBER:=9;	
+// Indirizzo pulsante2
+	G_p2.MAIN:=0;
+	G_p2.SUB_MAIN:=0;
+	G_p2.NUMBER:=10;	
+// Indirizzo pulsante3
+	G_p3.MAIN:=0;
+	G_p3.SUB_MAIN:=0;
+	G_p3.NUMBER:=11;	
+// Indirizzo pulsante4
+	G_p4.MAIN:=0;
+	G_p4.SUB_MAIN:=0;
+	G_p4.NUMBER:=12;	
+
+	Leggi_rain(Group_Address:= G_rain, strData_Rec:=KNX_BUFFER , bDataReceive=> , bData=>RAIN );
+	Leggi_Temp(Group_Address:=G_t1 , strData_Rec:=KNX_BUFFER , bDataReceive=> , rData=>Temp_OUTSIDE );
+	Leggi_luxf(Group_Address:=G_luxf, strData_Rec:=KNX_BUFFER , bDataReceive=> , rData=>LUX_OUTSIDEF);
+	Leggi_luxR(Group_Address:=G_luxR, strData_Rec:=KNX_BUFFER , bDataReceive=> , rData=>LUX_OUTSIDER );
+	Leggi_luxL(Group_Address:=G_luxL, strData_Rec:=KNX_BUFFER , bDataReceive=> , rData=>LUX_OUTSIDEL );
+	Leggi_wind(Group_Address:=G_wind, strData_Rec:=KNX_BUFFER , bDataReceive=> , rData=>wind_speed );
+	Leggi_p1(Group_Address:= G_p1, strData_Rec:=KNX_BUFFER , bDataReceive=> , bData=>knx_p1);
+	Leggi_p2(Group_Address:= G_p2, strData_Rec:=KNX_BUFFER , bDataReceive=> , bData=>knx_p2 );
+	Leggi_p3(Group_Address:= G_p3, strData_Rec:=KNX_BUFFER , bDataReceive=> , bData=>knx_p3 );
+	Leggi_p4(Group_Address:= G_p4, strData_Rec:=KNX_BUFFER , bDataReceive=> , bData=>knx_p4 );
+	Leggi_Temp0(Group_Address:=G_t0 , strData_Rec:=KNX_BUFFER , bDataReceive=> , rData=>Temp_INSIDE );
+	Leggi_stato_temp(Group_Address:=G_stato_temp, strData_Rec:=KNX_BUFFER , bDataReceive=> , bData=>stato_temp );]]></ST>
+    </Implementation>
+    <LineIds Name="KNX">
+      <LineId Id="3" Count="78" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

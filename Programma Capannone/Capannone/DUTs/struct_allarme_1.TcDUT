@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="struct_allarme_1" Id="{8bb3d11c-cee7-4360-bc95-2e71ecbcae20}">
+    <Declaration><![CDATA[TYPE struct_allarme_1 :
+STRUCT
+	sens_zonaA: BOOL;
+	sens_zonaB: BOOL;
+	sens_zonaC: BOOL;
+	sens_zonaD: BOOL;
+	ritardo_ON: TIME; //Ritardo accensione sensore in secondi
+	ritardo_OFF: TIME; //Ritardo spegnimento sensore in secondi
+	HMI_Ritardo_ON: REAL; //HMI ritardo accensione sensore
+	HMI_Ritardo_OFF: REAL; //HMI ritardo spegnimento sensore
+	sens_ON_OFF: BOOL; //Accensione/spegnimento sensore TRUE=acceso FALSE= spento
+	allarme_sensore: BOOL; //Segnale uscita allarme sensore
+	tamper_sensore: BOOL; //Segnale uscita tamper sensore
+	stato_sensore: BYTE; //0=OFF 1=allarme generato 2=tamper 3=in allarme attivo ma libero 4=in allarme attivo 5=acceso libero 6=acceso occupato
+	testo_sensore: STRING; //Nome e funzione sensore
+	sensore_preallarme: BOOL; //Segnale sonoro con allarme attivo
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

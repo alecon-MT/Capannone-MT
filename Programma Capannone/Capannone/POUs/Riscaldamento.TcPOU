@@ -1,0 +1,503 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="Riscaldamento" Id="{223b225c-acfc-44be-8146-563cf3c5a2cf}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Riscaldamento
+VAR
+	Sabiana1: Speed_Sabiana;
+	Sabiana2: Speed_Sabiana;
+	Sabiana3: Speed_Sabiana;
+	Sabiana4: Speed_Sabiana;
+	Sabiana5: Speed_Sabiana;
+	Sabiana6: Speed_Sabiana;
+	Temp_Prod1: DALI_TK_SR07_rh;
+	areotermi AT %Q*: ARRAY [1..10] OF areotermo;
+	night:BOOL;
+	richiesta_caldaia AT %Q*: BOOL;
+	pompa_prod1 AT %Q*: BOOL;
+	pompa_prod2 AT %Q*: BOOL;
+	f_coil1: F_COIL;
+	f_coil2: F_COIL;
+	f_coil3: F_COIL;
+	f_coil4: F_COIL;
+	f_coil5: F_COIL;
+	f_coil6: F_COIL;
+	f_coil7: F_COIL;
+	f_coil8: F_COIL;
+	f_coil9: F_COIL;
+	f_coil10: F_COIL;
+	delay_onciller: TON;
+	CILLER_ON: BOOL;
+	temp_ciller AT %I*: INT;
+	run_pompaprod AT %I*: BOOL;
+	switch_pompa_prod: INT;
+	forza_inverno_misto: BOOL;
+	riscaldamento_man: BOOL:=FALSE;
+	forza_aer_uffici: BOOL;
+	forza_richiesta_caldaia: BOOL;
+	forza_pompa_prod1: BOOL;
+	forza_pompa_prod2: BOOL;
+	forza_Sabiana1L: BOOL;
+	forza_Sabiana1H: BOOL;
+	forza_Sabiana2L: BOOL;
+	forza_Sabiana2H: BOOL;
+	forza_Sabiana3L: BOOL;
+	forza_Sabiana3H: BOOL;
+	forza_Sabiana4L: BOOL;
+	forza_Sabiana4H: BOOL;
+	forza_Sabiana5L: BOOL;
+	forza_Sabiana5H: BOOL;
+	forza_Sabiana6L: BOOL;
+	forza_Sabiana6H: BOOL;
+	sab1_state: INT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Temperature Capannone
+Temp_Prod1(ID:= 16#019E5ACD, Temp=> TEMPz0, Umidity=> HMI_umidita);
+IF NOT Sabiana1L AND NOT Sabiana1H THEN
+	sab1_state:=0;
+ELSIF Sabiana1L AND NOT Sabiana1H THEN
+	sab1_state:=1;
+ELSIF NOT Sabiana1L AND Sabiana1H THEN
+	sab1_state:=2;
+END_IF
+IF riscaldamento_man THEN //Modalità MANUALE
+	aer_uffici:=forza_aer_uffici;
+	richiesta_caldaia:=forza_richiesta_caldaia;
+	switch_pompa_prod:=2;
+	pompa_prod1:=forza_pompa_prod1;
+	pompa_prod2:=forza_pompa_prod2;
+	Sabiana1L:=forza_Sabiana1L;
+	Sabiana1H:=forza_Sabiana1H;
+	Sabiana2L:=forza_Sabiana2L;
+	Sabiana2H:=forza_Sabiana2H;
+	Sabiana3L:=forza_Sabiana3L;
+	Sabiana3H:=forza_Sabiana3H;
+	Sabiana4L:=forza_Sabiana4L;
+	Sabiana4H:=forza_Sabiana4H;
+	Sabiana5L:=forza_Sabiana5L;
+	Sabiana5H:=forza_Sabiana5H;
+	Sabiana6L:=forza_Sabiana6L;
+	Sabiana6H:=forza_Sabiana6H;
+
+ELSE //Modalità AUTOMATICO
+(* Areazione *)
+aer_uffici:=allarme_Attivo=0 (*NOT Allarme*);
+
+//Gestione Pompa Caldaia
+richiesta_caldaia:=	sabiana1.pompa OR
+					sabiana2.pompa OR
+					sabiana3.pompa OR
+					sabiana4.pompa OR
+					sabiana5.pompa OR
+					sabiana6.pompa OR
+					temp_ciller < 600 OR
+					f_coil1.C2_pompa OR
+					f_coil2.C2_pompa OR
+					f_coil3.C2_pompa OR
+					f_coil4.C2_pompa OR
+					f_coil5.C2_pompa OR
+					f_coil6.C2_pompa OR
+					f_coil7.C2_pompa OR
+					f_coil8.C2_pompa OR
+					f_coil9.C2_pompa OR
+					f_coil10.C2_pompa ;
+				
+switch_pompa_prod:=ora_plc.TIMESTR.wDay MOD 2;
+
+//Switch tra le due pompe in funzione del giorno pari o dispari
+IF switch_pompa_prod=0 THEN
+	pompa_prod1:=run_pompaprod ;
+	pompa_prod2:=FALSE;
+ELSIF switch_pompa_prod=1 THEN
+	pompa_prod2:=run_pompaprod;
+	pompa_prod1:=FALSE;
+END_IF;
+
+(*Gestione Sabiana*)
+	Sabiana1(
+		modo:= HMI_SabianaManCTRL[1], 
+		Hmodo:= HeatingdMode , 
+		Tzona:= tempz0, 
+		Trif:= ,//hmi_tempprod, 
+		Hspeed:= , 
+		Tciller:= temp_ciller,
+		ToffCiller:=TempOffSabiana1,  
+		TH20:=(*Th20_CaldaiaOK*) run_pompaprod OR night,
+		L=> Sabiana1L, 
+		H=> Sabiana1H,
+		Pompa=>);
+	Sabiana2(
+		modo:= HMI_SabianaManCTRL[2], 
+		Hmodo:= HeatingdMode , 
+		Tzona:= tempz0, 
+		Trif:= ,//hmi_tempprod, 
+		Hspeed:= , 
+		Tciller:= temp_ciller,
+		ToffCiller:=TempOffSabiana2 ,
+		TH20:=(*Th20_CaldaiaOK*) run_pompaprod OR night,
+		L=> Sabiana2L, 
+		H=> Sabiana2H,
+		Pompa=>);
+	Sabiana3(
+		modo:= HMI_SabianaManCTRL[3], 
+		Hmodo:= HeatingdMode , 
+		Tzona:= tempz0, 
+		Trif:= ,//hmi_tempprod, 
+		Hspeed:= , 
+		Tciller:= temp_ciller,
+		ToffCiller:=TempOffSabiana3 ,
+		TH20:=(*Th20_CaldaiaOK*) run_pompaprod OR night,
+		L=> Sabiana3L, 
+		H=> Sabiana3H,
+		Pompa=>);
+	Sabiana4(
+		modo:= HMI_SabianaManCTRL[4], 
+		Hmodo:= HeatingdMode , 
+		Tzona:= tempz0, 
+		Trif:= ,//hmi_tempprod, 
+		Hspeed:= , 
+		Tciller:= temp_ciller,
+		ToffCiller:=TempOffSabiana4 ,
+		TH20:=(*Th20_CaldaiaOK*) run_pompaprod OR night,
+		L=> Sabiana4L, 
+		H=> Sabiana4H,
+		Pompa=>);
+	Sabiana5(
+		modo:= HMI_SabianaManCTRL[5], 
+		Hmodo:= HeatingdMode , 
+		Tzona:= tempz0, 
+		Trif:= ,//hmi_tempprod, 
+		Hspeed:= , 
+		Tciller:= temp_ciller,
+		ToffCiller:=TempOffSabiana5 ,
+		TH20:=(*Th20_CaldaiaOK*) run_pompaprod OR night,
+		L=> Sabiana5L, 
+		H=> Sabiana5H,
+		Pompa=>);
+	Sabiana6(
+		modo:= HMI_SabianaManCTRL[6], 
+		Hmodo:= HeatingdMode , 
+		Tzona:= tempz0, 
+		Trif:= ,//hmi_tempprod, 
+		Hspeed:= , 
+		Tciller:= temp_ciller,
+		ToffCiller:=TempOffSabiana6 ,
+		TH20:=(*Th20_CaldaiaOK*) run_pompaprod OR night,
+		L=> Sabiana6L, 
+		H=> Sabiana6H,
+		Pompa=>);
+		
+//UFFICI
+//GESTIONE ESTATE INVERNO
+OUT_CILLER_ESTATE:=OFFICE_VHAC_EI;
+//GESTIONE MODO CILLER
+IF 		OUT_CILLER_ESTATE THEN
+		OFFICE_vhac_MODE:=0; // 0 ESTATE 
+ELSIF 	NOT OUT_CILLER_ESTATE AND (Temp_OUTSIDE<-1 OR forza_inverno_misto) THEN
+		OFFICE_vhac_MODE:=2; // 2 INVERNO MISTO 
+ELSIF 	NOT OUT_CILLER_ESTATE  THEN
+		OFFICE_vhac_MODE:=1; // 1 INVERNO PDC
+END_IF
+
+(*Gestione Pompa Ciller*)
+delay_onciller(IN:=ciller_on , PT:= T#5M, Q=>OUT_CILLER_ON , ET=> );
+CILLER_ON:= 
+	f_coil1.C1_pompa OR
+	f_coil2.C1_pompa OR
+	f_coil3.C1_pompa OR
+	f_coil4.C1_pompa OR
+	f_coil5.C1_pompa OR
+	f_coil6.C1_pompa OR
+	f_coil7.C1_pompa OR
+	f_coil8.C1_pompa OR
+	f_coil9.C1_pompa OR
+	f_coil10.C1_pompa OR
+	Temp_OUTSIDE<-2 ;
+//Ingresso
+f_coil1(
+	C1_TH2o:= th20_pompacaloreok, 
+	C2_TH2o:= TRUE, 
+	mode:= OFFICE_vhac_MODE, 
+	T_AMB:= Tempz1,//-HMI_var_tempuff[1]), 
+	T_RIF:= ,//HMI_TEMPuff[1], 
+	winterON:=INT_TO_BOOL(cononz1),
+	Forza_VOpen:= ciller_on, 
+	C1_VOPEN=>areotermi[1].VHL1, 
+	C2_VOPEN=>areotermi[1].VHL2, 
+	V1=>areotermi[1].Speed1, 
+	V2=>areotermi[1].Speed2, 
+	V3=>areotermi[1].Speed3, 
+	C1_pompa=> , 
+	C2_Pompa=> );	
+//Amministrazione
+f_coil2(
+	C1_TH2o:= th20_pompacaloreok, 
+	C2_TH2o:= TRUE, 
+	mode:= OFFICE_vhac_MODE, 
+	T_AMB:= Tempz3,//-HMI_var_tempuff[2]), 
+	T_RIF:= ,//HMI_TEMPuff[2], 
+	winterON:= INT_TO_BOOL (cononz2),
+	Forza_VOpen:= ciller_on, 
+	C1_VOPEN=> areotermi[2].VHL1, 
+	C2_VOPEN=> areotermi[2].VHL2, 
+	V1=> areotermi[2].Speed1, 
+	V2=> areotermi[2].Speed2, 
+	V3=> areotermi[2].Speed3, 
+	C1_pompa=> , 
+	C2_Pompa=> );
+//Direzione
+f_coil3(
+	C1_TH2o:= th20_pompacaloreok, 
+	C2_TH2o:= TRUE, 
+	mode:= OFFICE_vhac_MODE, 
+	T_AMB:= Tempz3,//-HMI_var_tempuff[3]), 
+	T_RIF:= ,//HMI_TEMPuff[3], 
+	winterON:= INT_TO_BOOL(cononz3),
+	Forza_VOpen:= CILLER_ON, 
+	C1_VOPEN=> areotermi[3].VHL1, 
+	C2_VOPEN=> areotermi[3].VHL2, 
+	V1=> areotermi[3].Speed1, 
+	V2=> areotermi[3].Speed2, 
+	V3=> areotermi[3].Speed3, 
+	C1_pompa=> , 
+	C2_Pompa=> );
+//Sala Riunioni
+f_coil4(
+	C1_TH2o:= th20_pompacaloreok, 
+	C2_TH2o:= TRUE, 
+	mode:= OFFICE_vhac_MODE, 
+	T_AMB:= tempz4,//-HMI_var_tempuff[4]), 
+	T_RIF:= ,//HMI_TEMPuff[4], 
+	winterON:= INT_TO_BOOL(cononz4) OR meetingroom_active,
+	Forza_VOpen:= CILLER_ON , 
+	C1_VOPEN=> areotermi[4].VHL1, 
+	C2_VOPEN=> areotermi[4].VHL2, 
+	V1=> areotermi[4].Speed1, 
+	V2=> areotermi[4].Speed2, 
+	V3=> areotermi[4].Speed3, 
+	C1_pompa=> , 
+	C2_Pompa=> );
+f_coil5(
+	C1_TH2o:= th20_pompacaloreok, 
+	C2_TH2o:= TRUE, 
+	mode:= OFFICE_vhac_MODE, 
+	T_AMB:= tempz4,//-HMI_var_tempuff[4]), 
+	T_RIF:= ,//HMI_TEMPuff[4], 
+	winterON:= INT_TO_BOOL(cononz4) OR meetingroom_active,
+	Forza_VOpen:= CILLER_ON, 
+	C1_VOPEN=> areotermi[5].VHL1, 
+	C2_VOPEN=> areotermi[5].VHL2, 
+	V1=> areotermi[5].Speed1, 
+	V2=> areotermi[5].Speed2, 
+	V3=>areotermi[5].Speed3, 
+	C1_pompa=> , 
+	C2_Pompa=> );
+//Ufficio Tecnico
+f_coil6(
+	C1_TH2o:= th20_pompacaloreok, 
+	C2_TH2o:= TRUE, 
+	mode:= OFFICE_vhac_MODE, 
+	T_AMB:= tempz5,//-HMI_var_tempuff[5]), 
+	T_RIF:= ,//HMI_TEMPuff[5], 
+	winterON:= INT_TO_BOOL(cononz5),
+	Forza_VOpen:= CILLER_ON, 
+	C1_VOPEN=> areotermi[6].VHL1, 
+	C2_VOPEN=> areotermi[6].VHL2, 
+	V1=> areotermi[6].Speed1, 
+	V2=> areotermi[6].Speed2, 
+	V3=>areotermi[6].Speed3, 
+	C1_pompa=> , 
+	C2_Pompa=> );
+f_coil7(
+	C1_TH2o:= th20_pompacaloreok, 
+	C2_TH2o:= TRUE, 
+	mode:= OFFICE_vhac_MODE, 
+	T_AMB:= tempz5,//-HMI_var_tempuff[5]), 
+	T_RIF:= ,//HMI_TEMPuff[5], 
+	winterON:= INT_TO_BOOL(cononz5),
+	Forza_VOpen:= CILLER_ON , 
+	C1_VOPEN=> areotermi[7].VHL1, 
+	C2_VOPEN=> areotermi[7].VHL2, 
+	V1=> areotermi[7].Speed1, 
+	V2=> areotermi[7].Speed2, 
+	V3=> areotermi[7].Speed3, 
+	C1_pompa=> , 
+	C2_Pompa=> );
+//Ufficio Produzione
+f_coil8(
+	C1_TH2o:= th20_pompacaloreok, 
+	C2_TH2o:= TRUE, 
+	mode:= OFFICE_vhac_MODE, 
+	T_AMB:= tempz6,//-HMI_var_tempuff[6]),
+	T_RIF:= ,//HMI_TEMPuff[5], 
+	winterON:= INT_TO_BOOL(cononz6),
+	Forza_VOpen:= CILLER_ON , 
+	C1_VOPEN=> areotermi[8].VHL1, 
+	C2_VOPEN=> areotermi[8].VHL2, 
+	V1=> areotermi[8].Speed1, 
+	V2=> areotermi[8].Speed2, 
+	V3=> areotermi[8].Speed3, 
+	C1_pompa=> , 
+	C2_Pompa=> );
+f_coil9(
+	C1_TH2o:= th20_pompacaloreok, 
+	C2_TH2o:= TRUE, 
+	mode:= OFFICE_vhac_MODE, 
+	T_AMB:= tempz6,//-HMI_var_tempuff[6]), 
+	T_RIF:= ,//HMI_TEMPuff[5],
+	winterON:= INT_TO_BOOL(cononz6), 
+	Forza_VOpen:= CILLER_ON , 
+	C1_VOPEN=> areotermi[9].VHL1, 
+	C2_VOPEN=> areotermi[9].VHL2, 
+	V1=> areotermi[9].Speed1, 
+	V2=> areotermi[9].Speed2, 
+	V3=> areotermi[9].Speed3, 
+	C1_pompa=> , 
+	C2_Pompa=> );
+//Locale Svago
+f_coil10(
+	C1_TH2o:= th20_pompacaloreok, 
+	C2_TH2o:= TRUE, 
+	mode:= OFFICE_vhac_MODE, 
+	T_AMB:= tempz7, 
+	T_RIF:= ,//HMI_TEMPuff[7], 	
+	winterON:= INT_TO_BOOL(cononz7),
+	Forza_VOpen:= ciller_on, 
+	C1_VOPEN=> areotermi[10].VHL1, 
+	C2_VOPEN=> areotermi[10].VHL2, 
+	V1=> areotermi[10].Speed1, 
+	V2=> areotermi[10].Speed2, 
+	V3=> areotermi[10].Speed3, 
+	C1_pompa=> , 
+	C2_Pompa=> );
+	(*IF NOT OFFICE_VHAC_EI THEN
+		IF 1230<=time_now AND time_now<=1330 THEN
+			f_coil10.T_AMB:= (tempz7-HMI_var_tempuff[7]);
+		ELSE
+			f_coil10.T_AMB:=tempz7;
+		END_IF
+	ELSE
+		f_coil10.T_AMB:=tempz7;
+	END_IF*)
+IF OFFICE_VHAC_EI THEN //Se estate ON
+	//HMI_TEMPuff:=280;
+END_IF
+
+IF NOT OFFICE_VHAC_EI THEN (*Se è inverno*)
+	IF ORA_PLC.TIMESTR.wHour>=6 AND ORA_PLC.TIMESTR.wHour<=17 THEN
+		//hmi_tempprod:=160;
+		//HMI_TEMPuff:=240;
+		night:=FALSE;
+		sabiana1.Trif:=hmi_tempprod;
+		sabiana2.Trif:=hmi_tempprod;
+		sabiana3.Trif:=hmi_tempprod;
+		sabiana4.Trif:=hmi_tempprod;
+		sabiana5.Trif:=hmi_tempprod;
+		sabiana6.Trif:=hmi_tempprod;
+		f_coil1.T_RIF:=HMI_tempuff[1];
+		f_coil2.T_RIF:=HMI_tempuff[2];
+		f_Coil3.T_RIF:=HMI_tempuff[3];
+		f_coil4.T_RIF:=HMI_tempuff[4];
+		f_coil5.T_RIF:=HMI_tempuff[4];
+		f_coil6.T_RIF:=HMI_tempuff[5];
+		f_coil7.T_RIF:=HMI_tempuff[5];
+		f_coil8.T_RIF:=HMI_tempuff[5];
+		f_coil9.T_RIF:=HMI_tempuff[5];
+		f_Coil10.T_RIF:=HMI_tempuff[7];
+	ELSE
+		night:=TRUE;
+		sabiana1.Trif:=140;
+		sabiana2.Trif:=140;
+		sabiana3.Trif:=140;
+		sabiana4.Trif:=140;
+		sabiana5.Trif:=140;
+		sabiana6.Trif:=140;
+		f_coil1.T_RIF:=160;
+		f_coil2.T_RIF:=160;
+		f_coil3.T_RIF:=160;
+		f_coil4.T_RIF:=160;
+		f_coil5.T_RIF:=160;
+		f_coil6.T_RIF:=160;
+		f_coil7.T_RIF:=160;
+		f_coil8.T_RIF:=160;
+		f_coil9.T_RIF:=160;
+		f_coil10.T_RIF:=160;
+	END_IF
+END_IF
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Riscaldamento">
+      <LineId Id="3" Count="1" />
+      <LineId Id="634" Count="0" />
+      <LineId Id="637" Count="1" />
+      <LineId Id="640" Count="1" />
+      <LineId Id="635" Count="1" />
+      <LineId Id="550" Count="0" />
+      <LineId Id="552" Count="0" />
+      <LineId Id="556" Count="0" />
+      <LineId Id="586" Count="0" />
+      <LineId Id="558" Count="1" />
+      <LineId Id="562" Count="0" />
+      <LineId Id="564" Count="0" />
+      <LineId Id="576" Count="9" />
+      <LineId Id="8" Count="0" />
+      <LineId Id="551" Count="0" />
+      <LineId Id="9" Count="4" />
+      <LineId Id="353" Count="4" />
+      <LineId Id="473" Count="0" />
+      <LineId Id="14" Count="9" />
+      <LineId Id="402" Count="1" />
+      <LineId Id="410" Count="0" />
+      <LineId Id="400" Count="0" />
+      <LineId Id="399" Count="0" />
+      <LineId Id="401" Count="0" />
+      <LineId Id="441" Count="0" />
+      <LineId Id="405" Count="0" />
+      <LineId Id="24" Count="0" />
+      <LineId Id="442" Count="0" />
+      <LineId Id="406" Count="1" />
+      <LineId Id="25" Count="6" />
+      <LineId Id="358" Count="1" />
+      <LineId Id="32" Count="9" />
+      <LineId Id="361" Count="0" />
+      <LineId Id="360" Count="0" />
+      <LineId Id="42" Count="9" />
+      <LineId Id="363" Count="0" />
+      <LineId Id="362" Count="0" />
+      <LineId Id="52" Count="9" />
+      <LineId Id="365" Count="0" />
+      <LineId Id="364" Count="0" />
+      <LineId Id="62" Count="9" />
+      <LineId Id="367" Count="0" />
+      <LineId Id="366" Count="0" />
+      <LineId Id="72" Count="9" />
+      <LineId Id="369" Count="0" />
+      <LineId Id="368" Count="0" />
+      <LineId Id="82" Count="187" />
+      <LineId Id="742" Count="0" />
+      <LineId Id="270" Count="0" />
+      <LineId Id="690" Count="0" />
+      <LineId Id="692" Count="1" />
+      <LineId Id="691" Count="0" />
+      <LineId Id="792" Count="1" />
+      <LineId Id="743" Count="0" />
+      <LineId Id="510" Count="0" />
+      <LineId Id="513" Count="0" />
+      <LineId Id="512" Count="0" />
+      <LineId Id="518" Count="0" />
+      <LineId Id="517" Count="0" />
+      <LineId Id="279" Count="3" />
+      <LineId Id="1018" Count="5" />
+      <LineId Id="954" Count="3" />
+      <LineId Id="960" Count="5" />
+      <LineId Id="283" Count="1" />
+      <LineId Id="1025" Count="4" />
+      <LineId Id="1024" Count="0" />
+      <LineId Id="898" Count="6" />
+      <LineId Id="966" Count="2" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="519" Count="0" />
+      <LineId Id="555" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,37 @@
+﻿{
+  "parameters": [
+    {
+      "name": "data-tchmi-control_var",
+      "displayName": "Control_var",
+      "visible": true,
+      "type": "tchmi:general#/definitions/BOOL",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "Control_var",
+      "propertySetterName": "setControl_var",
+      "propertyGetterName": "getControl_var"
+    },
+    {
+      "name": "data-tchmi-text",
+      "displayName": "Text",
+      "visible": true,
+      "type": "tchmi:general#/definitions/String",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "Text",
+      "propertySetterName": "setText",
+      "propertyGetterName": "getText"
+    }
+  ],
+  "virtualRights": [],
+  "$schema": "C:/TwinCAT/Functions/TE2000-HMI-Engineering/Infrastructure/TcHmiFramework/Latest/Schema/UserControlConfig.Schema.json",
+  "description": "Parametri"
+}

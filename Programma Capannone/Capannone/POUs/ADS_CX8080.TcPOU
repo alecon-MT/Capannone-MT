@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <POU Name="ADS_CX8080" Id="{165089ae-d364-4828-a172-3f367fcf6f11}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM ADS_CX8080
+VAR
+	ADS_read: ADSREAD;
+	ADS_Write: ADSWRITE;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Lettura variabili da modulo CX8080 con ADS
+ADS_read(
+	NETID:= '5.41.109.126.1.1', //AmsnetID del secondo PLC
+	PORT:= 801, 
+	IDXGRP:=16#4020 , 
+	IDXOFFS:=2000 , 
+	LEN:= SIZEOF(segnalird), 
+	DESTADDR:= ADR(segnalird), 
+	READ:= aggiorna=1, 
+	TMOUT:=T#5S, 
+	BUSY=> , 
+	ERR=> , 
+	ERRID=> );
+//Scrittura variabili su modulo CX8080 con ADS
+ADS_Write(
+	NETID:= '5.41.109.126.1.1', //AmsnetID del secondo PLC
+	PORT:= 801, 
+	IDXGRP:= 16#4020, 
+	IDXOFFS:= 1000, 
+	LEN:= SIZEOF(segnaliwr), 
+	SRCADDR:= ADR(segnaliwr), 
+	WRITE:= aggiorna=1, 
+	TMOUT:=T#5S , 
+	BUSY=> , 
+	ERR=> , 
+	ERRID=> );]]></ST>
+    </Implementation>
+    <LineIds Name="ADS_CX8080">
+      <LineId Id="3" Count="24" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

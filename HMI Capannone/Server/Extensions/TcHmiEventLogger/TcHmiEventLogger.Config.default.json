@@ -1,0 +1,13 @@
+{
+    "MAXTARGETS": 8,
+    "TARGET_SYSTEMS": {
+        "Local": {
+            "ADDRESS": "127.0.0.1.1.1",
+            "ENABLED": true
+        },
+        "PLC1": {
+            "ADDRESS": "5.37.99.190.1.1",
+            "ENABLED": true
+        }
+    }
+}

@@ -1,0 +1,268 @@
+﻿{
+  "$schema": "C:/TwinCAT/Functions/TE2000-HMI-Engineering/Infrastructure/TcHmiFramework/Latest/Schema/TchmiConfig.Schema.json",
+  "basePath": "./Libraries",
+  "locale": "en-US",
+  "scaleMode": "ScaleToFitWidth",
+  "startupView": "Desktop.view",
+  "loginPage": null,
+  "tcHmiServer": {
+    "websocketIntervalTime": 200,
+    "websocketTimeout": 5000,
+    "websocketSubscriptionMode": "Change"
+  },
+  "activeTheme": "Base",
+  "themes": {
+    "Base": {
+      "resources": [
+        {
+          "name": "Themes/Base/Base.theme",
+          "description": "",
+          "type": "ThemedValues"
+        },
+        {
+          "name": "Themes/Base/Style.css",
+          "description": "",
+          "type": "Stylesheet"
+        }
+      ],
+      "replacesThemeForControls": []
+    }
+  },
+  "dependencyFiles": [
+    {
+      "name": "Fonts/Fonts.css",
+      "description": "",
+      "type": "Stylesheet"
+    }
+  ],
+  "userControls": [
+    {
+      "url": "X10 - User Control/Consumi.usercontrol"
+    },
+    {
+      "url": "X10 - User Control/Led+scritta laterale INT.usercontrol"
+    },
+    {
+      "url": "X10 - User Control/Led+scritta laterale.usercontrol"
+    },
+    {
+      "url": "X10 - User Control/Led+scritta+Puls.usercontrol"
+    },
+    {
+      "url": "X10 - User Control/Sabiana.usercontrol"
+    },
+    {
+      "url": "X10 - User Control/Setting_Sensore.usercontrol"
+    },
+    {
+      "url": "X10 - User Control/TextBox_limit.usercontrol"
+    },
+    {
+      "url": "X10 - User Control/TextBox_longkey.usercontrol"
+    },
+    {
+      "url": "X10 - User Control/TextBox_single.usercontrol"
+    },
+    {
+      "url": "X10 - User Control/Uffici.usercontrol"
+    }
+  ],
+  "content": [
+    {
+      "url": "X20 - Content_Uffici/Amministrazione.content",
+      "preload": false
+    },
+    {
+      "url": "X20 - Content_Uffici/Direzione.content",
+      "preload": false
+    },
+    {
+      "url": "X20 - Content_Uffici/Ingresso.content",
+      "preload": false
+    },
+    {
+      "url": "X20 - Content_Uffici/Locale_Svago.content",
+      "preload": false
+    },
+    {
+      "url": "X20 - Content_Uffici/Sala_Riunioni.content",
+      "preload": false
+    },
+    {
+      "url": "X20 - Content_Uffici/Sensor.content",
+      "preload": false
+    },
+    {
+      "url": "X20 - Content_Uffici/Ufficio_Produzione.content",
+      "preload": false
+    },
+    {
+      "url": "X20 - Content_Uffici/Ufficio_Tecnico.content",
+      "preload": false
+    },
+    {
+      "url": "Data_ora.content",
+      "preload": false
+    },
+    {
+      "url": "Gestione_Capannone.content",
+      "preload": false
+    },
+    {
+      "url": "Main.content",
+      "preload": false
+    },
+    {
+      "url": "MB_Main.content",
+      "preload": false
+    },
+    {
+      "url": "MB_Settings.content",
+      "preload": false
+    },
+    {
+      "url": "Sensori_Allarme.content",
+      "preload": false
+    },
+    {
+      "url": "Settaggi.content",
+      "preload": false
+    },
+    {
+      "url": "Setting_Riscaldamento.content",
+      "preload": false
+    },
+    {
+      "url": "Utenti.content",
+      "preload": false
+    },
+    {
+      "url": "WebCam.content",
+      "preload": false
+    }
+  ],
+  "views": [
+    {
+      "url": "Desktop.view",
+      "preload": false
+    }
+  ],
+  "userFunctions": [
+    {
+      "url": "X01 - Java Script/Value_Max_Min.js"
+    },
+    {
+      "url": "X01 - Java Script/ObjectTop_Pos.js"
+    },
+    {
+      "url": "X01 - Java Script/IsFocused.js"
+    },
+    {
+      "url": "X01 - Java Script/Focused_position.js"
+    },
+    {
+      "url": "X01 - Java Script/Format2digit.js"
+    }
+  ],
+  "symbols": {
+    "internal": {
+      "Riscaldamento_manuale": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": false,
+        "readonly": false
+      },
+      "numero": {
+        "value": 0.0,
+        "type": "tchmi:general#/definitions/Number",
+        "persist": false,
+        "readonly": false
+      },
+      "CB1_0": {
+        "value": 0.0,
+        "type": "tchmi:general#/definitions/Number",
+        "persist": false,
+        "readonly": false
+      },
+      "CB1_1": {
+        "value": 0.0,
+        "type": "tchmi:general#/definitions/Number",
+        "persist": false,
+        "readonly": false
+      },
+      "CB1_2": {
+        "value": 0.0,
+        "type": "tchmi:general#/definitions/Number",
+        "persist": false,
+        "readonly": false
+      },
+      "Key_UP_pos": {
+        "value": 60.0,
+        "type": "tchmi:general#/definitions/Number",
+        "persist": false,
+        "readonly": false
+      },
+      "Press_Key": {
+        "value": [
+          {
+            "code": "",
+            "key": "A",
+            "location": "standard",
+            "unmodifiedKey": ""
+          }
+        ],
+        "type": "tchmi:framework#/definitions/KeyList",
+        "persist": false,
+        "readonly": false
+      },
+      "Vista_Luci": {
+        "value": true,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": false,
+        "readonly": false
+      },
+      "Vista_Cond": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": false,
+        "readonly": false
+      },
+      "Vista_Sens": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": false,
+        "readonly": false
+      },
+      "sens": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": false,
+        "readonly": false
+      },
+      "Key_UP_Long": {
+        "value": 60.0,
+        "type": "tchmi:general#/definitions/Number",
+        "persist": false,
+        "readonly": false
+      },
+      "Vista_Telec": {
+        "value": false,
+        "type": "tchmi:general#/definitions/BOOL",
+        "persist": false,
+        "readonly": false
+      }
+    }
+  },
+  "trigger": [],
+  "actionTemplates": [],
+  "languages": {
+    "en-US": "Localization\\en-US.localization",
+    "it-IT": "Localization\\it-IT.localization"
+  },
+  "creatorSettings": {
+    "viewport": {
+      "defaultWidth": 1920,
+      "defaultHeight": 1200
+    }
+  }
+}

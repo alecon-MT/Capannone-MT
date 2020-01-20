@@ -1,0 +1,17 @@
+﻿<div id="Locale_Svago" data-tchmi-type="tchmi-content" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="320" data-tchmi-height="350" data-tchmi-zindex="2">
+
+<div id="Uffici_8" data-tchmi-type="tchmi-user-control-host" data-tchmi-height="350" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-target-user-control="X10 - User Control/Uffici.usercontrol" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="320" data-tchmi-width-unit="px" data-tchmi-light_level="%s%PLC1.LUCI.ulux_6.light_level%/s%" data-tchmi-temp="%s%PLC1.GVL.TempZ7%/s%" data-tchmi-text="LOCALE SVAGO" data-tchmi-luce_on_off="%s%PLC1.LUCI.ulux_6.luce%/s%" data-tchmi-luce_off="%s%PLC1.GVL.HMI_luci_off.6%/s%" data-tchmi-lux="%s%PLC1.LUCI.ulux_6.val_lux%/s%" data-tchmi-accendi_luce="%s%PLC1.GVL.HMI_luci_on.6%/s%" data-tchmi-spegni_luce="%s%PLC1.GVL.HMI_luci_off.6%/s%" data-tchmi-zindex="0" data-tchmi-condizionatore="%s%PLC1.GVL.HMI_cond.6%/s%" data-tchmi-accendi_cond="%s%PLC1.GVL.HMI_cond_on[6]%/s%" data-tchmi-spegni_cond="%s%PLC1.GVL.HMI_cond_off.6%/s%" data-tchmi-cond_on_off="%s%PLC1.GVL.HMI_cond.6%/s%" data-tchmi-dimmer_on_plc="%s%PLC1.LUCI.ulux_6.dimmer_on%/s%" data-tchmi-temp_rif="%s%PLC1.GVL.HMI_TEMPuff.6%/s%" data-tchmi-cond_on="%s%PLC1.Riscaldamento.f_coil10.winterON%/s%" data-tchmi-luce_on="%s%PLC1.LUCI.ulux_6.arc_level%/s%" data-tchmi-dimmer_plc="%s%PLC1.LUCI.ulux_6.val_dimmer%/s%" data-tchmi-creator-visibility="Visible" data-tchmi-dimmer_ulux="%s%PLC1.LUCI.ulux_6.dimmer%/s%">
+
+
+
+
+
+
+
+</div>
+
+
+
+
+
+</div>

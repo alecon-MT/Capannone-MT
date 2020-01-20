@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="struct_allarme" Id="{81213698-dd9b-46ba-a092-a0ee6895a77a}">
+    <Declaration><![CDATA[TYPE struct_allarme :
+STRUCT
+	mode_a0 : BOOL:=TRUE;
+	mode_a1 : BOOL;
+	mode_a2 : BOOL;
+	mode_a3 : BOOL;
+	mode_a4 : BOOL;
+	delay_allarme : TIME:= T#30S;
+	allarme_dis : BOOL;
+	sens_mov : BOOL;
+	porta_fin : BOOL;
+	sensore : BOOL;
+	sens_ritardato : BOOL;
+	sens_attivo : BOOL;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

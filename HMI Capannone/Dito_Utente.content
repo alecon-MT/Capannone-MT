@@ -1,0 +1,132 @@
+﻿<div id="Dito_Utente" data-tchmi-type="tchmi-content" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="700" data-tchmi-height="500" data-tchmi-left-unit="px" data-tchmi-top-unit="px" data-tchmi-width-unit="px" data-tchmi-height-unit="px">
+
+<div id="TcHmiTextblock_26" data-tchmi-type="tchmi-textblock" data-tchmi-height="33" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-top="24" data-tchmi-top-unit="px" data-tchmi-width="605" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="20" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center" data-tchmi-text="- PREMERE IL PULSANTE A VIDEO PER INIZIARE LA PROCEDURA" data-tchmi-text-font-size-unit="px">
+
+</div>
+
+<div id="TcHmiButton_14" data-tchmi-type="tchmi-button" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="180" data-tchmi-left-unit="px" data-tchmi-text="" data-tchmi-top="68" data-tchmi-top-unit="px" data-tchmi-width="191" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
+  {
+    "event": "TcHmiButton_14.onPressed",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.HMI_finger%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": false
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%s%PLC1.GVL.HMI_finger%/s%",
+            "valueType": "tchmi:general#/definitions/BOOL",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": true
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%s%PLC1.GVL.HMI_finger%/s%",
+            "valueType": "tchmi:general#/definitions/BOOL",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": false
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%s%PLC1.GVL.HMI_finger%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.HMI_finger%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": true
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%TcHmiButton_14::Text%/ctrl%",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/String",
+              "value": "REGISTRAZIONE ATTIVATA"
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%TcHmiButton_14::Text%/ctrl%",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/String",
+              "value": "REGISTRAZIONE DISATTIVATA"
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]</script>
+</div>
+
+<div id="TcHmiTextblock_27" data-tchmi-type="tchmi-textblock" data-tchmi-height="33" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-top="128" data-tchmi-top-unit="px" data-tchmi-width="605" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="20" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center" data-tchmi-is-enabled="True" data-tchmi-text="- PASSARE IL PROPRIO RFID SUL DISPOSITIVO PER LA REGISTRAZIONE">
+
+</div>
+
+<div id="TcHmiTextblock_28" data-tchmi-type="tchmi-textblock" data-tchmi-height="45" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-top="171" data-tchmi-top-unit="px" data-tchmi-width="605" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="20" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center" data-tchmi-is-enabled="True" data-tchmi-text="- CON LUCE ARANCIONE SUL DISPOSITIVO PASSARE IL PROPRIO DITO              SINISTRO PER LA REGISTRAZIONE">
+
+</div>
+
+<div id="TcHmiTextblock_29" data-tchmi-type="tchmi-textblock" data-tchmi-height="45" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-top="226" data-tchmi-top-unit="px" data-tchmi-width="605" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="20" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center" data-tchmi-is-enabled="True" data-tchmi-text="- A PROCEDURA CONCLUSA PREMERE NUOVAMENTE IL PULSANTE A VIDEO" data-tchmi-text-font-size-unit="px">
+
+</div>
+
+</div>

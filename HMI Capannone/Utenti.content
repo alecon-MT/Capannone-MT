@@ -1,0 +1,972 @@
+﻿<div id="Registrazione_Utenti" data-tchmi-type="tchmi-content" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="1900" data-tchmi-height="1090" data-tchmi-left-unit="px" data-tchmi-top-unit="px" data-tchmi-width-unit="px" data-tchmi-height-unit="px" data-tchmi-zindex="1">
+
+<div id="Textblock_GestUtenti" data-tchmi-type="tchmi-textblock" data-tchmi-height="80" data-tchmi-height-unit="px" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-text="Gestione Utenti" data-tchmi-top="10" data-tchmi-top-unit="px" data-tchmi-width="485" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-size="60" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-horizontal-alignment="Left" data-tchmi-zindex="3">
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="TcHmiRectangle_33" data-tchmi-type="tchmi-rectangle" data-tchmi-height="319" data-tchmi-height-unit="px" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-top="120" data-tchmi-top-unit="px" data-tchmi-width="510" data-tchmi-width-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 5,
+  "right": 5,
+  "top": 5,
+  "bottom": 5,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+</div>
+
+<div id="Textblock_Nome" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="25" data-tchmi-left-unit="px" data-tchmi-top="130" data-tchmi-top-unit="px" data-tchmi-width="480" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="24" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-is-enabled="True" data-tchmi-text="DETTAGLI UTENTE SELEZIONATO" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Textblock_Nome1" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="25" data-tchmi-left-unit="px" data-tchmi-top="180" data-tchmi-top-unit="px" data-tchmi-width="200" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="24" data-tchmi-text-horizontal-alignment="Right" data-tchmi-text-vertical-alignment="Center" data-tchmi-is-enabled="True" data-tchmi-text="COGNOME-NOME :" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Textbox_Nome_Utente_1" data-tchmi-type="tchmi-textbox" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="228" data-tchmi-left-unit="px" data-tchmi-top="180" data-tchmi-top-unit="px" data-tchmi-width="275" data-tchmi-width-unit="px" data-tchmi-auto-focus-out="True" data-tchmi-text="%s%PLC1.GVL.HMI_nome_utente%/s%" data-tchmi-text-font-size-unit="px" data-tchmi-text-font-size="24">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "Textbox_Nome_Utente_1.onFocusOut",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.HMI_nome_utente%/s%",
+        "valueType": "tchmi:general#/definitions/STRING(80)",
+        "value": {
+          "objectType": "Symbol",
+          "symbolExpression": "%ctrl%Textbox_Nome_Utente_1::Text%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+
+</div>
+
+<div id="Textblock_Badge_1" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="25" data-tchmi-left-unit="px" data-tchmi-top="230" data-tchmi-top-unit="px" data-tchmi-width="200" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="24" data-tchmi-text-horizontal-alignment="Right" data-tchmi-text-vertical-alignment="Center" data-tchmi-is-enabled="True" data-tchmi-text="NUMERO BADGE :" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Textbox_Badge_1" data-tchmi-type="tchmi-textbox" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="228" data-tchmi-left-unit="px" data-tchmi-top="230" data-tchmi-top-unit="px" data-tchmi-width="275" data-tchmi-width-unit="px" data-tchmi-auto-focus-out="True" data-tchmi-text="%s%PLC1.GVL.HMI_num_badge%/s%" data-tchmi-text-font-size-unit="px" data-tchmi-text-font-size="24">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "Textbox_Badge_1.onFocusOut",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.HMI_num_badge%/s%",
+        "valueType": "tchmi:general#/definitions/STRING(80)",
+        "value": {
+          "objectType": "Symbol",
+          "symbolExpression": "%ctrl%Textbox_Badge_1::Text%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+
+</div>
+
+<div id="Textbox_Priorità_1" data-tchmi-type="tchmi-textbox" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="228" data-tchmi-left-unit="px" data-tchmi-top="280" data-tchmi-top-unit="px" data-tchmi-width="275" data-tchmi-width-unit="px" data-tchmi-auto-focus-out="True" data-tchmi-text-font-size-unit="px" data-tchmi-text-font-size="24">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "Textbox_Priorità_1.onFocusOut",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%ctrl%Textbox_Priorità_1::Text%/ctrl%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/String",
+              "value": "ALTA"
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%s%PLC1.GVL.HMI_user_type%/s%",
+            "valueType": "tchmi:general#/definitions/BYTE",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BYTE",
+              "value": 3
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%s%PLC1.GVL.HMI_user_type%/s%",
+            "valueType": "tchmi:general#/definitions/BYTE",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BYTE",
+              "value": 0
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%s%PLC1.GVL.HMI_user_type%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.HMI_user_type%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BYTE",
+              "value": 0
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Textbox_Priorità_1::Text%/ctrl%",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/String",
+              "value": "BASSA"
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Textbox_Priorità_1::Text%/ctrl%",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/String",
+              "value": "ALTA"
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+
+</div>
+
+<div id="Button_Indietro_1" data-tchmi-type="tchmi-button" data-tchmi-height="45" data-tchmi-height-unit="px" data-tchmi-left="25" data-tchmi-left-unit="px" data-tchmi-text="UTENTE PRECEDENTE" data-tchmi-top="380" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "Button_Indietro_1.onMouseDown",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.hmi_utentegiu%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": true
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "Button_Indietro_1.onMouseUp",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.hmi_utentegiu%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": false
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+
+<div id="Button_Salva_1" data-tchmi-type="tchmi-button" data-tchmi-height="45" data-tchmi-height-unit="px" data-tchmi-left="225" data-tchmi-left-unit="px" data-tchmi-text="SALVA" data-tchmi-top="380" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size-unit="px">
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "Button_Salva_1.onMouseDown",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.HMI_save_utente%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": true
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "Button_Salva_1.onMouseUp",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.HMI_save_utente%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": false
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-virtual-control-right-mappings" type="application/json">
+[]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "observe",
+    "group": "user",
+    "permission": "Deny"
+  },
+  {
+    "accessright": "operate",
+    "group": "user",
+    "permission": "Deny"
+  }
+]
+</script>
+</div>
+
+<div id="Textblock_Priorità_1" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="25" data-tchmi-left-unit="px" data-tchmi-top-unit="px" data-tchmi-width="200" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="24" data-tchmi-text-horizontal-alignment="Right" data-tchmi-text-vertical-alignment="Center" data-tchmi-is-enabled="True" data-tchmi-text="LIVELLO PRIORITA' :" data-tchmi-text-font-size-unit="px" data-tchmi-top="280">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Button_Avanti_1" data-tchmi-type="tchmi-button" data-tchmi-height="45" data-tchmi-height-unit="px" data-tchmi-left="403" data-tchmi-left-unit="px" data-tchmi-text="UTENTE SUCCESSIVO" data-tchmi-top="380" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size-unit="px">
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "Button_Avanti_1.onMouseDown",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.hmi_utentesu%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": true
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "Button_Avanti_1.onMouseUp",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.hmi_utentesu%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": false
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+
+<div id="Textblock_ID" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="25" data-tchmi-left-unit="px" data-tchmi-top="330" data-tchmi-top-unit="px" data-tchmi-width="200" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="24" data-tchmi-text-horizontal-alignment="Right" data-tchmi-text-vertical-alignment="Center" data-tchmi-is-enabled="True" data-tchmi-text="ID UTENTE :" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="TcHmiRectangle_34" data-tchmi-type="tchmi-rectangle" data-tchmi-height="430" data-tchmi-height-unit="px" data-tchmi-left="543" data-tchmi-left-unit="px" data-tchmi-top="120" data-tchmi-top-unit="px" data-tchmi-width="620" data-tchmi-width-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 5,
+  "right": 5,
+  "top": 5,
+  "bottom": 5,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+</div>
+
+<div id="Textblock_ProcRFID2" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="558" data-tchmi-left-unit="px" data-tchmi-text="- SCEGLIERE IL PRORIO PROFILO PRIMA DI PROCEDERE" data-tchmi-top="180" data-tchmi-top-unit="px" data-tchmi-width="590" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="24" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-size-unit="px" data-tchmi-zindex="1">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Textblock_ProcRFID3" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="558" data-tchmi-left-unit="px" data-tchmi-top="280" data-tchmi-top-unit="px" data-tchmi-width="590" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="24" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center" data-tchmi-text="- PREMERE IL PULSANTE PER INIZIARE LA PROCEDURA" data-tchmi-text-font-size-unit="px" data-tchmi-zindex="1">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Button_RFID" data-tchmi-type="tchmi-button" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="558" data-tchmi-left-unit="px"  data-tchmi-top="330" data-tchmi-top-unit="px" data-tchmi-width="590" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size-unit="px" data-tchmi-text-font-size="24" data-tchmi-zindex="1">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "Button_RFID.onPressed",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.HMI_finger_RFID%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": false
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%s%PLC1.GVL.HMI_finger_RFID%/s%",
+            "valueType": "tchmi:general#/definitions/BOOL",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": true
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%s%PLC1.GVL.HMI_finger_RFID%/s%",
+            "valueType": "tchmi:general#/definitions/BOOL",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": false
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.HMI_userRFID%/s%",
+        "valueType": "tchmi:general#/definitions/BYTE",
+        "value": {
+          "objectType": "Symbol",
+          "symbolExpression": "%s%PLC1.GVL.indice_utente%/s%"
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%s%PLC1.GVL.HMI_finger_RFID%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.HMI_finger_RFID%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": true
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Button_RFID::Text%/ctrl%",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/String",
+              "value": "REGISTRAZIONE ATTIVATA"
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Button_RFID::Text%/ctrl%",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/String",
+              "value": "REGISTRAZIONE DISATTIVATA"
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+
+<div id="Textblock_ProcRFID4" data-tchmi-type="tchmi-textblock" data-tchmi-height="70" data-tchmi-height-unit="px" data-tchmi-left="558" data-tchmi-left-unit="px" data-tchmi-top="380" data-tchmi-top-unit="px" data-tchmi-width="590" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="24" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center" data-tchmi-text="- ATTENDERE LA LUCE ARANCIONE SUL DISPOSITIVO EKEY E PASSARE IL PROPRIO RFID" data-tchmi-is-enabled="True" data-tchmi-zindex="1" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Textblock_ProcRFID5" data-tchmi-type="tchmi-textblock" data-tchmi-height="70" data-tchmi-height-unit="px" data-tchmi-left="558" data-tchmi-left-unit="px" data-tchmi-top="465" data-tchmi-top-unit="px" data-tchmi-width="590" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="24" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center" data-tchmi-is-enabled="True" data-tchmi-text="- A PROCEDURA CONCLUSA PREMERE DI NUOVO IL PULSANTE PRECEDENTE" data-tchmi-zindex="1" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Textbox_ID" data-tchmi-type="tchmi-textbox" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="228" data-tchmi-left-unit="px" data-tchmi-top="330" data-tchmi-top-unit="px" data-tchmi-width="275" data-tchmi-width-unit="px" data-tchmi-auto-focus-out="True" data-tchmi-text="%s%PLC1.GVL.indice_utente%/s%" data-tchmi-text-font-size-unit="px" data-tchmi-text-font-size="24">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "Textbox_ID.onFocusOut",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.indice_utente%/s%",
+        "valueType": "tchmi:general#/definitions/INT",
+        "value": {
+          "objectType": "Symbol",
+          "symbolExpression": "%ctrl%Textbox_ID::Text%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+
+</div>
+
+<div id="Textblock_ID1" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="558" data-tchmi-left-unit="px" data-tchmi-top="230" data-tchmi-top-unit="px" data-tchmi-width="590" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="24" data-tchmi-text-vertical-alignment="Center" data-tchmi-text="%f%%s%PLC1.GVL.indice_utente%/s%+'    '+%s%PLC1.GVL.HMI_nome_utente%/s%%/f%" data-tchmi-text-font-weight="Bold" data-tchmi-text-horizontal-alignment="Center">
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 2,
+  "right": 2,
+  "top": 2,
+  "bottom": 2,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+</div>
+
+<div id="Textblock_ProcRFID1" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="558" data-tchmi-left-unit="px" data-tchmi-text="PROCEDURA REGISTRAZIONE RFID" data-tchmi-top="130" data-tchmi-top-unit="px" data-tchmi-width="590" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="28" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-size-unit="px" data-tchmi-zindex="1" data-tchmi-text-horizontal-alignment="Center">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="TcHmiRectangle_35" data-tchmi-type="tchmi-rectangle" data-tchmi-height="430" data-tchmi-height-unit="px" data-tchmi-left="1189" data-tchmi-left-unit="px" data-tchmi-top="120" data-tchmi-top-unit="px" data-tchmi-width="620" data-tchmi-width-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 5,
+  "right": 5,
+  "top": 5,
+  "bottom": 5,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+</div>
+
+<div id="Textblock_ProcDito2" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="1203" data-tchmi-left-unit="px" data-tchmi-top="180" data-tchmi-top-unit="px" data-tchmi-width="590" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="24" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center" data-tchmi-text="- PREMERE IL PULSANTE PER INIZIARE LA PROCEDURA" data-tchmi-text-font-size-unit="px" data-tchmi-zindex="1">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Button_Dito" data-tchmi-type="tchmi-button" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="1203" data-tchmi-left-unit="px"  data-tchmi-top="230" data-tchmi-top-unit="px" data-tchmi-width="590" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size-unit="px" data-tchmi-zindex="1" data-tchmi-text-font-size="24">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
+  {
+    "event": "Button_Dito.onPressed",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.HMI_finger%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": false
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%s%PLC1.GVL.HMI_finger%/s%",
+            "valueType": "tchmi:general#/definitions/BOOL",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": true
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%s%PLC1.GVL.HMI_finger%/s%",
+            "valueType": "tchmi:general#/definitions/BOOL",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": false
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%s%PLC1.GVL.HMI_finger%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.HMI_finger%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": true
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Button_Dito::Text%/ctrl%",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/String",
+              "value": "REGISTRAZIONE ATTIVATA"
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Button_Dito::Text%/ctrl%",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/String",
+              "value": "REGISTRAZIONE DISATTIVATA"
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]</script>
+</div>
+
+<div id="Textblock_ProcDito3" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="1203" data-tchmi-left-unit="px" data-tchmi-top="280" data-tchmi-top-unit="px" data-tchmi-width="590" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="24" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center" data-tchmi-is-enabled="True" data-tchmi-text="- PASSARE IL PROPRIO RFID SUL DISPOSITIVO EKEY" data-tchmi-zindex="1" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Textblock_ProcDito4" data-tchmi-type="tchmi-textblock" data-tchmi-height="70" data-tchmi-height-unit="px" data-tchmi-left="1203" data-tchmi-left-unit="px" data-tchmi-top="330" data-tchmi-top-unit="px" data-tchmi-width="590" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="24" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center" data-tchmi-is-enabled="True" data-tchmi-text="- ATTENDERE LA LUCE ARANCIONE E QUINDI PASSARE IL PROPRIO DITO SUL DISPOSITIVO EKEY" data-tchmi-zindex="1" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Textblock_ProcDito5" data-tchmi-type="tchmi-textblock" data-tchmi-height="70" data-tchmi-height-unit="px" data-tchmi-left="1203" data-tchmi-left-unit="px" data-tchmi-top="415" data-tchmi-top-unit="px" data-tchmi-width="590" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="24" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center" data-tchmi-is-enabled="True" data-tchmi-text="- A PROCEDURA CONCLUSA PREMERE DI NUOVO IL PULSANTE PRECEDENTE" data-tchmi-text-font-size-unit="px" data-tchmi-zindex="1">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Textblock_ProcDito1" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="1204" data-tchmi-left-unit="px" data-tchmi-text="PROCEDURA REGISTRAZIONE DITO" data-tchmi-top="130" data-tchmi-top-unit="px" data-tchmi-width="590" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-text-font-size="28" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-size-unit="px" data-tchmi-zindex="1" data-tchmi-text-horizontal-alignment="Center">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+</div>

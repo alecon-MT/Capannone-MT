@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="EnOcean" Id="{040b87d2-e885-45df-9e05-07d2c392adf5}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM EnOcean
+VAR
+	Enocean_comm: FB_KL6581;
+	enocean_in AT %I*: KL6581_Input;
+	enocean_out AT %Q*: KL6581_Output;
+	Enocean_Search: FB_EnOcean_Search;
+	Sens_mov_spogliatoio: FB_Rec_Generic;
+	
+	movimento_Spogliatoio: BOOL;
+	trigger_mov_spogliatoio: R_TRIG;
+	trigger_mov_bagni: R_TRIG;
+	timer_luce_spogliatoio: TOF;
+	on_luce_spogliatoio: R_TRIG;
+	off_luce_spogliatoio: F_TRIG;
+	
+	test2: BOOL;
+	test1: BOOL;
+	Spogliatoio: EnO_TK_SAB05;
+	Bagno_prod1: EnO_TK_SAB05;
+	puls_bagno_prod: FB_Rec_RPS_Switch;
+
+	puls_porta_fumatori: FB_Rec_RPS_Switch;
+	search: BOOL;
+	
+	MOVIMENTO_RIPOSTIGLIO: EnO_TK_SR_MDS_BAT;
+	MOVIMENTO_BAGNOU1: EnO_TK_SR_MDS_BAT;
+	puls_bagno_U2: FB_Rec_RPS_Switch;
+	MOVIMENTO_BAGNOU2: EnO_TK_SR_MDS_BAT;
+	
+	RITARDO_LUCE_RIPOSTIGLIO: TOF;
+	RITARDO_LUCE_BAGNOU1: TOF;
+	RITARDO_LUCE_BAGNOU2: TOF;
+	
+	puls_ventilazione: FB_Rec_RPS_Switch;
+	puls_ingr_1: FB_Rec_RPS_Switch;
+	puls_ingr_2: FB_Rec_RPS_Switch;
+	puls_ingr_3: FB_Rec_RPS_Switch;
+	luce_enocean_1: Dali_arcpower_control;
+	comando_luce_1: Comando_LuceDali;
+	gruppo_enocean_0: Dali_arcpower_control;
+	comando_gruppo_0: Comando_LuceDali;
+	VentilazioneProduzioneSU: R_TRIG;
+	VentilazioneProduzioneGIU: R_TRIG;
+	VentilazioneProduzionegii: BOOL;
+	
+	puls_locale_stamp: FB_Rec_RPS_Switch;
+	luce_lstamp_ON: R_TRIG;
+	luce_lstamp_OFF: R_TRIG;
+	puls_officina_RD: FB_Rec_RPS_Switch;
+	luce_offRD_ON: R_TRIG;
+	luce_offRD_OFF: R_TRIG;
+
+	timer_luce_bagno: TON;
+	timer_luce_bagno2: TON;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Comunicazione EnOcean
+Enocean_comm(
+	bInit:= TRUE, 
+	nIdx:= 1, 
+	bReady=> , 
+	bBusy=> , 
+	bError=> , 
+	iErrorID=> , 
+	str_KL6581=> enocean_buffer, 
+	stKL6581_in:= enocean_in, 
+	stKL6581_out:= enocean_out);
+//Ricerca dispositivo EnOcean
+Enocean_Search(
+	bStart:= search, 
+	str_KL6581:= enocean_buffer, 
+	byNode:= , 
+	bReceive=> , 
+	iDevices=> , 
+	ar_ID=> );
+//Lettura pulsante 1
+Read_Puls1(
+	str_KL6581:= enocean_buffer, 
+	byNode:= , 
+	dw_ID:= 1415876,
+	str_EnOceanSwitch=> , 
+	by_Node=> , 
+	bReceive=> );
+(*//Sensore movimento
+Sens_mov_spogliatoio(
+	str_KL6581:= enocean_buffer, 
+	byNode:= 1, 
+	
+	dw_ID:= 16#01920C34(*16#0191F8D2*),
+	ar_Value=> , 
+	by_Node=> , 
+	by_STATE=> , 
+	bReceive=> , 
+	EnOceanTyp=> );
+movimento_spogliatoio:=sens_mov_Spogliatoio.ar_Value[1]>127;
+(*movimento_spogliatoio:=sens_mov_Spogliatoio.ar_Value[0]=13;*)
+on_luce_spogliatoio(CLK:=movimento_spogliatoio AND NOT timer_luce_spogliatoio.Q , Q=> );
+timer_luce_spogliatoio(IN:=movimento_Spogliatoio , PT:= T#1S, Q=> , ET=> );
+off_luce_spogliatoio(CLK:=timer_luce_spogliatoio.Q , Q=> );*)
+
+//Pulsante luci bagno produzione
+puls_bagno_prod(
+	str_KL6581:= enocean_buffer, 
+	byNode:= , 
+	dw_ID:= 16#002A4D65, 
+	str_EnOceanSwitch=> , 
+	by_Node=> , 
+	bReceive=> );
+	
+//Comando luci bagno produzione e spogliatoi
+//timer_bagno_prod(IN:= puls_bagno_prod.str_EnOceanSwitch.bT2_ON OR puls_bagno_prod.str_EnOceanSwitch.bT2_OFF, PT:= T#310S, Q=> , ET=> );
+//pulse_bagno_prod(IN:= MOVIMENTO_BAGNO_PROD.Moviment, PT:= T#310S, Q=> , ET=> );
+MOVIMENTO_BAGNO_PROD(ID:=16#01A357A7 , BAT_KO=> , LUX=> , Moviment=> );
+RITARDO_LUCE_BAGNO_PROD(IN:=MOVIMENTO_BAGNO_PROD.Moviment , PT:=T#1m , Q=> , ET=> );
+
+luce_spogliatoio(
+	bStart:= puls_bagno_prod.str_EnOceanSwitch.bT2_ON, 
+	bData:= , 
+	by_Node:= 1, 
+	t_SwitchDelay:= T#0S, 
+	nRockerID:= 0, 
+	nEnOceanID:=12 , 
+	str_KL6581:= enocean_buffer, 
+	bBusy=> , 
+	bError=> , 
+	iErrorID=> );
+luce_bagni(
+	bStart:= puls_bagno_prod.str_EnOceanSwitch.bT2_OFF,
+	bData:= , 
+	by_Node:= 1, 
+	t_SwitchDelay:= T#0S, 
+	nRockerID:= 0, 
+	nEnOceanID:= 11, 
+	str_KL6581:= enocean_buffer, 
+	bBusy=> , 
+	bError=> , 
+	iErrorID=> );
+
+//Pulsante apertura porta fumatori
+puls_porta_fumatori(
+	str_KL6581:= enocean_buffer, 
+	byNode:= , 
+	dw_ID:= 16#008B627F, 
+	str_EnOceanSwitch=> , 
+	by_Node=> , 
+	bReceive=> );
+IF puls_porta_fumatori.str_EnOceanSwitch.bT1_OFF OR puls_porta_fumatori.str_EnOceanSwitch.bT1_ON OR puls_porta_fumatori.str_EnOceanSwitch.bT2_OFF OR puls_porta_fumatori.str_EnOceanSwitch.bT2_ON AND allarme_Attivo=0 THEN
+	out_pmensa:=TRUE;
+ELSE
+	out_pmensa:=FALSE;
+END_IF
+
+(*Bagni Servizio*)
+Spogliatoio(
+	IDr:= (*16#0188D643*) , 
+	IDw:= 20, 
+	bsend:= , 
+	t_setpoint:= , 
+	b_SB:= , 
+	b_RIN:= , 
+	b_LFS:= , 
+	b_VO:= , 
+	b_VC:= );
+
+(*Bagno_prod1(
+	IDr:=16#0188D441, 
+	IDw:= 21, 
+	bsend:= , 
+	t_setpoint:= , 
+	b_SB:= , 
+	b_RIN:= , 
+	b_LFS:= , 
+	b_VO:= , 
+	b_VC:= );*)
+
+(*//Ventilatori produzione
+puls_ventilazione(
+	str_KL6581:= enocean_buffer, 
+	byNode:= , 
+	dw_ID:= 16#002A4D49, 
+	str_EnOceanSwitch=> , 
+	by_Node=> , 
+	bReceive=> );
+VentilazioneProduzioneSU(CLK:=puls_ventilazione.str_EnOceanSwitch.bT2_ON , Q=> );
+VentilazioneProduzioneGIU(CLK:=puls_ventilazione.str_EnOceanSwitch.bT2_OFF , Q=> );
+	IF VentilazioneProduzioneSU.Q THEN
+		prod_summer_fan:=prod_summer_fan+1;
+			IF prod_summer_fan=3 THEN
+				prod_summer_fan:=0;
+			END_IF
+	END_IF
+	IF VentilazioneProduzionegiu.Q THEN
+		prod_summer_fan:=prod_summer_fan-1;
+			IF prod_summer_fan=-1 THEN
+				prod_summer_fan:=2;
+			END_IF
+	END_IF*)
+IF allarme_Attivo<>0 THEN
+	prod_summer_fan:=0;
+END_IF
+
+//Pulsante luci locale stampante
+puls_locale_stamp(
+	str_KL6581:= enocean_buffer, 
+	byNode:= , 
+	dw_ID:= 16#002A4D53, 
+	str_EnOceanSwitch=> , 
+	by_Node=> , 
+	bReceive=> );
+luce_lstamp_ON(CLK:=puls_locale_stamp.str_EnOceanSwitch.bT2_ON , Q=> );
+luce_lstamp_OFF(CLK:=puls_locale_stamp.str_EnOceanSwitch.bT2_OFF , Q=> );
+IF  luce_lstamp_ON.Q THEN
+	hmi_luce_lstamp:=TRUE;
+END_IF
+IF luce_lstamp_OFF.Q THEN
+	hmi_luce_lstamp:=FALSE;
+END_IF
+IF hmi_luce_lstamp THEN
+	gruppo8_arc_level:=254;
+ELSE
+	gruppo8_arc_level:=0;
+END_IF
+IF allarme_Attivo<>0 THEN
+	gruppo8_arc_level:=0;
+	hmi_luce_lstamp:=FALSE;
+END_IF
+
+//Pulsante luci officina R&D
+puls_officina_RD(
+	str_KL6581:= enocean_buffer, 
+	byNode:= , 
+	dw_ID:= 16#002A4D48, 
+	str_EnOceanSwitch=> , 
+	by_Node=> , 
+	bReceive=> );
+luce_offRD_ON(CLK:=puls_officina_RD.str_EnOceanSwitch.bT2_ON , Q=> );
+luce_offRD_OFF(CLK:=puls_officina_RD.str_EnOceanSwitch.bT2_OFF , Q=> );
+IF luce_offrd_on.Q THEN
+	hmi_luce_offrd:=TRUE;
+END_IF
+IF luce_offrd_off.Q THEN
+	hmi_luce_offrd:=FALSE;
+END_IF
+IF hmi_luce_offRD THEN
+	gruppo9_arc_level:=254;
+ELSE
+	gruppo9_arc_level:=0;
+END_IF
+IF allarme_attivo<>0 THEN
+	gruppo9_arc_level:=0;
+	hmi_luce_offRD:=FALSE;
+END_IF
+	
+//RIPOSTIGLIO
+MOVIMENTO_RIPOSTIGLIO(ID:=16#01A35725 , BAT_KO=> , LUX=> , Moviment=> );
+RITARDO_LUCE_RIPOSTIGLIO(IN:= MOVIMENTO_RIPOSTIGLIO.Moviment OR HMI_luce4, PT:= T#3M, Q=> LUCE4, ET=> );
+//BAGNO 1 UFFICI
+MOVIMENTO_BAGNOU1(ID:=16#00061F66 , BAT_KO=> , LUX=> , Moviment=> );
+RITARDO_LUCE_BAGNOU1(IN:= puls_bagno_U2.str_EnOceanSwitch.bT2_ON OR MOVIMENTO_BAGNOU1.Moviment OR HMI_luce1, PT:= T#5M, Q=> luce1, ET=> );
+//BAGNO 2 UFFICI
+puls_bagno_U2(
+	str_KL6581:= enocean_buffer, 
+	byNode:= , 
+	dw_ID:= 16#002A4D49, 
+	str_EnOceanSwitch=> , 
+	by_Node=> , 
+	bReceive=> );
+MOVIMENTO_BAGNOU2(ID:=16#01A32DA5 , BAT_KO=> , LUX=> , Moviment=> );
+RITARDO_LUCE_BAGNOU2(IN:= puls_bagno_U2.str_EnOceanSwitch.bT2_ON OR MOVIMENTO_BAGNOU2.Moviment OR HMI_LUCE2, PT:= T#5M, Q=> LUCE2, ET=> );
+//AREAZIONE BAGNI
+AER_BAGNI:=LUCE1 OR LUCE2;
+//PULSANTE 1 INGRESSO
+puls_ingr_1(
+	str_KL6581:= enocean_buffer, 
+	byNode:= , 
+	dw_ID:= 16#0088F11C, 
+	str_EnOceanSwitch=> , 
+	by_Node=> , 
+	bReceive=> );
+luce_enocean_1(light_level:= , ADDR:= 1, MODE:= 0, daliBuffer:= dali_buffer2);
+comando_luce_1(
+	pulsante:= , 
+	ON:= puls_ingr_1.str_EnOceanSwitch.bT1_off, 
+	OFF:= puls_ingr_1.str_EnOceanSwitch.bT1_On, 
+	up:= puls_ingr_1.str_EnOceanSwitch.bT2_Off, 
+	down:= puls_ingr_1.str_EnOceanSwitch.bT2_On, 
+	light_level=> luce_enocean_1.light_level, 
+	ADV=> );
+//PULSANTE 2 INGRESSO
+puls_ingr_2(
+	str_KL6581:= enocean_buffer, 
+	byNode:= , 
+	dw_ID:= 16#002A4C9A, 
+	str_EnOceanSwitch=> , 
+	by_Node=> , 
+	bReceive=> );
+//PULSANTE 3 INGRESSO
+puls_ingr_3(
+	str_KL6581:= enocean_buffer, 
+	byNode:= , 
+	dw_ID:= 16#008C2463, 
+	str_EnOceanSwitch=> , 
+	by_Node=> , 
+	bReceive=> );
+gruppo_enocean_0(light_level:= , ADDR:= 0, MODE:= 1, daliBuffer:= dali_buffer2);
+comando_gruppo_0(
+	pulsante:= , 
+	ON:= puls_ingr_3.str_EnOceanSwitch.bT1_OFF, 
+	OFF:= puls_ingr_3.str_EnOceanSwitch.bT1_on, 
+	up:= puls_ingr_3.str_EnOceanSwitch.bT2_OFF, 
+	down:= puls_ingr_3.str_EnOceanSwitch.bT2_ON, 
+	light_level=> gruppo_enocean_0.light_level, 
+	ADV=> );]]></ST>
+    </Implementation>
+    <LineIds Name="EnOcean">
+      <LineId Id="3" Count="30" />
+      <LineId Id="447" Count="0" />
+      <LineId Id="34" Count="10" />
+      <LineId Id="371" Count="0" />
+      <LineId Id="350" Count="7" />
+      <LineId Id="652" Count="0" />
+      <LineId Id="654" Count="0" />
+      <LineId Id="653" Count="0" />
+      <LineId Id="719" Count="1" />
+      <LineId Id="739" Count="0" />
+      <LineId Id="1066" Count="0" />
+      <LineId Id="58" Count="10" />
+      <LineId Id="373" Count="9" />
+      <LineId Id="372" Count="0" />
+      <LineId Id="1028" Count="0" />
+      <LineId Id="80" Count="24" />
+      <LineId Id="113" Count="36" />
+      <LineId Id="247" Count="10" />
+      <LineId Id="1210" Count="5" />
+      <LineId Id="258" Count="0" />
+      <LineId Id="278" Count="0" />
+      <LineId Id="1216" Count="2" />
+      <LineId Id="270" Count="1" />
+      <LineId Id="1196" Count="0" />
+      <LineId Id="1219" Count="0" />
+      <LineId Id="279" Count="10" />
+      <LineId Id="1202" Count="5" />
+      <LineId Id="290" Count="1" />
+      <LineId Id="1208" Count="1" />
+      <LineId Id="292" Count="0" />
+      <LineId Id="296" Count="1" />
+      <LineId Id="1195" Count="0" />
+      <LineId Id="272" Count="0" />
+      <LineId Id="298" Count="0" />
+      <LineId Id="150" Count="6" />
+      <LineId Id="1133" Count="5" />
+      <LineId Id="1132" Count="0" />
+      <LineId Id="157" Count="44" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

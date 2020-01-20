@@ -1,0 +1,85 @@
+﻿{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "X10 - User Control_Consumi": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "tchmi-user-control-host",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "X10 - User Control\\Consumi.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/X10 - User Control_Consumi"
+    },
+    "X10 - User Control_Led+scritta_laterale_INT": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "tchmi-user-control-host",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "X10 - User Control\\Led+scritta laterale INT.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/X10 - User Control_Led+scritta_laterale_INT"
+    },
+    "X10 - User Control_Led+scritta_laterale": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "tchmi-user-control-host",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "X10 - User Control\\Led+scritta laterale.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/X10 - User Control_Led+scritta_laterale"
+    },
+    "X10 - User Control_Led+scritta+Puls": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "tchmi-user-control-host",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "X10 - User Control\\Led+scritta+Puls.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/X10 - User Control_Led+scritta+Puls"
+    },
+    "X10 - User Control_Sabiana": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "tchmi-user-control-host",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "X10 - User Control\\Sabiana.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/X10 - User Control_Sabiana"
+    },
+    "X10 - User Control_Setting_Sensore": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "tchmi-user-control-host",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "X10 - User Control\\Setting_Sensore.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/X10 - User Control_Setting_Sensore"
+    },
+    "X10 - User Control_TextBox_limit": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "tchmi-user-control-host",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "X10 - User Control\\TextBox_limit.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/X10 - User Control_TextBox_limit"
+    },
+    "X10 - User Control_TextBox_longkey": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "tchmi-user-control-host",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "X10 - User Control\\TextBox_longkey.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/X10 - User Control_TextBox_longkey"
+    },
+    "X10 - User Control_TextBox_single": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "tchmi-user-control-host",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "X10 - User Control\\TextBox_single.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/X10 - User Control_TextBox_single"
+    },
+    "X10 - User Control_Uffici": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "tchmi-user-control-host",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "X10 - User Control\\Uffici.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/X10 - User Control_Uffici"
+    }
+  }
+}

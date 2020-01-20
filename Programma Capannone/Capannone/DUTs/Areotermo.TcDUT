@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <DUT Name="Areotermo" Id="{692c0f98-549c-4f39-ab69-abbc7e796290}">
+    <Declaration><![CDATA[TYPE Areotermo :
+STRUCT
+	speed1:BOOL;
+	speed2:BOOL;
+	speed3:BOOL;
+	VHL1:BOOL;
+	VHL2:BOOL;
+END_STRUCT
+END_TYPE]]></Declaration>
+  </DUT>
+</TcPlcObject>

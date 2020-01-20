@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="LUCI" Id="{39b1cdd3-4e98-4134-8efe-76c6667c9f5f}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM LUCI
+VAR
+	luci_esterne AT %Q*:BOOL;
+	lux_capannone: EnO_TK_SR65_LI;
+	luci_DIREZIONE: Dali_arcpower_control;
+	luci_riunioni: Dali_arcpower_control;
+	luci_capannone: Dali_arcpower_control;
+	HMI_ctrl_luci: INT; //Variabile per gestione Linear Gauge luci capannone
+	movimento_server: EnO_TK_SR_MDS_BAT;
+	luce_server: Dali_arcpower_control;
+	delay_luce_server: TOF;
+	Ulux_0: ULUX_STD;
+	ulux_1: ULUX_STD;
+	ulux_2: ULUX_STD;
+	Ulux_3: ULUX_STD;
+	ulux_4: ULUX_STD;
+	ulux_5: ULUX_STD;
+	ulux_6: ULUX_STD;
+	luce_17: Dali_arcpower_control;
+	luce_18: Dali_arcpower_control;
+	luce_19: Dali_arcpower_control;
+	luce_20: Dali_arcpower_control;
+	group_0: Dali_arcpower_control;
+	group_1: Dali_arcpower_control;
+	group_2: Dali_arcpower_control;
+	group_3: Dali_arcpower_control;
+	group_5: Dali_arcpower_control;
+	group_6: Dali_arcpower_control;
+	group_7: Dali_arcpower_control;
+	group_8: Dali_arcpower_control;
+	group_9: Dali_arcpower_control;
+	group_10: Dali_arcpower_control;
+	On_Off_luce1: Comando_LuceDali;
+	luce_1: Dali_arcpower_control;
+	On_Off_Gruppo0: Comando_LuceDali;
+	gruppo0: Dali_arcpower_control;
+	LUXEXTREF: BYTE:=20;
+	ins_AUTOluce_capannone: F_TRIG;
+	luci_ON_auto: BOOL; //Accensione luce amministrazione senza allarme
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//03 LUCI
+
+//03.01 Luci Capannone
+	lux_capannone(ID:=16#01A465FE , LUX=> , status=> ,);
+		//Accensione_luci(CLK:=allarme , Q=>light_on );
+		//Spegnimento_luci(CLK:=allarme, Q=>light_off);
+	ins_AUTOluce_capannone(CLK:=time_now=0730 , Q=> );
+	IF ins_AUTOluce_capannone.Q THEN
+		luci_capannone_aut:=TRUE;
+	END_IF
+	IF allarme_Attivo<>0 THEN
+		luci_capannone.light_level:=0;
+	ELSIF allarme_Attivo=0 AND (time_now<0655 OR time_now>1705 OR (time_now<1325 AND time_now>1235)) AND luci_capannone_aut THEN
+		luci_capannone.light_level:=150;	
+	ELSE 
+		luci_capannone.light_level:=HMI_luci_capannone;
+	END_IF
+	luci_capannone(light_level:= , ADDR:= , MODE:=2 , daliBuffer:=DALI_BUFFER1 );
+
+//03.02 Luci esterne
+	IF	(LUX_OUTSIDEF<LUXEXTREF OR LUX_OUTSIDER<LUXEXTREF OR LUX_OUTSIDEL<LUXEXTREF) OR HMI_luce_3 THEN
+		luci_esterne:=TRUE;
+	ELSE
+		luci_esterne:=FALSE;
+	END_IF
+	luce3:=luci_esterne;
+//03.03 LUCI UFFICIO
+	//Generale Uffici
+	IF allarme_Attivo<>0 THEN
+		luci_ufficio_off:=TRUE;
+		luci_ON_auto:=FALSE;
+	ELSE
+		luci_ufficio_off:=FALSE;
+		luci_ON_auto:=TRUE;
+	END_IF
+		
+//Ingresso (gruppi:0 e 1) ID:0
+	ulux_0(
+		ID:= 0, 
+		luci_OFF:= luci_ufficio_off OR HMI_luci_off[0], 
+		luci_ON:= HMI_luci_on[0], 
+		time_delay:= , 
+		condiz_ON_OFF:= HMI_cond[0],
+		arc_level=> , 
+		temp=> Tempz1, 
+		funzione_1=> , 
+		moviment_active=> , 
+		condiz=> cononz1);
+	group_0(light_level:= ulux_0.arc_level, ADDR:= 0, MODE:= 1, daliBuffer:= DALI_BUFFER2);
+	group_1(light_level:= ulux_0.arc_level, ADDR:= 1, MODE:= 1, daliBuffer:= DALI_BUFFER2);
+//Amministrazione Gruppo:2 ID:1
+	ulux_1(
+		ID:= 1, 
+		luci_OFF:= luci_ufficio_off OR HMI_luci_off[1], 
+		luci_ON:= HMI_luci_on[1], //OR luci_ON_auto, 
+		time_delay:= , 
+		condiz_ON_OFF:= HMI_cond[1],
+		arc_level=> , 
+		temp=> Tempz2, 
+		funzione_1=> , 
+		moviment_active=> , 
+		condiz=> cononz2);
+	group_2(light_level:= ulux_1.arc_level, ADDR:= 2, MODE:= 1, daliBuffer:= DALI_BUFFER2);
+//Direzione Gruppo:3 ID:2
+	ulux_2(
+		ID:= 2, 
+		luci_OFF:= luci_ufficio_off OR HMI_luci_off[2], 
+		luci_ON:= HMI_luci_on[2], 
+		time_delay:= , 
+		condiz_ON_OFF:= HMI_cond[2],
+		arc_level=> , 
+		temp=> Tempz3, 
+		funzione_1=> , 
+		moviment_active=> , 
+		condiz=> cononz3);
+	group_3(light_level:= ulux_2.arc_level, ADDR:= 3, MODE:= 1, daliBuffer:= DALI_BUFFER2);
+//Sala riunioni Gruppo:4 ID:3
+	ulux_3(
+		ID:= 3, 
+		luci_OFF:= luci_ufficio_off, //OR HMI_luci_off[3], 
+		luci_ON:= ,//HMI_luci_on[3], 
+		time_delay:= T#10M, 
+		condiz_ON_OFF:= HMI_cond[3],
+		arc_level=> , 
+		temp=> Tempz4, 
+		funzione_1=> , 
+		moviment_active=> , 
+		condiz=> cononz4);
+	luce_18(light_level:= , ADDR:= 18, MODE:= 0, daliBuffer:= DALI_BUFFER2);
+	luce_19(light_level:= , ADDR:= 19, MODE:= 0, daliBuffer:= DALI_BUFFER2);
+	luce_20(light_level:= , ADDR:= 20, MODE:= 0, daliBuffer:= DALI_BUFFER2);
+	IF ulux_3.arc_level=0 THEN
+		luce_17.light_level:=0;
+		luce_18.light_level:=0;
+		luce_19.light_level:=0;
+		luce_20.light_level:=0;
+	ELSIF ulux_3.funzione_1=1 THEN
+		luce_17.light_level:=0;
+		luce_18.light_level:=200;
+		luce_19.light_level:=200;
+		luce_20.light_level:=254;
+	ELSIF ulux_3.funzione_1=0  THEN
+		luce_17.light_level:=ulux_3.arc_level;
+		luce_18.light_level:=ulux_3.arc_level;
+		luce_19.light_level:=ulux_3.arc_level;
+		luce_20.light_level:=ulux_3.arc_level;
+	END_IF
+	IF luce_20.light_level<>0 THEN
+		meetingroom_active:=TRUE;
+	ELSE
+		meetingroom_active:=FALSE;
+	END_IF
+//Ufficio Tecnico Gruppo:5 ID:4
+	ulux_4(
+		ID:= 4, 
+		luci_OFF:= luci_ufficio_off OR HMI_luci_off[4], 
+		luci_ON:= HMI_luci_on[4], 
+		time_delay:= , 
+		condiz_ON_OFF:= HMI_cond[4],
+		arc_level=> , 
+		temp=> Tempz5, 
+		funzione_1=> , 
+		moviment_active=> , 
+		condiz=> cononz5);
+	group_5(light_level:= ulux_4.arc_level, ADDR:= 5, MODE:= 1, daliBuffer:= DALI_BUFFER2);
+//Ufficio Produzione Gruppo:6 ID:5
+	ulux_5(
+		ID:= 5, 
+		luci_OFF:= luci_ufficio_off OR HMI_luci_off[5], 
+		luci_ON:= HMI_luci_on[5], 
+		time_delay:= , 
+		condiz_ON_OFF:= HMI_cond[5],
+		arc_level=> , 
+		temp=> Tempz6, 
+		funzione_1=> , 
+		moviment_active=> , 
+		condiz=> cononz6);
+	group_6(light_level:= ulux_5.arc_level, ADDR:= 6, MODE:= 1, daliBuffer:= DALI_BUFFER2);
+//Locale Svago Gruppo:7 ID:6
+	ulux_6(
+		ID:= 6, 
+		luci_OFF:= luci_ufficio_off OR HMI_luci_off[6],
+		luci_ON:= HMI_luci_on[6], 
+		time_delay:= , 
+		condiz_ON_OFF:= HMI_cond[6],
+		arc_level=> , 
+		temp=> Tempz7, 
+		funzione_1=> , 
+		moviment_active=> , 
+		condiz=> cononz7);
+	group_7(light_level:= ulux_6.arc_level, ADDR:= 7, MODE:= 1, daliBuffer:= DALI_BUFFER2);
+	//Server #16
+		movimento_server(ID:=16#0199AF47, BAT_KO=> , LUX=> , Moviment=> );
+		delay_luce_server(IN:= movimento_server.Moviment OR HMI_luce_server, PT:=T#2M , Q=> , ET=> );
+		IF delay_luce_server.Q THEN
+			luce_server.light_level:=254;
+		ELSE
+			luce_server.light_level:=0;
+		END_IF
+		luce_server(light_level:= , ADDR:=16 , MODE:=0 , daliBuffer:= DALI_BUFFER2);
+	//Locale Stampante Gruppo:8 
+		group_8(light_level:= gruppo8_arc_level, ADDR:= 8, MODE:= 1, daliBuffer:= DALI_BUFFER2);
+	//Officina R&D Gruppo:9
+		group_9(light_level:= gruppo9_arc_level, ADDR:= 9, MODE:= 1, daliBuffer:= DALI_BUFFER2);
+	//Officina Gruppo:10
+		group_10(light_level:= luci_capannone.light_level, ADDR:= 10, MODE:= 1, daliBuffer:= DALI_BUFFER2);
+
+On_Off_luce1(
+	pulsante:= pula3 OR pula4 OR KNX_p3, 
+	ON:= , 
+	OFF:=on_off_luce1.ADV , 
+	up:=pulA1 , 
+	down:=pulA2 , 
+	light_level=> luce_1.light_level, 
+	ADV=> );
+luce_1(light_level:= , ADDR:= 1, MODE:= 0, daliBuffer:= DALI_BUFFER2);
+On_Off_Gruppo0(
+	pulsante:= pula3 OR knx_p1, 
+	ON:= pulc1 OR puld1, 
+	OFF:= on_off_gruppo0.ADV, 
+	up:= pulb1 OR KNX_p2, 
+	down:= pulb2 OR KNX_p4, 
+	light_level=> gruppo0.light_level, 
+	ADV=> );
+gruppo0(light_level:=250 , ADDR:= , MODE:= 2, daliBuffer:= DALI_BUFFER1);]]></ST>
+    </Implementation>
+    <LineIds Name="LUCI">
+      <LineId Id="3" Count="5" />
+      <LineId Id="360" Count="0" />
+      <LineId Id="364" Count="1" />
+      <LineId Id="358" Count="0" />
+      <LineId Id="9" Count="6" />
+      <LineId Id="17" Count="12" />
+      <LineId Id="575" Count="0" />
+      <LineId Id="30" Count="1" />
+      <LineId Id="574" Count="0" />
+      <LineId Id="32" Count="0" />
+      <LineId Id="276" Count="0" />
+      <LineId Id="34" Count="0" />
+      <LineId Id="405" Count="0" />
+      <LineId Id="419" Count="3" />
+      <LineId Id="534" Count="0" />
+      <LineId Id="533" Count="0" />
+      <LineId Id="532" Count="0" />
+      <LineId Id="426" Count="1" />
+      <LineId Id="415" Count="0" />
+      <LineId Id="36" Count="2" />
+      <LineId Id="429" Count="9" />
+      <LineId Id="428" Count="0" />
+      <LineId Id="40" Count="1" />
+      <LineId Id="440" Count="9" />
+      <LineId Id="439" Count="0" />
+      <LineId Id="43" Count="1" />
+      <LineId Id="451" Count="9" />
+      <LineId Id="450" Count="0" />
+      <LineId Id="47" Count="24" />
+      <LineId Id="462" Count="9" />
+      <LineId Id="461" Count="0" />
+      <LineId Id="73" Count="1" />
+      <LineId Id="473" Count="9" />
+      <LineId Id="472" Count="0" />
+      <LineId Id="76" Count="1" />
+      <LineId Id="484" Count="9" />
+      <LineId Id="483" Count="0" />
+      <LineId Id="79" Count="9" />
+      <LineId Id="312" Count="0" />
+      <LineId Id="311" Count="0" />
+      <LineId Id="317" Count="3" />
+      <LineId Id="89" Count="17" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

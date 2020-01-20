@@ -1,0 +1,2542 @@
+﻿<div id="Settaggi" data-tchmi-type="tchmi-content" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="1900" data-tchmi-height="1090" data-tchmi-zindex="2">
+
+<div id="Button_Estate" data-tchmi-type="tchmi-button" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="395" data-tchmi-left-unit="px" data-tchmi-top="190" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-weight="Bold" data-tchmi-zindex="3" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%s%PLC1.GVL.OFFICE_VHAC_EI%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.OFFICE_VHAC_EI%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": false
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Button_Estate::BackgroundImage%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Path",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Path",
+              "value": "Images/Icone Domotica/Fiocco di neve WH.svg"
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Button_Estate::BackgroundImage%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Path",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Path",
+              "value": "Images/Icone Domotica/Sole WH.svg"
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "Button_Estate.onPressed",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.OFFICE_VHAC_EI%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": true
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%s%PLC1.GVL.OFFICE_VHAC_EI%/s%",
+            "valueType": "tchmi:general#/definitions/BOOL",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": false
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%s%PLC1.GVL.OFFICE_VHAC_EI%/s%",
+            "valueType": "tchmi:general#/definitions/BOOL",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": true
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 2,
+  "right": 2,
+  "top": 2,
+  "bottom": 2,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+</div>
+
+<div id="TcHmiLinearGauge" data-tchmi-type="tchmi-linear-gauge" data-tchmi-base-animation-time="100" data-tchmi-height="96" data-tchmi-height-unit="px" data-tchmi-label-range="20" data-tchmi-left="1360" data-tchmi-left-unit="px" data-tchmi-show-labels="True" data-tchmi-show-ticks="True" data-tchmi-show-value-text="True" data-tchmi-start-from-zero="True" data-tchmi-top="238" data-tchmi-top-unit="px" data-tchmi-width="325" data-tchmi-width-unit="px" data-tchmi-max-value="100" data-tchmi-editable="True" data-tchmi-min-value="0" data-tchmi-step="10" data-tchmi-zindex="4" data-tchmi-value-font-size="14" data-tchmi-orientation="Horizontal">
+<script data-tchmi-target-attribute="data-tchmi-range" type="application/json">
+[
+  {
+    "color": {
+      "color": "rgba(0, 128, 0, 1)"
+    },
+    "start": 0.0,
+    "end": 250.0
+  }
+]
+</script>
+<script data-tchmi-target-attribute="data-tchmi-value-format" type="application/json">
+{
+  "objectType": "Function",
+  "active": true,
+  "fn": "GaugeValueFormatter",
+  "fnParams": [
+    {
+      "objectType": "StaticValue",
+      "valueType": "tchmi:general#/definitions/Number",
+      "value": 0.0
+    }
+  ]
+}
+</script>
+<script data-tchmi-target-attribute="data-tchmi-tick-definition" type="application/json">
+{
+  "mainTickRange": 10.0,
+  "subTickRange": 5.0
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiLinearGauge.onValueChanged",
+    "actions": [
+      {
+        "objectType": "SwitchCase",
+        "active": true,
+        "compare": {
+          "objectType": "Symbol",
+          "symbolExpression": "%ctrl%TcHmiLinearGauge::Value%/ctrl%"
+        },
+        "cases": [
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 0.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 0
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 10.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 25
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 20.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 50
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 30.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 75
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 40.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 100
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 50.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 125
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 60.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 150
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 70.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 175
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 80.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 200
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 90.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 225
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 100.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 250
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "caseDefault": {
+          "actions": []
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.LUCI.HMI_ctrl_luci%/s%",
+        "valueType": "tchmi:general#/definitions/INT",
+        "value": {
+          "objectType": "Symbol",
+          "symbolExpression": "%ctrl%TcHmiLinearGauge::Value%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "",
+    "actions": [
+      {
+        "objectType": "SwitchCase",
+        "active": true,
+        "compare": {
+          "objectType": "Symbol",
+          "symbolExpression": "%ctrl%TcHmiLinearGauge::Value%/ctrl%"
+        },
+        "cases": [
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 0.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.LUCI.pippo%/s%",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/INT",
+                  "value": 0
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 10.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.LUCI.pippo%/s%",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/INT",
+                  "value": 25
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 20.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.LUCI.pippo%/s%",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/INT",
+                  "value": 50
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 30.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.LUCI.pippo%/s%",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/INT",
+                  "value": 75
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 40.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.LUCI.pippo%/s%",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/INT",
+                  "value": 100
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 50.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.LUCI.pippo%/s%",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/INT",
+                  "value": 125
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 60.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.LUCI.pippo%/s%",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/INT",
+                  "value": 150
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 70.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.LUCI.pippo%/s%",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/INT",
+                  "value": 175
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 80.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.LUCI.pippo%/s%",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/INT",
+                  "value": 200
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 90.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.LUCI.pippo%/s%",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/INT",
+                  "value": 225
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 100.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.LUCI.pippo%/s%",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/INT",
+                  "value": 250
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "caseDefault": {
+          "actions": []
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.LUCI.pippo%/s%",
+        "valueType": "tchmi:general#/definitions/INT",
+        "value": {
+          "objectType": "Symbol",
+          "symbolExpression": "%ctrl%TcHmiLinearGauge::Value%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "TcHmiLinearGauge.onUserInteractionFinished",
+    "actions": [
+      {
+        "objectType": "SwitchCase",
+        "active": true,
+        "compare": {
+          "objectType": "Symbol",
+          "symbolExpression": "%ctrl%TcHmiLinearGauge::Value%/ctrl%"
+        },
+        "cases": [
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 0.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 0
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 10.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 25
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 20.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 50
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 30.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 75
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 40.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 100
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 50.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 125
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 60.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 150
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 70.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 175
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 80.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 200
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 90.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 225
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 100.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 250
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "caseDefault": {
+          "actions": []
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.LUCI.HMI_ctrl_luci%/s%",
+        "valueType": "tchmi:general#/definitions/INT",
+        "value": {
+          "objectType": "Symbol",
+          "symbolExpression": "%ctrl%TcHmiLinearGauge::Value%/ctrl%"
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%s%PLC1.LUCI.HMI_ctrl_luci%/s%",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%TcHmiLinearGauge::Value%/ctrl%",
+        "valueType": "tchmi:general#/definitions/Number",
+        "value": {
+          "objectType": "Symbol",
+          "symbolExpression": "%s%PLC1.LUCI.HMI_ctrl_luci%/s%"
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "SwitchCase",
+        "active": true,
+        "compare": {
+          "objectType": "Symbol",
+          "symbolExpression": "%ctrl%TcHmiLinearGauge::Value%/ctrl%"
+        },
+        "cases": [
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 0.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 0
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 10.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 25
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 20.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 50
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 30.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 75
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 40.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 100
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 50.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 125
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 60.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 150
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 70.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 175
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 80.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 200
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 90.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 225
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 100.0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HMI_luci_capannone%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 250
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "caseDefault": {
+          "actions": []
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-padding" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Textblock_LuciAut" data-tchmi-type="tchmi-textblock" data-tchmi-height="30" data-tchmi-height-unit="px" data-tchmi-left="1400" data-tchmi-left-unit="px" data-tchmi-text="Gestione Automatica Luci" data-tchmi-top="188" data-tchmi-top-unit="px" data-tchmi-width="283" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="4" data-tchmi-text-font-size="24">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="TcHmiCheckbox_1" data-tchmi-type="tchmi-checkbox" data-tchmi-height="30" data-tchmi-height-unit="px" data-tchmi-left="1360" data-tchmi-left-unit="px" data-tchmi-top="188" data-tchmi-top-unit="px" data-tchmi-width="30" data-tchmi-width-unit="px" data-tchmi-state-symbol="%s%PLC1.GVL.luci_capannone_aut%/s%" data-tchmi-zindex="4">
+
+</div>
+
+<div id="Textblock_Temp_Max" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="510" data-tchmi-left-unit="px" data-tchmi-text="Temperatura Massima :        °C" data-tchmi-top="190" data-tchmi-top-unit="px" data-tchmi-width="290" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="21" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="24" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Textblock_Temp_Min" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="510" data-tchmi-left-unit="px" data-tchmi-text="Temperatura Minima :        °C" data-tchmi-top="240" data-tchmi-top-unit="px" data-tchmi-width="290" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="23" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size-unit="px" data-tchmi-text-font-size="24">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Consumi_1" data-tchmi-type="tchmi-user-control-host" data-tchmi-height="135" data-tchmi-height-unit="px" data-tchmi-left="30" data-tchmi-left-unit="px" data-tchmi-target-user-control="X10 - User Control/Consumi.usercontrol" data-tchmi-top="500" data-tchmi-top-unit="px" data-tchmi-width="170" data-tchmi-width-unit="px" data-tchmi-text="CORRENTE" data-tchmi-unita_misura="A" data-tchmi-l2="%f%(%s%PLC1.GVL.HMI_currentL2%/s%/1000)%/f%" data-tchmi-l3="%f%(%s%PLC1.GVL.HMI_currentL3%/s%/1000)%/f%" data-tchmi-l1="%f%(%s%PLC1.GVL.HMI_currentL1%/s%/1000)%/f%" data-tchmi-zindex="3">
+
+</div>
+
+<div id="Consumi_4" data-tchmi-type="tchmi-user-control-host" data-tchmi-height="135" data-tchmi-height-unit="px" data-tchmi-left="30" data-tchmi-left-unit="px" data-tchmi-target-user-control="X10 - User Control/Consumi.usercontrol" data-tchmi-top="655" data-tchmi-top-unit="px" data-tchmi-width="170" data-tchmi-width-unit="px" data-tchmi-text="ENERGIA" data-tchmi-l1="%f%(%s%PLC1.GVL.HMI_energyL1%/s%/100)%/f%" data-tchmi-l2="%f%(%s%PLC1.GVL.HMI_energyL2%/s%/100)%/f%" data-tchmi-l3="%f%(%s%PLC1.GVL.HMI_energyL3%/s%/100)%/f%" data-tchmi-unita_misura="Wh" data-tchmi-zindex="3">
+
+</div>
+
+<div id="Consumi_5" data-tchmi-type="tchmi-user-control-host" data-tchmi-height="135" data-tchmi-height-unit="px" data-tchmi-left="220" data-tchmi-left-unit="px" data-tchmi-target-user-control="X10 - User Control/Consumi.usercontrol" data-tchmi-top="655" data-tchmi-top-unit="px" data-tchmi-width="170" data-tchmi-width-unit="px" data-tchmi-text="FREQUENZA" data-tchmi-l1="%f%(%s%PLC1.GVL.HMI_frequencyL1%/s%/10)%/f%" data-tchmi-unita_misura="Hz" data-tchmi-l2="%f%(%s%PLC1.GVL.HMI_frequencyL2%/s%/10)%/f%" data-tchmi-l3="%f%(%s%PLC1.GVL.HMI_frequencyL3%/s%/10)%/f%" data-tchmi-zindex="3">
+
+</div>
+
+<div id="Consumi_2" data-tchmi-type="tchmi-user-control-host" data-tchmi-height="135" data-tchmi-height-unit="px" data-tchmi-left="220" data-tchmi-left-unit="px" data-tchmi-target-user-control="X10 - User Control/Consumi.usercontrol" data-tchmi-top="500" data-tchmi-top-unit="px" data-tchmi-width="170" data-tchmi-width-unit="px" data-tchmi-text="TENSIONE" data-tchmi-l1="%f%(%s%PLC1.GVL.HMI_voltageL1%/s%/10)%/f%" data-tchmi-unita_misura="V" data-tchmi-l2="%f%(%s%PLC1.GVL.HMI_voltageL2%/s%/10)%/f%" data-tchmi-l3="%f%(%s%PLC1.GVL.HMI_voltageL3%/s%/10)%/f%" data-tchmi-zindex="3">
+
+</div>
+
+<div id="Consumi_3" data-tchmi-type="tchmi-user-control-host" data-tchmi-height="135" data-tchmi-height-unit="px" data-tchmi-left="410" data-tchmi-left-unit="px" data-tchmi-target-user-control="X10 - User Control/Consumi.usercontrol" data-tchmi-top="500" data-tchmi-top-unit="px" data-tchmi-width="170" data-tchmi-width-unit="px" data-tchmi-text="POTENZA" data-tchmi-l1="%f%(%s%PLC1.GVL.HMI_powerL1%/s%/10000)%/f%" data-tchmi-unita_misura="kW" data-tchmi-l2="%f%(%s%PLC1.GVL.HMI_currentL2%/s%/10000)%/f%" data-tchmi-l3="%f%(%s%PLC1.GVL.HMI_currentL3%/s%/10000)%/f%" data-tchmi-zindex="3">
+
+</div>
+
+<div id="Textblock_SettGen" data-tchmi-type="tchmi-textblock" data-tchmi-height="85" data-tchmi-height-unit="px" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-text="Settaggi Generali" data-tchmi-top="10" data-tchmi-top-unit="px" data-tchmi-width="464" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Top" data-tchmi-text-font-size="60" data-tchmi-text-horizontal-alignment="Left" data-tchmi-zindex="18" data-tchmi-text-font-size-unit="px">
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="TcHmiRectangle_27" data-tchmi-type="tchmi-rectangle" data-tchmi-height="330" data-tchmi-height-unit="px" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-top="120" data-tchmi-top-unit="px" data-tchmi-width="330" data-tchmi-width-unit="px" data-tchmi-radius-x="5" data-tchmi-radius-y="5" data-tchmi-zindex="1">
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-stroke-color" type="application/json">
+{
+  "color": "rgba(23, 1, 1, 1)"
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 5,
+  "right": 5,
+  "top": 5,
+  "bottom": 5,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+{
+  "topLeft": 5.0,
+  "topRight": 5.0,
+  "bottomLeft": 5.0,
+  "bottomRight": 5.0,
+  "topLeftUnit": "px",
+  "topRightUnit": "px",
+  "bottomLeftUnit": "px",
+  "bottomRightUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+</div>
+
+<div id="Textblock_GestAllarme" data-tchmi-type="tchmi-textblock" data-tchmi-height="40" data-tchmi-height-unit="px" data-tchmi-left="30" data-tchmi-left-unit="px" data-tchmi-text="Gestione Allarme" data-tchmi-top="140" data-tchmi-top-unit="px" data-tchmi-width="200" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Top" data-tchmi-text-font-size="28" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-horizontal-alignment="Left" data-tchmi-zindex="18" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Checkbox_Sirena" data-tchmi-type="tchmi-checkbox" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="30" data-tchmi-left-unit="px" data-tchmi-top="190" data-tchmi-top-unit="px" data-tchmi-width="35" data-tchmi-width-unit="px" data-tchmi-state-symbol="%s%PLC1.GVL.HMI_sirena%/s%" data-tchmi-zindex="3">
+
+</div>
+
+<div id="Textblock_Sirena" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="75" data-tchmi-left-unit="px" data-tchmi-text="Segnale Sirena Abilitato" data-tchmi-top="190" data-tchmi-top-unit="px" data-tchmi-width="245" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="3" data-tchmi-text-font-size="24">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Checkbox_Radio" data-tchmi-type="tchmi-checkbox" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="30" data-tchmi-left-unit="px" data-tchmi-top="240" data-tchmi-top-unit="px" data-tchmi-width="35" data-tchmi-width-unit="px" data-tchmi-state-symbol="%s%PLC1.GVL.HMI_radio%/s%" data-tchmi-zindex="3">
+
+</div>
+
+<div id="Textblock_Radio" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="75" data-tchmi-left-unit="px" data-tchmi-text="Segnale Radio Abilitato" data-tchmi-top="240" data-tchmi-top-unit="px" data-tchmi-width="245" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="3" data-tchmi-text-font-size="24" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Button_Test_Sirena" data-tchmi-type="tchmi-button" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="30" data-tchmi-left-unit="px" data-tchmi-text="Test Sirena" data-tchmi-top="290" data-tchmi-top-unit="px" data-tchmi-width="120" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-zindex="19" data-tchmi-text-font-size="24" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "Button_Test_Sirena.onMouseDown",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.test_Sirena%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": true
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "Button_Test_Sirena.onMouseUp",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.test_Sirena%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": false
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+
+<div id="Button_Test_Radio" data-tchmi-type="tchmi-button" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="200" data-tchmi-left-unit="px" data-tchmi-top="290" data-tchmi-top-unit="px" data-tchmi-width="120" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-zindex="20" data-tchmi-text-font-size-unit="px" data-tchmi-text-font-size="24" data-tchmi-text="Test Radio">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "Button_Test_Radio.onMouseDown",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.test_radio%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": true
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "Button_Test_Radio.onMouseUp",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.test_radio%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": false
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+
+<div id="TcHmiRectangle_28" data-tchmi-type="tchmi-rectangle" data-tchmi-height-unit="px" data-tchmi-left="375" data-tchmi-left-unit="px" data-tchmi-top="120" data-tchmi-top-unit="px" data-tchmi-width="450" data-tchmi-width-unit="px" data-tchmi-radius-x="5" data-tchmi-radius-y="5" data-tchmi-zindex="0" data-tchmi-height="240">
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-stroke-color" type="application/json">
+{
+  "color": "rgba(23, 1, 1, 1)"
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 5,
+  "right": 5,
+  "top": 5,
+  "bottom": 5,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+{
+  "topLeft": 5.0,
+  "topRight": 5.0,
+  "bottomLeft": 5.0,
+  "bottomRight": 5.0,
+  "topLeftUnit": "px",
+  "topRightUnit": "px",
+  "bottomLeftUnit": "px",
+  "bottomRightUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+
+
+</div>
+
+<div id="Textblock_GestTempUff" data-tchmi-type="tchmi-textblock" data-tchmi-height="40" data-tchmi-height-unit="px" data-tchmi-left="395" data-tchmi-left-unit="px" data-tchmi-text="Gestione Temperatura Uffici" data-tchmi-top="140" data-tchmi-top-unit="px" data-tchmi-width="325" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Top" data-tchmi-text-font-size="28" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-horizontal-alignment="Left" data-tchmi-zindex="18" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Textbox_Temp_Min" data-tchmi-type="tchmi-textbox" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="718" data-tchmi-left-unit="px" data-tchmi-top="243" data-tchmi-top-unit="px" data-tchmi-width="35" data-tchmi-width-unit="px" data-tchmi-text="%f%(%s%PLC1.GVL.HMI_TEMPuff_min%/s%/10)%/f%" data-tchmi-zindex="24" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="24" data-tchmi-auto-focus-out="True">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "Textbox_Temp_Min.onFocusOut",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.HMI_TEMPuff_min%/s%",
+        "valueType": "tchmi:general#/definitions/UINT",
+        "value": {
+          "objectType": "FunctionExpression",
+          "functionExpression": "(%ctrl%Textbox_Temp_Min::Text%/ctrl%*10)"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-virtual-control-right-mappings" type="application/json">
+[]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "user",
+    "permission": "Deny"
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+</div>epz-10202epz-10202epz-10202epz-10202epz-10202
+
+<div id="TcHmiRectangle_29" data-tchmi-type="tchmi-rectangle" data-tchmi-height="240" data-tchmi-height-unit="px" data-tchmi-left="1340" data-tchmi-left-unit="px" data-tchmi-top="118" data-tchmi-top-unit="px" data-tchmi-width="365" data-tchmi-width-unit="px" data-tchmi-radius-x="5" data-tchmi-radius-y="5" data-tchmi-zindex="0">
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-stroke-color" type="application/json">
+{
+  "color": "rgba(23, 1, 1, 1)"
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 5,
+  "right": 5,
+  "top": 5,
+  "bottom": 5,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+{
+  "topLeft": 5.0,
+  "topRight": 5.0,
+  "bottomLeft": 5.0,
+  "bottomRight": 5.0,
+  "topLeftUnit": "px",
+  "topRightUnit": "px",
+  "bottomLeftUnit": "px",
+  "bottomRightUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+
+
+</div>
+
+<div id="Textblock_GestLuci" data-tchmi-type="tchmi-textblock" data-tchmi-height="40" data-tchmi-height-unit="px" data-tchmi-left="1360" data-tchmi-left-unit="px" data-tchmi-text="Gestione Luci Capannone" data-tchmi-top="138" data-tchmi-top-unit="px" data-tchmi-width="325" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Top" data-tchmi-text-font-size="28" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-horizontal-alignment="Left" data-tchmi-zindex="18" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="TcHmiRectangle_30" data-tchmi-type="tchmi-rectangle" data-tchmi-height="330" data-tchmi-height-unit="px" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-top="480" data-tchmi-top-unit="px" data-tchmi-width="590" data-tchmi-width-unit="px" data-tchmi-radius-x="5" data-tchmi-radius-y="5" data-tchmi-zindex="0">
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-stroke-color" type="application/json">
+{
+  "color": "rgba(23, 1, 1, 1)"
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 5,
+  "right": 5,
+  "top": 5,
+  "bottom": 5,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+{
+  "topLeft": 5.0,
+  "topRight": 5.0,
+  "bottomLeft": 5.0,
+  "bottomRight": 5.0,
+  "topLeftUnit": "px",
+  "topRightUnit": "px",
+  "bottomLeftUnit": "px",
+  "bottomRightUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+
+
+</div>
+
+<div id="Textbox_Temp_Max" data-tchmi-type="tchmi-textbox" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="732" data-tchmi-left-unit="px" data-tchmi-top="193" data-tchmi-top-unit="px" data-tchmi-width="35" data-tchmi-width-unit="px" data-tchmi-zindex="25" data-tchmi-text="%f%(%s%PLC1.GVL.HMI_TEMPuff_max%/s%/10)%/f%" data-tchmi-text-font-size="24" data-tchmi-text-horizontal-alignment="Center">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "Textbox_Temp_Max.onFocusOut",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.HMI_TEMPuff_max%/s%",
+        "valueType": "tchmi:general#/definitions/UINT",
+        "value": {
+          "objectType": "FunctionExpression",
+          "functionExpression": "(%ctrl%Textbox_Temp_Max::Text%/ctrl%*10)"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+
+<div id="Combobox_Mod_Risc" data-tchmi-type="tchmi-combobox" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="1120" data-tchmi-left-unit="px" data-tchmi-top="190" data-tchmi-top-unit="px" data-tchmi-width="165" data-tchmi-width-unit="px" data-tchmi-data-height="30" data-tchmi-text-font-size="24" data-tchmi-drop-down-font-size="20" data-tchmi-zindex="26" data-tchmi-drop-down-horizontal-alignment="Left" data-tchmi-drop-down-style="Classic" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-style="Auto">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-src-data" type="application/json">
+[
+  {
+    "id": 0,
+    "value": "",
+    "text": "Spento"
+  },
+  {
+    "id": 1,
+    "value": "1",
+    "text": "Manuale"
+  },
+  {
+    "id": 2,
+    "value": "2",
+    "text": "Automatico"
+  },
+  {
+    "id": 3,
+    "value": "",
+    "text": "Estate"
+  }
+]
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "Combobox_Mod_Risc.onSelectionChanged",
+    "actions": [
+      {
+        "objectType": "SwitchCase",
+        "active": true,
+        "compare": {
+          "objectType": "Symbol",
+          "symbolExpression": "%ctrl%Combobox_Mod_Risc::SelectedId%/ctrl%"
+        },
+        "cases": [
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/UDINT",
+              "value": 0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HeatingdMode%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 0
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/UDINT",
+              "value": 1
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HeatingdMode%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 1
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/UDINT",
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HeatingdMode%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 2
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/UDINT",
+              "value": 3
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.HeatingdMode%/s%",
+                "valueType": "tchmi:general#/definitions/BYTE",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/BYTE",
+                  "value": 3
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "caseDefault": {
+          "actions": []
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%s%PLC1.GVL.HeatingdMode%/s%",
+    "actions": [
+      {
+        "objectType": "SwitchCase",
+        "active": true,
+        "compare": {
+          "objectType": "Symbol",
+          "symbolExpression": "%s%PLC1.GVL.HeatingdMode%/s%"
+        },
+        "cases": [
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BYTE",
+              "value": 0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%Combobox_Mod_Risc::ComboboxText%/ctrl%",
+                "valueType": "tchmi:general#/definitions/String",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Spento"
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BYTE",
+              "value": 1
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%Combobox_Mod_Risc::ComboboxText%/ctrl%",
+                "valueType": "tchmi:general#/definitions/String",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Manuale"
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%Combobox_Mod_Risc::ComboboxText%/ctrl%",
+                "valueType": "tchmi:general#/definitions/String",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Automatico"
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BYTE",
+              "value": 3
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%Combobox_Mod_Risc::ComboboxText%/ctrl%",
+                "valueType": "tchmi:general#/definitions/String",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Estate"
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "caseDefault": {
+          "actions": []
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+</div>
+
+<div id="Combobox_Vel_Ventil" data-tchmi-type="tchmi-combobox" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="1120" data-tchmi-left-unit="px" data-tchmi-top="240" data-tchmi-top-unit="px" data-tchmi-width="165" data-tchmi-width-unit="px" data-tchmi-data-height="30" data-tchmi-text-font-size="24" data-tchmi-drop-down-font-size="20" data-tchmi-zindex="27" data-tchmi-drop-down-horizontal-alignment="Left" data-tchmi-drop-down-style="Classic" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-style="Auto">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-src-data" type="application/json">
+[
+  {
+    "id": 0,
+    "value": "",
+    "text": "Spenti"
+  },
+  {
+    "id": 1,
+    "value": "",
+    "text": "Bassa"
+  },
+  {
+    "id": 2,
+    "value": "",
+    "text": "Alta"
+  }
+]
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "Combobox_Vel_Ventil.onSelectionChanged",
+    "actions": [
+      {
+        "objectType": "SwitchCase",
+        "active": true,
+        "compare": {
+          "objectType": "Symbol",
+          "symbolExpression": "%ctrl%Combobox_Vel_Ventil::SelectedId%/ctrl%"
+        },
+        "cases": [
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/UDINT",
+              "value": 0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.prod_summer_fan%/s%",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/INT",
+                  "value": 0
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/UDINT",
+              "value": 1
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.prod_summer_fan%/s%",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/INT",
+                  "value": 1
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/UDINT",
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%s%PLC1.GVL.prod_summer_fan%/s%",
+                "valueType": "tchmi:general#/definitions/INT",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/INT",
+                  "value": 2
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "caseDefault": {
+          "actions": []
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%s%PLC1.GVL.prod_summer_fan%/s%",
+    "actions": [
+      {
+        "objectType": "SwitchCase",
+        "active": true,
+        "compare": {
+          "objectType": "Symbol",
+          "symbolExpression": "%s%PLC1.GVL.prod_summer_fan%/s%"
+        },
+        "cases": [
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%Combobox_Vel_Ventil::ComboboxText%/ctrl%",
+                "valueType": "tchmi:general#/definitions/String",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Spenti"
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 1
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%Combobox_Vel_Ventil::ComboboxText%/ctrl%",
+                "valueType": "tchmi:general#/definitions/String",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Bassa"
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/INT",
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%Combobox_Vel_Ventil::ComboboxText%/ctrl%",
+                "valueType": "tchmi:general#/definitions/String",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Alta"
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "caseDefault": {
+          "actions": []
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+</div>
+
+<div id="Textblock_Heatingmode" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="880" data-tchmi-left-unit="px" data-tchmi-text="Modalità Riscaldamento" data-tchmi-top="190" data-tchmi-top-unit="px" data-tchmi-width="235" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="23" data-tchmi-text-horizontal-alignment="Right" data-tchmi-text-font-size-unit="px" data-tchmi-text-font-size="24">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="TcHmiRectangle_36" data-tchmi-type="tchmi-rectangle" data-tchmi-height-unit="px" data-tchmi-left="860" data-tchmi-left-unit="px" data-tchmi-top="120" data-tchmi-top-unit="px" data-tchmi-width="450" data-tchmi-width-unit="px" data-tchmi-radius-x="5" data-tchmi-radius-y="5" data-tchmi-zindex="0" data-tchmi-height="240">
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-stroke-color" type="application/json">
+{
+  "color": "rgba(23, 1, 1, 1)"
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 5,
+  "right": 5,
+  "top": 5,
+  "bottom": 5,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+{
+  "topLeft": 5.0,
+  "topRight": 5.0,
+  "bottomLeft": 5.0,
+  "bottomRight": 5.0,
+  "topLeftUnit": "px",
+  "topRightUnit": "px",
+  "bottomLeftUnit": "px",
+  "bottomRightUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+
+
+</div>
+
+<div id="Textblock_GestRiscCap" data-tchmi-type="tchmi-textblock" data-tchmi-height="40" data-tchmi-height-unit="px" data-tchmi-left="880" data-tchmi-left-unit="px" data-tchmi-text="Gestione Riscaldamento Capannone" data-tchmi-top="140" data-tchmi-top-unit="px" data-tchmi-width="405" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Top" data-tchmi-text-font-size="28" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-horizontal-alignment="Left" data-tchmi-zindex="18" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Textblock_Vel_Ventil" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="921" data-tchmi-left-unit="px" data-tchmi-text="Velocità Ventilatori" data-tchmi-top="240" data-tchmi-top-unit="px" data-tchmi-width="194" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="23" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size-unit="px" data-tchmi-text-font-size="24">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Textblock_Count_Radio" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="30" data-tchmi-left-unit="px" data-tchmi-top="355" data-tchmi-top-unit="px" data-tchmi-width="290" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-size="24" data-tchmi-text="Attivazioni Segnale Radio" data-tchmi-zindex="32">
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Textblock_Count_Radio1" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="30" data-tchmi-left-unit="px" data-tchmi-top="400" data-tchmi-top-unit="px" data-tchmi-width="290" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-horizontal-alignment="Center" data-tchmi-zindex="33" data-tchmi-text-font-size="24" data-tchmi-text="%s%PLC1.Alarm.radio_count%/s%">
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 2,
+  "right": 2,
+  "top": 2,
+  "bottom": 2,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+</div>

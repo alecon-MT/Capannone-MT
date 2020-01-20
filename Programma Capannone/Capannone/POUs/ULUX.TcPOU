@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="ULUX" Id="{19479a99-f985-429d-92a7-853b4d112471}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM ULUX
+VAR
+	ulux_comm: FB_ULUX_COM;
+	umidita_riunioni: FB_GET_ULUX_HUMIDITY;
+	prossimita_riunioni: FB_GET_ULUX_PROXIMITYSENSOR;
+	on_off_riunioni: INT;
+	dimmer1: INT;
+	dimmer_riunioni: FB_GET_ULUX_EDIT_VALUE;
+	on_off_luce: FB_GET_ULUX_EDIT_VALUE;
+	luce: Dali_arcpower_control;
+	luce_PROIETTORE: Dali_arcpower_control;
+	luce_dimmer: Dali_arcpower_control;
+	temperatura: REAL;
+	umidita: REAL;
+	lux: REAL;
+	on_off_proiettore: FB_GET_ULUX_EDIT_VALUE;
+	proiettore: INT;
+	Cambio_Pagina_password: FB_SET_ULUX_PAGE;
+	Cambio_Pagina_main: FB_SET_ULUX_PAGE;
+	pippo: BOOL;
+	password_ok: BOOL;
+	t_password: TON;
+	password: ULUX_STD;
+	ledstate: FB_SET_ULUX_LEDSTATE;
+	minnie1: BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Comunicazione ulux
+ulux_comm(
+	bEnableCom:= TRUE, 
+	sSrvNetId:= '5.37.99.190.1.1',
+	sHostIpAddr:= '192.168.60.120', 
+	sSubNetMask:= '255.255.255.0', 
+	tStartUpDelay:= T#15S, 
+	stTimestruct:= tempo_ulux, 
+	stCmdB:= ulux_buffer, 
+	bComActiv=> , 
+	bBusy=> , 
+	bError=> , 
+	nErrId=> , 
+	eErrUluxId=> );
+	
+//Cambio pagine ulux
+Cambio_Pagina_password(
+	stCmdB:= ulux_buffer, 
+	dwSwitchID:= 5, 
+	bSetPage:= , 
+	byPageNumber:= 4, 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+Cambio_Pagina_main(
+	stCmdB:= ulux_buffer, 
+	dwSwitchID:= 5, 
+	bSetPage:= , 
+	byPageNumber:= 2, 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+IF pippo THEN
+	cambio_pagina_password.bSetPage:=TRUE;
+END_IF
+password(
+	ID:= 4, 
+	luci_OFF:= , 
+	luci_ON:= , 
+	time_delay:= , 
+	arc_level=> , 
+	temp=> , 
+	funzione_1=> , 
+	moviment_active=> , 
+	condiz=> , 
+	password1=> , 
+	password2=> , 
+	password3=> , 
+	password4=> );
+IF password.password1=2 AND password.password2=7 AND password.password3=3 AND password.password4=8 THEN
+	password_ok:=TRUE;
+ELSE
+	password_ok:=FALSE;
+END_IF
+IF password_ok THEN
+	cambio_pagina_password.bSetPage:=FALSE;
+	cambio_pagina_main.bSetPage:=TRUE;
+	pippo:=FALSE;
+END_IF
+t_password(IN:= password_ok, PT:= T#5S, Q=> , ET=> );
+IF t_password.Q THEN
+	password_ok:=FALSE;
+	cambio_pagina_main.bSetPage:=FALSE;
+END_IF
+
+ledstate(
+	stCmdB:= ulux_buffer, 
+	dwActorID:= 53, 
+	bSetLed:= minnie1, 
+	eLedBlink1:= 4, 
+	eLedColor1:= 1, 
+	eLedBlink2:= 4, 
+	eLedColor2:= 2, 
+	eLedBlink3:= 4, 
+	eLedColor3:= 3, 
+	eLedBlink4:= 4, 
+	eLedColor4:= 4, 
+	bLedOverride1:= , 
+	bLedOverride2:= , 
+	bLedOverride3:= , 
+	bLedOverride4:= , 
+	bSendAutoByChange:= , 
+	tMinDelay:= , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+	
+(*//Rilevamento umidità ulux
+umidita_riunioni(
+	stCmdB:= ulux_buffer, 
+	dwSwitchID:= gvl_ulux.PROJEKT_ULUX_SWITCH_RIUNIONI_ID, 
+	bEnable:= TRUE, 
+	bGetHumidity:= , 
+	bHumidityValid=> , 
+	rHumidity=> , 
+	bReceivedData=> , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+//Sensore di prossimità ulux
+prossimita_riunioni(
+	stCmdB:= ulux_buffer, 
+	dwSwitchID:= gvl_ulux.PROJEKT_ULUX_SWITCH_RIUNIONI_ID, 
+	bEnable:= TRUE, 
+	bProximitySensorValid=> , 
+	bObjektNearly=> , 
+	bReceivedData=> , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+//Accensione luce sala riunioni
+on_off_luce(
+	iEditValue:= on_off_riunioni, 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= gvl_ulux.AKTOREN_ONOFF_LUCE_ID, 
+	bGetValue:= , 
+	bGetAfterReconnect:= , 
+	bReceivedData=> , 
+	dwRecFromSwitchID=> , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+IF on_off_riunioni=1 THEN
+	luce.light_level:=luce_dimmer.light_level;
+ELSE
+	luce.light_level:=0;
+END_IF
+luce(light_level:= , ADDR:= 32, MODE:= 0, daliBuffer:= dali_buffer2);
+temperatura:=temp_riunioni.rTemperature;
+umidita:=umidita_riunioni.rHumidity;
+lux:=lux_riunioni.wLux;
+//Modalità proiettore
+on_off_proiettore(
+	iEditValue:= proiettore, 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= gvl_ulux.AKTOREN_PROIETTORE_ID, 
+	bGetValue:= , 
+	bGetAfterReconnect:= , 
+	bReceivedData=> , 
+	dwRecFromSwitchID=> , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+luce_proiettore(light_level:= , ADDR:= 32, MODE:= 0, daliBuffer:= dali_buffer2);
+IF proiettore=1 THEN
+	luce_proiettore.light_level:=254;
+ELSE
+	luce_proiettore.light_level:=0;
+END_IF*)]]></ST>
+    </Implementation>
+    <LineIds Name="ULUX">
+      <LineId Id="3" Count="31" />
+      <LineId Id="189" Count="0" />
+      <LineId Id="36" Count="1" />
+      <LineId Id="191" Count="17" />
+      <LineId Id="190" Count="0" />
+      <LineId Id="38" Count="9" />
+      <LineId Id="232" Count="0" />
+      <LineId Id="211" Count="19" />
+      <LineId Id="209" Count="0" />
+      <LineId Id="231" Count="0" />
+      <LineId Id="90" Count="0" />
+      <LineId Id="92" Count="10" />
+      <LineId Id="114" Count="48" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

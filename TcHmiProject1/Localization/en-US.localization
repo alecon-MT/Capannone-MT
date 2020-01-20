@@ -1,0 +1,7 @@
+﻿{
+  "locale": "en-US",
+  "localizedText": {
+    "Text1": "Hello World!",
+    "Text2": "I'm a localized text."
+  }
+}

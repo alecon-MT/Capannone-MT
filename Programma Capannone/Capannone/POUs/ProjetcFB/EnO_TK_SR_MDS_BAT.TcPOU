@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="EnO_TK_SR_MDS_BAT" Id="{77eb97eb-f8fc-46cf-96f5-07fbc520331e}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK EnO_TK_SR_MDS_BAT
+VAR_INPUT
+	ID:DWORD;
+END_VAR
+VAR_OUTPUT
+	BAT_KO:BOOL;
+	LUX:WORD;
+	Moviment:BOOL;
+END_VAR
+VAR
+	Read: FB_Rec_Generic;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Read(
+	str_KL6581:= enocean_buffer, 
+	byNode:=1 , 
+	dw_ID:= ID, 
+	ar_Value=> , 
+	by_Node=> , 
+	by_STATE=> , 
+	bReceive=> , 
+	EnOceanTyp=> );
+	
+MOviment:=NOT read.ar_Value[0].1;
+IF read.ar_Value[3]<120 THEN
+	bat_KO:=TRUE;
+ELSE
+	bat_KO:=FALSE;
+END_IF
+LUX:=read.ar_Value[2]*2;]]></ST>
+    </Implementation>
+    <LineIds Name="EnO_TK_SR_MDS_BAT">
+      <LineId Id="3" Count="15" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

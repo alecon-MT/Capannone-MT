@@ -1,0 +1,105 @@
+﻿{
+  "$schema": "C:/TwinCAT/Functions/TE2000-HMI-Engineering/Infrastructure/TcHmiFramework/Latest/Schema/TchmiConfig.Schema.json",
+  "basePath": "./Libraries",
+  "locale": "en-US",
+  "scaleMode": "None",
+  "startupView": "Desktop.view",
+  "tcHmiServer": {
+    "websocketIntervalTime": 200,
+    "websocketTimeout": 5000
+  },
+  "activeTheme": "Base",
+  "themes": {
+    "Base": {
+      "resources": [
+        {
+          "name": "Themes/Base/Base.theme",
+          "description": "",
+          "type": "ThemedValues"
+        },
+        {
+          "name": "Themes/Base/Style.css",
+          "description": "",
+          "type": "Stylesheet"
+        }
+      ],
+      "replacesThemeForControls": []
+    }
+  },
+  "dependencyFiles": [
+    {
+      "name": "Fonts/Fonts.css",
+      "description": "",
+      "type": "Stylesheet"
+    }
+  ],
+  "userControls": [],
+  "content": [
+    {
+      "url": "Data_ora.content",
+      "preload": false
+    },
+    {
+      "url": "Dito_Utente.content",
+      "preload": false
+    },
+    {
+      "url": "Ingressi.content",
+      "preload": false
+    },
+    {
+      "url": "MB_Main.content",
+      "preload": false
+    },
+    {
+      "url": "MB_Settings.content",
+      "preload": false
+    },
+    {
+      "url": "Meteo.content",
+      "preload": false
+    },
+    {
+      "url": "Registr_Utenti.content",
+      "preload": false
+    },
+    {
+      "url": "RFID_Utente.content",
+      "preload": false
+    },
+    {
+      "url": "Sensori_Allarme.content",
+      "preload": false
+    },
+    {
+      "url": "Settaggi.content",
+      "preload": false
+    },
+    {
+      "url": "WebCam.content",
+      "preload": false
+    }
+  ],
+  "views": [
+    {
+      "url": "Desktop.view",
+      "preload": false
+    }
+  ],
+  "userFunctions": [],
+  "symbols": {
+    "internal": {}
+  },
+  "trigger": [],
+  "actionTemplates": [],
+  "languages": {
+    "de-DE": "Localization\\de-DE.localization",
+    "en-US": "Localization\\en-US.localization"
+  },
+  "creatorSettings": {
+    "viewport": {
+      "defaultWidth": 1024,
+      "defaultHeight": 768
+    }
+  }
+}

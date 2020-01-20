@@ -1,0 +1,402 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="ULUX_STD" Id="{a2ec0874-7517-4cb7-a8ff-ec64b73029d7}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK ULUX_STD
+VAR_INPUT
+	ID: WORD;
+	luci_OFF:BOOL; //segnale ad impulso
+	luci_ON:BOOL; //segnale ad impulso
+	time_delay:TIME;
+	condiz_ON_OFF: INT; //segnale ad impulso
+	dimmer_on: BOOL;
+END_VAR
+VAR_OUTPUT
+	arc_level: BYTE;
+	temp: UINT;
+	funzione_1: INT;
+	moviment_active:BOOL;
+	condiz:INT;
+	password1:INT;
+	password2:INT;
+	password3:INT;
+	password4:INT;
+END_VAR
+VAR
+	On_off_luce: FB_GET_ULUX_EDIT_VALUE;
+	On_off_cond: FB_GET_ULUX_EDIT_VALUE;
+	luce: INT;
+	motion: BOOL;
+	light_level: BYTE;
+	Dimmer_luci: FB_GET_ULUX_EDIT_VALUE;
+	Set_dimmer_luci: FB_SET_ULUX_EDIT_VALUE;
+	dimmer: INT;
+	puls_funz_1: FB_GET_ULUX_EDIT_VALUE;
+	temperatura: FB_GET_ULUX_TEMPERATURE;
+	movimento: FB_GET_ULUX_MOTIONSENSOR;
+	lux: FB_GET_ULUX_LUX;
+	val_lux: WORD;
+	Set_light_off: FB_SET_ULUX_EDIT_VALUE;
+	Set_light_on: FB_SET_ULUX_EDIT_VALUE;
+	Set_cond_on: FB_SET_ULUX_EDIT_VALUE;
+	Set_cond_off: FB_SET_ULUX_EDIT_VALUE;
+	Set_estate: FB_SET_ULUX_EDIT_VALUE;
+	Set_inverno: FB_SET_ULUX_EDIT_VALUE;
+	puls_password1: FB_GET_ULUX_EDIT_VALUE;
+	puls_password2: FB_GET_ULUX_EDIT_VALUE;
+	puls_password3: FB_GET_ULUX_EDIT_VALUE;
+	puls_password4: FB_GET_ULUX_EDIT_VALUE;
+	val_light_off: INT :=0;
+	val_light_ON: INT :=1;
+	val_estate: INT :=1;
+	val_inverno: INT :=0;
+	val_condiz_ON: INT :=1;
+	val_condiz_OFF: INT :=0;
+	val_dimmer: INT;
+	delay_moviment: TOF;
+	mov_on: R_TRIG;
+	mov_off: F_TRIG;
+	HMI_levelperc: WSTRING;
+	(*reset_luci: TON;
+	val_dimmer_restart: INT :=220;
+	Set_dimmer: FB_SET_ULUX_EDIT_VALUE;*)
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Accensione luci con ULUX
+On_off_luce(
+	iEditValue:= luce, 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= (ID*10)+1, 
+	bGetValue:= ,  
+	bGetAfterReconnect:= TRUE, 
+	bReceivedData=> , 
+	dwRecFromSwitchID=> , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+//Dimmer luci con ULUX
+Dimmer_luci(
+	iEditValue:= dimmer, 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= (ID*10)+2, 
+	bGetValue:= , 
+	bGetAfterReconnect:= TRUE, 
+	bReceivedData=> , 
+	dwRecFromSwitchID=> , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+CASE dimmer OF
+	0:light_level:=85;
+	12:light_level:=93;
+	24:light_level:=101;
+	36:light_level:=109;
+	48:light_level:=117;
+	60:light_level:=125;
+	72:light_level:=133;
+	84:light_level:=141;
+	96:light_level:=149;
+	108:light_level:=157;
+	120:light_level:=165;
+	132:light_level:=173;
+	144:light_level:=181;
+	156:light_level:=189;
+	168:light_level:=197;
+	180:light_level:=205;
+	192:light_level:=213;
+	204:light_level:=221;
+	216:light_level:=229;
+	228:light_level:=237;
+	240:light_level:=245;
+	252:light_level:=254;
+ELSE
+	light_level:=254;
+END_CASE
+IF luce=0 THEN
+	arc_level:=0;
+ELSIF luce=1 THEN
+	arc_level:=light_level;
+END_IF
+//Valore in percentuale livello luce
+CASE arc_level OF
+	0: HMI_levelperc:="0 %";
+	85: HMI_levelperc:="5 %";
+	93: HMI_levelperc:="9 %";
+	101: HMI_levelperc:="14 %";
+	109: HMI_levelperc:="18 %";
+	117: HMI_levelperc:="23 %";
+	125: HMI_levelperc:="27 %";
+	133: HMI_levelperc:="32 %";
+	141: HMI_levelperc:="36 %";
+	149: HMI_levelperc:="41 %";
+	157: HMI_levelperc:="45 %";
+	165: HMI_levelperc:="50 %";
+	173: HMI_levelperc:="54 %";
+	181: HMI_levelperc:="59 %";
+	189: HMI_levelperc:="63 %";
+	197: HMI_levelperc:="68 %";
+	205: HMI_levelperc:="72 %";
+	213: HMI_levelperc:="77 %";
+	221: HMI_levelperc:="81 %";
+	229: HMI_levelperc:="86 %";
+	237: HMI_levelperc:="90 %";
+	245: HMI_levelperc:="95 %";
+	254: HMI_levelperc:="100 %";
+END_CASE
+//SET dimmer luci da PLC
+Set_dimmer_luci(
+	iEditValue:= val_dimmer, 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= (ID*10)+2, 
+	bSetValue:= dimmer_on, 
+	bSetAfterReconnect:= (*true*), 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+//Pulsante funzione 1
+puls_funz_1(
+	iEditValue:= funzione_1, 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= (ID*10)+4, 
+	bGetValue:= , 
+	bGetAfterReconnect:= , 
+	bReceivedData=> , 
+	dwRecFromSwitchID=> , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+//Temperatura da ULUX
+temperatura(
+	stCmdB:= ulux_buffer, 
+	dwSwitchID:= (ID+1), 
+	bEnable:= TRUE, 
+	bGetTemperature:= , 
+	bTemperaturValid=> , 
+	rTemperature=> , 
+	bReceivedData=> , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+temp:= REAL_TO_UINT(temperatura.rTemperature*10);
+//Movimento da ULUX
+movimento(
+	stCmdB:= ulux_buffer, 
+	dwSwitchID:= (ID+1), 
+	bEnable:= TRUE, 
+	bMotionSensorOn=> , 
+	bMotionDetect=> motion, 
+	bReceivedData=> , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+
+delay_moviment(IN:= motion, PT:= time_delay, Q=>moviment_active , ET=> );
+
+mov_on(CLK:=motion , Q=> );
+mov_off(CLK:=delay_moviment.Q , Q=> );
+//Lux da ULUX
+lux(
+	stCmdB:= ulux_buffer, 
+	dwSwitchID:= (ID+1), 
+	bEnable:= TRUE, 
+	bGetLux:= , 
+	bLuxValid=> , 
+	wLux=> val_lux, 
+	bReceivedData=> , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+IF luce=1 THEN
+	HMI_luci_on[ID]:=TRUE;
+	HMI_luci_off[ID]:=FALSE;
+ELSE
+	HMI_luci_on[ID]:=FALSE;
+	HMI_luci_off[ID]:=TRUE;
+END_IF
+//SET spegni luci da PLC
+Set_light_off(
+	iEditValue:= val_light_off, 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= (ID*10)+1, 
+	bSetValue:= luci_off OR mov_off.Q, 
+	bSetAfterReconnect:= (*true*), 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+//SET accendi luci da PLC
+Set_light_on(
+	iEditValue:= val_light_on, 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= (ID*10)+1, 
+	bSetValue:= mov_on.Q OR LUCI_ON, 
+	bSetAfterReconnect:= TRUE, 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+//SET immagine estate su ULUX da PLC
+Set_estate(
+	iEditValue:= val_estate , 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= (ID*10)+5, 
+	bSetValue:= estate, 
+	bSetAfterReconnect:= , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );	
+//SET immagine inverno su ULUX da PLC
+Set_inverno(
+	iEditValue:= val_inverno , 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= (ID*10)+5, 
+	bSetValue:= inverno, 
+	bSetAfterReconnect:= , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+IF OFFICE_VHAC_EI THEN
+	estate:=TRUE;
+	inverno:=FALSE;
+ELSIF NOT OFFICE_VHAC_EI THEN
+	inverno:=TRUE;
+	estate:=FALSE;
+END_IF
+
+//Condizionatori ON-OFF con ULUX
+On_off_cond(
+	iEditValue:= condiz, 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= (ID*10)+5, 
+	bGetValue:= , 
+	bGetAfterReconnect:= , 
+	bReceivedData=> , 
+	dwRecFromSwitchID=> , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+//Spegnimento aria condizionata e cambiamento stato ULUX con allarme
+IF allarme_Attivo<>0 (*allarme*) THEN
+	condiz:=0;
+END_IF
+//SET condizionatori ON da PLC
+Set_cond_on(
+	iEditValue:= val_condiz_ON, 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= (ID*10)+5, 
+	bSetValue:= condiz_ON_OFF=1, 
+	bSetAfterReconnect:= (*true*), 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+IF mov_off.Q THEN
+	condiz_ON_OFF:=0;
+END_IF
+(*IF condiz=1 THEN
+	HMI_cond[ID]:=1;
+ELSE
+	HMI_cond[ID]:=0;
+END_IF*)
+//SET condizionatori OFF da PLC
+Set_cond_off(
+	iEditValue:= val_condiz_OFF, 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= (ID*10)+5, 
+	bSetValue:= allarme_Attivo<>0(*allarme*) OR condiz_ON_OFF=0, 
+	bSetAfterReconnect:= (*true*), 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+	
+(*var_plc:=FALSE;
+reset_luci(IN:= NOT var_plc, PT:= T#20S, Q=> , ET=> );
+if reset_luci.Q then
+	var_plc:=true;
+END_IF
+//SET imposta LUX al riavvio del PLC
+Set_dimmer(
+	iEditValue:= val_dimmer_restart, 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= (ID*10)+1, 
+	bSetValue:= reset_luci.Q, 
+	bSetAfterReconnect:= TRUE, 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );*)
+	
+(*//Pulsante numeri password
+puls_password1(
+	iEditValue:= password1, 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= (ID*10)+6, 
+	bGetValue:=, 
+	bGetAfterReconnect:= , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+puls_password2(
+	iEditValue:= password2, 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= (ID*10)+7, 
+	bGetValue:=, 
+	bGetAfterReconnect:= , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+puls_password3(
+	iEditValue:= password3, 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= (ID*10)+8, 
+	bGetValue:=, 
+	bGetAfterReconnect:= , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );
+puls_password4(
+	iEditValue:= password4, 
+	stCmdB:= ulux_buffer, 
+	dwActorID:= (ID*10)+9, 
+	bGetValue:=, 
+	bGetAfterReconnect:= , 
+	bBusy=> , 
+	bError=> , 
+	eErrUluxId=> );*)]]></ST>
+    </Implementation>
+    <LineIds Name="ULUX_STD">
+      <LineId Id="3" Count="54" />
+      <LineId Id="721" Count="2" />
+      <LineId Id="727" Count="0" />
+      <LineId Id="730" Count="1" />
+      <LineId Id="725" Count="0" />
+      <LineId Id="732" Count="17" />
+      <LineId Id="724" Count="0" />
+      <LineId Id="586" Count="0" />
+      <LineId Id="589" Count="7" />
+      <LineId Id="587" Count="0" />
+      <LineId Id="58" Count="52" />
+      <LineId Id="808" Count="1" />
+      <LineId Id="811" Count="3" />
+      <LineId Id="810" Count="0" />
+      <LineId Id="111" Count="46" />
+      <LineId Id="411" Count="0" />
+      <LineId Id="158" Count="11" />
+      <LineId Id="448" Count="0" />
+      <LineId Id="413" Count="0" />
+      <LineId Id="449" Count="1" />
+      <LineId Id="519" Count="8" />
+      <LineId Id="518" Count="0" />
+      <LineId Id="661" Count="2" />
+      <LineId Id="815" Count="1" />
+      <LineId Id="818" Count="1" />
+      <LineId Id="817" Count="0" />
+      <LineId Id="415" Count="8" />
+      <LineId Id="414" Count="0" />
+      <LineId Id="328" Count="0" />
+      <LineId Id="330" Count="2" />
+      <LineId Id="334" Count="0" />
+      <LineId Id="329" Count="0" />
+      <LineId Id="338" Count="8" />
+      <LineId Id="336" Count="0" />
+      <LineId Id="348" Count="0" />
+      <LineId Id="170" Count="35" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

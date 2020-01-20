@@ -1,0 +1,11 @@
+﻿<div id="Direzione" data-tchmi-type="tchmi-content" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="320" data-tchmi-height="350">
+
+<div id="Uffici_5" data-tchmi-type="tchmi-user-control-host" data-tchmi-height="350" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-target-user-control="X10 - User Control/Uffici.usercontrol" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="320" data-tchmi-width-unit="px" data-tchmi-light_level="%s%PLC1.LUCI.ulux_2.light_level%/s%" data-tchmi-temp="%s%PLC1.GVL.TempZ3%/s%" data-tchmi-cond_on="%s%PLC1.Riscaldamento.f_coil3.winterON%/s%" data-tchmi-text="DIREZIONE" data-tchmi-lux="%s%PLC1.LUCI.ulux_2.val_lux%/s%" data-tchmi-accendi_luce="%s%PLC1.GVL.HMI_luci_on.2%/s%" data-tchmi-spegni_luce="%s%PLC1.GVL.HMI_luci_off.2%/s%" data-tchmi-luce_on="%s%PLC1.LUCI.ulux_2.arc_level%/s%" data-tchmi-condizionatore="%s%PLC1.GVL.HMI_cond.2%/s%" data-tchmi-cond_on_off="%s%PLC1.GVL.HMI_cond.2%/s%" data-tchmi-dimmer_plc="%s%PLC1.LUCI.ulux_2.val_dimmer%/s%" data-tchmi-dimmer_on_plc="%s%PLC1.LUCI.ulux_2.dimmer_on%/s%" data-tchmi-temp_rif="%s%PLC1.GVL.HMI_TEMPuff.2%/s%" data-tchmi-dimmer_ulux="%s%PLC1.LUCI.ulux_2.dimmer%/s%">
+
+
+
+
+
+</div>
+
+</div>

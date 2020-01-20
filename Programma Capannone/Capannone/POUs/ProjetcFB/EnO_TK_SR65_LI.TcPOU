@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="EnO_TK_SR65_LI" Id="{e2430ee1-5bd9-4b54-b142-5bbcf3cc26df}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK EnO_TK_SR65_LI
+VAR_INPUT
+	ID: DWORD;
+END_VAR
+VAR_OUTPUT
+	LUX: WORD;
+	status: BOOL; (*TRUE = Low Voltage; False = Voltage OK*);
+END_VAR
+VAR
+	READ: FB_Rec_Generic;
+	POWER: DINT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[READ(
+	str_KL6581:=enocean_buffer , 
+	byNode:=1 , 
+	dw_ID:=ID , 
+	ar_Value=> , 
+	by_Node=> , 
+	by_STATE=> , 
+	bReceive=> , 
+	EnOceanTyp=> );
+
+LUX:=read.ar_Value[1]*4;	
+POWER:=TRUNC(read.ar_Value[3]/50);
+IF power < 3  THEN
+	status:=TRUE;
+ELSE
+	status:=FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="EnO_TK_SR65_LI">
+      <LineId Id="3" Count="15" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="EnO_TK_SAB05" Id="{9088464d-c2dc-4329-bc86-bff09c29a2c5}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK EnO_TK_SAB05
+VAR_INPUT
+	IDr : DWORD;
+	IDw : BYTE;
+	bsend:BOOL;
+	t_setpoint:BYTE;
+	b_SB:BOOL; //Summer bit, reduction of energy cnsumption
+	b_RIN:BOOL; //Run init Sequence
+	b_LFS:BOOL; // Lift SET Inizialization, adjustment to the valve stroke
+	b_VO:BOOL; // Valve Open - Maintenance
+	b_VC:BOOL; // Valve Closed
+END_VAR
+VAR_OUTPUT
+	CV:BYTE;//Curent Value;
+	TMP:BYTE;//Temperature;
+	LRNB:BOOL;// LRN Bit
+END_VAR
+VAR
+	READ: FB_Rec_Generic;
+	WRITE: FB_Send_Generic;
+	byte1:WORD;
+	data: DWORD;
+	byte3:DWORD;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[READ(
+	str_KL6581:=enocean_buffer , 
+	byNode:=1 , 
+	dw_ID:=IDr , 
+	ar_Value=> , 
+	by_Node=> , 
+	by_STATE=> , 
+	bReceive=> , 
+	EnOceanTyp=> );
+	
+cv:=read.ar_Value[3];
+TMP:=read.ar_Value[1];
+LRNB:=read.ar_Value[0].3;
+
+byte3:=DINT_TO_BYTE (TRUNC(t_setpoint*6.375));
+byte1.2:=TRUE; //set point selection (0..40°C)
+byte1.3:=b_SB; 
+byte1.4:=b_VC; 
+byte1.5:=b_VO; 
+byte1.6:=b_LFS; 
+byte1.7:=b_RIN; 
+
+data:=(SHL(byte3,16))+(SHL(byte1,8));
+
+WRITE(
+	bStart:= bsend, 
+	by_Node:=1 , 
+	by_ORG:= , 
+	pt_SendData:= ADR(data) , 
+	by_STATE:= , 
+	nEnOceanID:=IDw , 
+	str_KL6581:= enocean_buffer , 
+	bBusy=> , 
+	bError=> , 
+	iErrorID=> );	]]></ST>
+    </Implementation>
+    <LineIds Name="EnO_TK_SAB05">
+      <LineId Id="3" Count="12" />
+      <LineId Id="17" Count="9" />
+      <LineId Id="28" Count="11" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <GVL Name="GVL" Id="{4a0c89a9-24db-4f70-b611-8aa58200dcc6}">
+    <Declaration><![CDATA[VAR_GLOBAL
+	//cancella
+	AAA_Prova1: BOOL;
+	//EnOcean
+	enocean_buffer: STR_KL6581;
+	//DALI
+	DALI_BUFFER1: ST_DALIV2CommandBuffer; //Comando luci capannone
+	DALI_BUFFER2: ST_DALIV2CommandBuffer; //Comando luci uffici
+	//Ekey
+	ekey_scanner_cancello: FB_EKEY_FingerScanner; //Numero di serie ekey cancello:31160073
+	ekey_scanner_produzione: FB_EKEY_FingerScanner; //Numero di serie ekey produzione:24180820 vecchio:37160686
+	ekey_scanner_ingresso: FB_EKEY_FingerScanner;//Numero di serie ekey ingresso:37160693 vecchio:37160693
+	HMI_finger: BOOL;
+	HMI_finger_RFID: BOOL;
+	HMI_userRFID: BYTE;
+	apri_file: FB_FileOpen;
+	inserisci_testo: fb_fileputs;
+	chiudi_file: fb_fileclose;
+	indice_utente: INT:=1;
+	Nmu: BYTE:=30; //Numero massimo utenti
+	hmi_utentesu: BOOL; //Pulsante indice utente i più
+	hmi_utentegiu: BOOL; //Pulsante indice utente i meno
+	HMI_save_utente: BOOL; //Salva parametri utenti su HMI
+	HMI_annulla: BOOL; // Annulla cambio dati utente
+	HMI_user_type: BYTE;
+	HMI_num_badge: STRING;
+	HMI_nome_utente: STRING;
+	//ULUX
+	ulux_buffer: ST_ULUX_COMMANDBUFFER;
+	//KNX
+	RAIN: BOOL;
+	Temp_OUTSIDE: REAL;
+	wind_speed: REAL;
+	LUX_OUTSIDEF: REAL;
+	LUX_OUTSIDER: REAL;
+	LUX_OUTSIDEL: REAL;
+	knx_p1: BOOL;
+	knx_p2: BOOL;
+	knx_p3: BOOL;
+	knx_p4: BOOL;
+	Temp_INSIDE: REAL;
+	stato_temp: BOOL; //Stato sensore temperatura 0=OK 1=Difettoso
+	
+	//ALLARME
+	alarm_Service: BOOL;
+	allarme_on: BOOL;
+	sensori_mov: ARRAY [1..30] OF sensore_allarme;
+	mode_A: BYTE; //Modalità inserimento allarme valori da 0 a 4
+	test_Sirena: BOOL;
+	test_radio: BOOL;
+	allarme_memreset: BOOL;
+	stringa_allarme: STRING;
+	stringa_2_allarme: STRING; //Stringa di visualizzazione in file di testo allarmi
+	sensori_STRU: ARRAY [0..30] OF sensore_allarme_STRU;
+	ingresso_sens AT %I*: ARRAY [0..30] OF BOOL; //Array segnale fisico sensore
+	reset_tamper: BOOL;
+	reset_allarme: BOOL;
+	manutenzione_sensore: BOOL;
+	
+	//CILLER
+	out_ciller_estate AT %Q*: BOOL;
+	OUT_CILLER_ON AT %Q*: BOOL;
+	//PORTE
+	OUT_Pingresso AT %Q*: BOOL;
+	OUT_Pmensa AT %Q*: BOOL;
+	OUT_Pcanc_ped AT %Q*: BOOL;
+	IN_CITOR1 AT %I*: BOOL;
+	IN_CITOR2 AT %I*: BOOL;
+	//ALTRO
+	tempo: BOOL;
+	count: INT;
+	ora_plc: nt_gettime;
+	tempo_ulux: timestruct;
+	aggiorna: BYTE; //Variabile timer
+	orario: STRING;
+	orario_2: STRING;
+	giorni_sett: BOOL;
+	Read_Puls1: FB_Rec_RPS_Switch;
+	HMI_ctrl_allarme: BOOL;
+	sens_cancello_Auto AT %I*: BOOL;
+	hmi_cancello: BOOL;
+	HMI_compressore_2: BOOL;
+	HMI_currentL1: WORD;
+	HMI_currentL2: WORD;
+	HMI_currentL3: WORD;
+	HMI_voltageL1: WORD;
+	HMI_voltageL2: WORD;
+	HMI_voltageL3: WORD;
+	HMI_powerL1: WORD;
+	HMI_powerL2: WORD;
+	HMI_powerL3: WORD;
+	HMI_energyL1: WORD;
+	HMI_energyL2: WORD;
+	HMI_energyL3: WORD;
+	HMI_frequencyL1: WORD;
+	HMI_frequencyL2: WORD;
+	HMI_frequencyL3: WORD;
+	HMI_Allarme: BOOL;
+	HMI_luci_on: ARRAY [0..6] OF BOOL; //Luci uffici ON
+	HMI_luci_off: ARRAY [0..6] OF BOOL; //Luci uffici OFF
+	HMI_cond: ARRAY [0..6] OF INT;
+	HMI_luce1: BOOL; //Comando luce bagno 1 da HMI
+	HMI_luce2: BOOL; //Comando luce bagno 2 da HMI
+	HMI_luce_3: BOOL; //Comando luci esterne da HMI
+	HMI_luce4: BOOL; //Comando luce ripostiglio da HMI
+	HMI_luce_server: BOOL; //Comando luce server da HMI
+	HMI_luce_lstamp: BOOL; //Comando luce locale stampante
+	HMI_luce_offRD: BOOL; //Comando luce officina R&D
+	
+	light_soft: BOOL;
+	Light_on: BOOL;
+	Light_off: BOOL;
+	dali_power_off: BOOL;
+	Sabiana1L AT %Q*: BOOL; //Sabiana 1 Low Speed
+	Sabiana1H AT %Q*: BOOL; //Sabiana 1 High Speed
+	Sabiana2L AT %Q*: BOOL; //Sabiana 2 Low Speed
+	Sabiana2H AT %Q*: BOOL; //Sabiana 2 High Speed
+	Sabiana3L AT %Q*: BOOL; //Sabiana 3 Low Speed
+	Sabiana3H AT %Q*: BOOL; //Sabiana 3 High Speed
+	Sabiana4L AT %Q*: BOOL; //Sabiana 4 Low Speed
+	Sabiana4H AT %Q*: BOOL; //Sabiana 4 High Speed
+	Sabiana5L AT %Q*: BOOL; //Sabiana 5 Low Speed
+	Sabiana5H AT %Q*: BOOL; //Sabiana 5 High Speed
+	Sabiana6L AT %Q*: BOOL; //Sabiana 6 Low Speed
+	Sabiana6H AT %Q*: BOOL; //Sabiana 6 High Speed
+	
+	HMI_SabianaManCTRL : ARRAY [1..6] OF BYTE; //Controllo Manuale Sabiana
+	HMI_PompaProd : BOOL; //Comando Manuale da pannello pompa riscaldamento produzione
+	TempZ0:UINT; //Temperatura zona 0 - Capannone
+	TempZ1:UINT; //Temperatura zona 1 - Ingresso
+	TempZ2:UINT; //Temperatura zona 2 - Amministrazione
+	TempZ3:UINT; //Temperatura zona 3 - Direzione
+	TempZ4:UINT; //Temperatura zona 4 - Sala Riunioni
+	TempZ5:UINT; //Temperatura zona 5 - Uffico Tecnico
+	TempZ6:UINT; //Temperatura zona 6 - Ufficio Produzione
+	TempZ7:UINT; //Temperatura zona 7 - Locale Svago
+	ConONz1:INT; //Condizionatore ON/OFF zona 1
+	ConONz2:INT; //Condizionatore ON/OFF zona 2
+	ConONz3:INT; //Condizionatore ON/OFF zona 3
+	ConONz4:INT; //Condizionatore ON/OFF zona 4
+	ConONz5:INT; //Condizionatore ON/OFF zona 5
+	ConONz6:INT; //Condizionatore ON/OFF zona 6
+	ConONz7:INT; //Condizionatore ON/OFF zona 7
+	HMI_Umidita:BYTE; //Umidità Capannone
+	Th20_CaldaiaOK (*AT %I**):BOOL:=TRUE; //Temperatura H20 Caldaia OK x aria
+	Th20_pompacaloreOK AT %I*:BOOL; //Temperatura H20 Pompa Calore OK x aria
+	SensoreSez1 : BOOL; (*Sensore Apertura Sezionale 1*)
+	SensoreSez2 : BOOL; (*Sensore Apertura Sezionale 2*)
+	Luce1 AT %Q*:BOOL; (*Relè Luci BAGNO UFFICI 1*)
+	Luce2 AT %Q*:BOOL; (*Relè Luci BAGNO UFFICI 2*)
+	Luce3 AT %Q*:BOOL; (*Relè Luci esterno ENTRATA*)
+	Luce4 AT %Q*:BOOL; (*Relè Luci RIPOSTIGLIO*)
+	Luce5 AT %Q*:BOOL; (*Relè Luci 1*)
+	Luce6 AT %Q*:BOOL; (*Relè Luci 1*)
+	Aer_Uffici AT %Q*:BOOL; (*Relè Luci 1*)
+	Aer_Bagni AT %Q* :BOOL; (*Areazione Bagno*)
+	time_now: UINT;
+	GuestIN_OK: BOOL;
+	UserIN_OK: BOOL;
+	HMI_blink: BOOL; //Bit per blink su HMI
+	luci_ufficio_off: BOOL;
+	//Pulsantiera A
+	pulA1 AT %I* :BOOL;
+	pulA2 AT %I* :BOOL;
+	pulA3 AT %I* :BOOL;
+	pulA4 AT %I* :BOOL;
+	//Pulsantiera B
+	pulB1 AT %I* :BOOL;
+	pulB2 AT %I* :BOOL;
+	//Pulsantiera C
+	pulC1 AT %I* :BOOL;
+	//Pulsantiera D
+	pulD1 AT %I* :BOOL;
+	prod_summer_fan: INT;
+	meetingroom_active: BOOL;
+	//Sensori di movimento
+	SM_F1 AT %I*: BOOL;
+	SM_F2 AT %I*: BOOL;
+	SM_F3 AT %I*: BOOL;
+	SM_F4 AT %I*: BOOL;
+	SM_F5 AT %I*: BOOL;
+	SM_S1 AT %I*: BOOL;
+	SM_S2 AT %I*: BOOL;
+	(*SM_R1 AT %I*: BOOL;
+	SM_R2 AT %I*: BOOL;
+	SM_R3 AT %I*: BOOL;
+	SM_R4 AT %I*: BOOL;
+	SM_R5 AT %I*: BOOL;
+	SM_D1 AT %I*: BOOL;*)
+	SM_C1 AT %I*: BOOL;
+	//SM_C2 AT %I*: BOOL;
+	//SM_C3 AT %I*: BOOL;
+	SM_U1 AT %I*: BOOL; //Sensore Ufficio Tecnico
+	SM_U2 AT %I*: BOOL; //Sensore Locale Svago
+	//SM_U3 AT %I*: BOOL; //Sensore Ingresso
+	Tamper_interno AT %I*: BOOL;
+	Tamper_fronte AT %I*: BOOL;
+	Tamper_retro AT %I*: BOOL;
+	Tamper_sinistro AT %I*: BOOL;
+	Segnale_radio AT %Q*: BOOL;
+	Segnale_sirena AT %Q*: BOOL;
+	
+	OFFICE_vhac_MODE:BYTE; //0= ESTATE - 1 INVERNO PDC - 2 INVERNO MISTO
+	gruppo8_arc_level: BYTE;
+	gruppo9_arc_level: BYTE;
+	//Telecamere
+	camera_index: INT;
+	HMI_blink_2: BOOL;
+	HMI_Cancelletto: BOOL;
+	HMI_porta: BOOL;
+	camera_counter: INT;
+	str_camera1: STRING(255);
+	camera1: STRING(255);
+	camera2: STRING(255);
+	camera3: STRING(255);
+	camera4: STRING(255);
+	//Comando luci bagno produzione e spogliatoi
+	count_bagno_prod: INT;
+	timer_bagno_prod: TP;
+	pulse_bagno_prod: TP;
+	luce_bagni: FB_Send_RPS_SwitchAuto;
+	luce_spogliatoio: FB_Send_RPS_SwitchAuto;
+	MOVIMENTO_BAGNO_PROD: EnO_TK_SR_MDS_BAT;
+	RITARDO_LUCE_BAGNO_PROD: TOF;
+	
+	variable_update: BOOL := FALSE;
+	aggiorna_sec: BOOL;
+END_VAR
+VAR_GLOBAL RETAIN PERSISTENT
+	ON:BOOL := TRUE;
+	var_ora_trasp: BOOL;
+	var_ora_dip: BOOL;
+	user_type: ARRAY [1..30] OF BYTE;
+	utenti: ARRAY [1..30] OF struct_utenti;
+	allarme: BOOL;
+	allarme_Attivo: BYTE; //0=OFF 1=Gruppo A 2=Gruppo B 3=Gruppo C 4=Gruppo D
+	HMI_sirena: BOOL; //Per ON-OFF segnale sirena da HMI
+	HMI_radio: BOOL; //Per ON-OFF segnale radio da HMI
+	delay_allarme_on: TIME:=T#150S;
+	delay_sirena_off: TIME:=T#2M;
+	time_IN1:UINT:=0630;
+	time_OUT1:UINT:=1300;
+	time_IN2:UINT:=1300;
+	time_out2:UINT:=1800;
+	time_work_IN1:UINT:=0800;
+	time_work_OUT1:UINT:=1230;
+	time_work_IN2:UINT:=1330;
+	time_work_OUT2:UINT:=1700;
+	saturday_work:BOOL;
+	holidays:BOOL;
+	auto_allarm: BOOL:=TRUE;
+	HeatingdMode : BYTE := 2; (*Modo funzionamento riscaldamento 0= OFF - 1=MAN - 2=AUTO - 3=Estate*)
+	OFFICE_VHAC_EI:BOOL; (*0=INVERNO 1=ESTATE*)
+	estate: BOOL;
+	inverno: BOOL;
+	HMI_TEMPprod : UINT:=170; (*Temperatura di riferimento PRODUZIONE*)
+	HMI_TEMPuff : ARRAY [1..7] OF UINT; //Array temperatura di riferimento UFFICI tec. e prod. è la stessa
+	HMI_var_tempuff : ARRAY [1..7] OF UINT; //Array variazione temperatura ambiente UFFICI
+	HMI_TEMPuff_max: UINT:=280; //Temperatura di riferimento massima UFFICI
+	HMI_TEMPuff_min: UINT:=240; //Temperatura di riferimento minima UFFICI
+	HMI_luci_capannone: BYTE:=250; (*Luminosità luci capannone*)
+	luci_capannone_aut: BOOL:=TRUE;
+	sens_allarme: ARRAY [1..30] OF struct_allarme;
+	sens_allarme_stru: ARRAY [0..30] OF struct_allarme_1; //Array struttura sensori
+	tamper AT %I*: ARRAY [0..30] OF BOOL; //Array segnale tamper sensore
+	alarm_history: ARRAY [1..50] OF STRING;
+	warning_history: ARRAY [1..50] OF STRING;
+	
+	TempOffSabiana1: INT:=450; (*Temperatura Ciller OFF x Sabiana*)
+	TempOffSabiana2: INT:=450; (*Temperatura Ciller OFF x Sabiana*)
+	TempOffSabiana3: INT:=650; (*Temperatura Ciller OFF x Sabiana*)
+	TempOffSabiana4: INT:=550; (*Temperatura Ciller OFF x Sabiana*)
+	TempOffSabiana5: INT:=450; (*Temperatura Ciller OFF x Sabiana*)
+	TempOffSabiana6: INT:=600; (*Temperatura Ciller OFF x Sabiana*)
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

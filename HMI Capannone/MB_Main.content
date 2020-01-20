@@ -1,0 +1,279 @@
+﻿<div id="MB_Main" data-tchmi-type="tchmi-content" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="600" data-tchmi-height="100" data-tchmi-creator-viewport-height="100">
+
+
+
+<div id="TcHmiImage_3" data-tchmi-type="tchmi-image" data-tchmi-height="80" data-tchmi-height-unit="px" data-tchmi-left="100" data-tchmi-left-unit="px" data-tchmi-src="Images/Icone Domotica/Telecamere3.svg" data-tchmi-top="10" data-tchmi-top-unit="px" data-tchmi-width="80" data-tchmi-width-unit="px" data-tchmi-zindex="1">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
+  {
+    "event": "TcHmiImage_3.onPressed",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%TcHmiRegion::TargetContent%/ctrl%",
+        "valueType": "tchmi:framework#/definitions/ContentPath",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:framework#/definitions/ContentPath",
+          "value": "WebCam.content"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "Power User",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "observe",
+    "group": "Power User",
+    "permission": "Allow"
+  }
+]
+</script>
+</div>
+
+<div id="TcHmiImage_19" data-tchmi-type="tchmi-image" data-tchmi-height="80" data-tchmi-height-unit="px" data-tchmi-left="390" data-tchmi-left-unit="px" data-tchmi-src="Images/Icone Domotica/Setting.svg" data-tchmi-top="10" data-tchmi-top-unit="px" data-tchmi-width="80" data-tchmi-width-unit="px" data-tchmi-zindex="1">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiImage_19.onPressed",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%TcHmiRegion_1::TargetContent%/ctrl%",
+        "valueType": "tchmi:framework#/definitions/ContentPath",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:framework#/definitions/ContentPath",
+          "value": "MB_Settings.content"
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%TcHmiRegion::TargetContent%/ctrl%",
+        "valueType": "tchmi:framework#/definitions/ContentPath",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:framework#/definitions/ContentPath",
+          "value": "Gestione_Capannone.content"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "operate",
+    "group": "user",
+    "permission": "Deny"
+  },
+  {
+    "accessright": "observe",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "observe",
+    "group": "user",
+    "permission": "Deny"
+  }
+]
+</script>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+<div id="TcHmiImage_41" data-tchmi-type="tchmi-image" data-tchmi-height="80" data-tchmi-height-unit="px" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-top="10" data-tchmi-top-unit="px" data-tchmi-width="80" data-tchmi-width-unit="px" data-tchmi-zindex="1" data-tchmi-src="Images/Icone Domotica/Home.svg">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiImage_41.onPressed",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%TcHmiRegion::TargetContent%/ctrl%",
+        "valueType": "tchmi:framework#/definitions/ContentPath",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:framework#/definitions/ContentPath",
+          "value": "Main.content"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "Power User",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "observe",
+    "group": "Power User",
+    "permission": "Allow"
+  }
+]
+</script>
+</div>
+
+<div id="TcHmiImage_42" data-tchmi-type="tchmi-image" data-tchmi-height="80" data-tchmi-height-unit="px" data-tchmi-left="190" data-tchmi-left-unit="px"  data-tchmi-top="10" data-tchmi-top-unit="px" data-tchmi-width="80" data-tchmi-width-unit="px" data-tchmi-src="Images/Icone Domotica/Home.svg" data-tchmi-zindex="15">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "TcHmiImage_42.onPressed",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%TcHmiRegion::TargetContent%/ctrl%",
+        "valueType": "tchmi:framework#/definitions/ContentPath",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:framework#/definitions/ContentPath",
+          "value": "Gestione_Capannone.content"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-virtual-control-right-mappings" type="application/json">
+[]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "operate",
+    "group": "user",
+    "permission": "Deny"
+  },
+  {
+    "accessright": "observe",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "observe",
+    "group": "user",
+    "permission": "Deny"
+  }
+]
+</script>
+</div>
+
+</div>

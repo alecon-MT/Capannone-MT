@@ -1,0 +1,945 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="Alarm" Id="{1fb85a97-8a0b-451f-b10d-e0cebcbc9d7e}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Alarm
+VAR
+	Timer_allarme: TON;
+	allarme_tamper:BOOL;
+	Timer_Sirena: TP;
+	alarm_service: BOOL;
+	rilevato_movimento: BOOL;
+	rilevata_manomissione: BOOL;
+	allarme_scattato: BOOL;
+	SR_ainterno: SR;
+	SR_afronte: SR;
+	SR_aretro: SR;
+	SR_asx: SR;
+	SR_allarme: SR;
+	SR_atamper: SR;
+	SR_mensa: SR;
+	SR_ingresso: SR;
+	SR_tecnico: SR;
+	
+	F1_trig: F_TRIG;
+	F2_trig: F_TRIG;
+	F3_trig: F_TRIG;
+	F4_trig: F_TRIG;
+	F5_trig: F_TRIG;
+	S1_trig: F_TRIG;
+	S2_trig: F_TRIG;
+	R1_trig: F_TRIG;
+	R2_trig: F_TRIG;
+	R3_trig: F_TRIG;
+	R4_trig: F_TRIG;
+	R5_trig: F_TRIG;
+	D1_trig: F_TRIG;
+	C1_trig: F_TRIG;
+	C2_trig: F_TRIG;
+	C3_trig: F_TRIG;
+	U1_trig: F_TRIG;
+	U2_trig: F_TRIG;
+	U3_trig: F_TRIG;
+
+	F1_count: INT;
+	F2_count: INT;
+	F3_count: INT;
+	F4_count: INT;
+	F5_count: INT;
+	S1_count: INT;
+	S2_count: INT;
+	R1_count: INT;
+	R2_count: INT;
+	R3_count: INT;
+	R4_count: INT;
+	R5_count: INT;
+	D1_count: INT;
+	C1_count: INT;
+	C2_count: INT;
+	C3_count: INT;
+	U1_count: INT;
+	U2_count: INT;
+	U3_count: INT;
+	radio_count: INT;
+	sirena_count: INT;
+	allarm_trig: R_TRIG;
+	rtrig_radio: R_TRIG;
+	rtrig_sirena: R_TRIG;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[act();
+(*Ritardo avvio allarme su accensione*)
+//Timer_allarme(IN:= allarme, PT:= delay_allarme_on, Q=> allarme_on, ET=> );
+(*Sensori*)
+rilevato_movimento:=
+	NOT (	
+	SM_F1 AND
+	SM_F2 AND
+	SM_F3 AND
+	SM_F4 AND
+	SM_F5 AND
+	SM_S1 AND
+	SM_S2 AND
+	//SM_R1 AND
+	//SM_R2 AND
+	//SM_R3 AND
+	//SM_R4 AND
+	//SM_R5 AND
+	//SM_D1 AND
+	SM_C1 AND
+	//SM_C2 AND
+	//SM_C3 AND
+	SM_U1 AND 
+	SM_U2 //AND
+	//SM_U3 
+	);
+(*rilevata_manomissione:=NOT (Tamper_interno AND Tamper_fronte AND Tamper_retro AND Tamper_sinistro);*)
+(*Ritardo spegnimento sirena*)
+//Timer_Sirena(IN:= timer_Allarme.Q  AND rilevato_movimento, PT:= delay_sirena_off, Q=>, ET=> );
+(*Azioni allarme*)
+(*Segnale_sirena:=(timer_sirena.Q  AND NOT alarm_service) OR test_sirena;*)
+//Segnale_radio:=(timer_sirena.Q AND NOT alarm_service) OR test_radio;
+(*Allarme Tamper*)
+allarme_tamper:=NOT alarm_service AND rilevata_manomissione;
+
+IF allarme_Attivo<>0 (*allarme_on*) THEN
+	//Gestione contatore sensore F1
+	F1_trig(CLK:= SM_F1, Q=> );
+	IF F1_trig.Q THEN
+		F1_count:=F1_count+1;
+	END_IF
+	//Gestione contatore sensore F2
+	F2_trig(CLK:= SM_F2, Q=> );
+	IF F2_trig.Q THEN
+		F2_count:=F2_count+1;
+	END_IF
+	//Gestione contatore sensore F3
+	F3_trig(CLK:= SM_F3, Q=> );
+	IF F3_trig.Q THEN
+		F3_count:=F3_count+1;
+	END_IF
+	//Gestione contatore sensore F4
+	F4_trig(CLK:= SM_F4, Q=> );
+	IF F4_trig.Q THEN
+		F4_count:=F4_count+1;
+	END_IF
+	//Gestione contatore sensore F5
+	F5_trig(CLK:= SM_F5, Q=> );
+	IF F5_trig.Q THEN
+		F5_count:=F5_count+1;
+	END_IF
+	//Gestione contatore sensore S1
+	S1_trig(CLK:= SM_S1, Q=> );
+	IF S1_trig.Q THEN
+		S1_count:=S1_count+1;
+	END_IF
+	//Gestione contatore sensore S2
+	S2_trig(CLK:= SM_S2, Q=> );
+	IF S2_trig.Q THEN
+		S2_count:=S2_count+1;
+	END_IF
+	(*//Gestione contatore sensore R1
+	R1_trig(CLK:= SM_R1, Q=> );
+	IF R1_trig.Q THEN
+		R1_count:=R1_count+1;
+	END_IF
+	//Gestione contatore sensore R2
+	R2_trig(CLK:= SM_R2, Q=> );
+	IF R2_trig.Q THEN
+		R2_count:=R2_count+1;
+	END_IF
+	//Gestione contatore sensore R3
+	R3_trig(CLK:= SM_R3, Q=> );
+	IF R3_trig.Q THEN
+		R3_count:=R3_count+1;
+	END_IF
+	//Gestione contatore sensore R4
+	R4_trig(CLK:= SM_R4, Q=> );
+	IF R4_trig.Q THEN
+		R4_count:=R4_count+1;
+	END_IF
+	//Gestione contatore sensore R5
+	R5_trig(CLK:= SM_R5, Q=> );
+	IF R5_trig.Q THEN
+		R5_count:=R5_count+1;
+	END_IF
+	//Gestione contatore sensore D1
+	D1_trig(CLK:= SM_D1, Q=> );
+	IF D1_trig.Q THEN
+		D1_count:=D1_count+1;
+	END_IF*)
+	//Gestione contatore sensore C1
+	C1_trig(CLK:= SM_C1, Q=> );
+	IF C1_trig.Q THEN
+		C1_count:=C1_count+1;
+	END_IF
+	(*//Gestione contatore sensore C2
+	C2_trig(CLK:= SM_C2, Q=> );
+	IF C2_trig.Q THEN
+		C2_count:=C2_count+1;
+	END_IF
+	//Gestione contatore sensore C3
+	C3_trig(CLK:= SM_C3, Q=> );
+	IF C3_trig.Q THEN
+		C3_count:=C3_count+1;
+	END_IF*)
+	//Gestione contatore sensore U1
+	U1_trig(CLK:= SM_U1, Q=> );
+	IF U1_trig.Q THEN
+		U1_count:=U1_count+1;
+	END_IF
+	//Gestione contatore sensore U2
+	U2_trig(CLK:= SM_U2, Q=> );
+	IF U2_trig.Q THEN
+		U2_count:=U2_count+1;
+	END_IF
+	(*//Gestione contatore sensore U3
+	U3_trig(CLK:= SM_U3, Q=> );
+	IF U3_trig.Q THEN
+		U3_count:=U3_count+1;
+	END_IF*)
+	//Gestione contatore segnale radio e sirena
+	rtrig_radio(CLK:= segnale_radio, Q=> );
+	rtrig_sirena(CLK:= segnale_sirena, Q=> );
+	IF rtrig_radio.Q THEN
+		radio_count:=radio_count+1;
+	END_IF
+	IF rtrig_sirena.Q THEN
+		sirena_count:=sirena_count+1;
+	END_IF
+END_IF
+allarm_trig(CLK:= allarme_Attivo<>0 (*allarme*), Q=> );
+IF allarm_trig.Q THEN
+	F1_count:=0;
+	F2_count:=0;
+	F3_count:=0;
+	F4_count:=0;
+	F5_count:=0;
+	S1_count:=0;
+	S2_count:=0;
+	R1_count:=0;
+	R2_count:=0;
+	R3_count:=0;
+	R4_count:=0;
+	R5_count:=0;
+	D1_count:=0;
+	C1_count:=0;
+	C2_count:=0;
+	C3_count:=0;
+	U1_count:=0;
+	U2_count:=0;
+	U3_count:=0;
+	radio_count:=0;
+	sirena_count:=0;
+END_IF
+//Gestione sensori movimento
+sensori_STRU[0](indice:=0); //Sensore movimento frontale 1
+sensori_STRU[1](indice:=1); //Sensore movimento frontale 2
+sensori_STRU[2](indice:=2); //Sensore movimento frontale 3
+sensori_STRU[3](indice:=3); //Sensore movimento frontale 4
+sensori_STRU[4](indice:=4); //Sensore movimento frontale 5
+sensori_STRU[5](indice:=5); //Sensore movimento sinistro 1
+sensori_STRU[6](indice:=6); //Sensore movimento sinistro 2
+sensori_STRU[7](indice:=7); //Sensore movimento retro 1
+sensori_STRU[8](indice:=8); //Sensore movimento retro 2
+sensori_STRU[9](indice:=9); //Sensore movimento retro 3
+sensori_STRU[10](indice:=10); //Sensore movimento retro 4
+sensori_STRU[11](indice:=11); //Sensore movimento retro 5
+sensori_STRU[12](indice:=12); //Sensore movimento destro
+sensori_STRU[13](indice:=13); //Sensore movimento centrale 1
+sensori_STRU[14](indice:=14); //Sensore movimento centrale 2
+sensori_STRU[15](indice:=15); //Sensore movimento centrale 3
+sensori_STRU[16](indice:=16); //Sensore movimento ufficio tecnico U1
+sensori_STRU[17](indice:=17); //Sensore movimento locale svago U2
+sensori_STRU[18](indice:=18); //Sensore movimento ingresso U3
+
+//Attivazione segnale sirena-radio allarme
+IF ((sens_allarme_Stru[0].allarme_sensore OR 
+	sens_allarme_stru[1].allarme_sensore OR
+	sens_allarme_Stru[2].allarme_sensore OR
+	sens_allarme_stru[3].allarme_sensore OR
+	sens_Allarme_stru[4].allarme_sensore OR
+	sens_allarme_stru[5].allarme_sensore OR
+	sens_allarme_Stru[6].allarme_sensore OR
+	sens_allarme_stru[13].allarme_sensore OR
+	sens_allarme_Stru[16].allarme_sensore OR
+	sens_allarme_Stru[17].allarme_sensore) AND NOT alarm_Service) THEN
+		allarme_scattato:=TRUE;
+ELSE
+		allarme_scattato:=FALSE;
+END_IF
+segnale_sirena:=(allarme_Scattato AND HMI_sirena) OR test_sirena;	
+segnale_radio:=(allarme_scattato AND HMI_radio) OR test_radio;
+ingresso_sens[0]:=SM_F1;
+ingresso_sens[1]:=SM_F2;
+ingresso_sens[2]:=SM_F3;
+ingresso_sens[3]:=SM_F4;
+ingresso_sens[4]:=SM_F5;
+ingresso_sens[5]:=SM_S1;
+ingresso_sens[6]:=SM_S2;
+ingresso_sens[13]:=SM_C1;
+ingresso_sens[16]:=SM_U1;
+ingresso_sens[17]:=SM_U2;]]></ST>
+    </Implementation>
+    <Action Name="ACT" Id="{1e07d8a0-35d1-4acd-9022-39fc95565760}">
+      <Implementation>
+        <NWL>
+          <XmlArchive>
+            <Data>
+              <o xml:space="preserve" t="NWLImplementationObject">
+                <v n="NetworkListComment">""</v>
+                <v n="DefaultViewMode">"Fbd"</v>
+                <l2 n="NetworkList" cet="Network">
+                  <o>
+                    <v n="ILActive">false</v>
+                    <v n="FBDValid">false</v>
+                    <v n="ILValid">false</v>
+                    <l2 n="ILLines" />
+                    <v n="Comment">""</v>
+                    <v n="Title">""</v>
+                    <v n="Label">""</v>
+                    <v n="OutCommented">false</v>
+                    <l2 n="NetworkItems" cet="BoxTreeBox">
+                      <o>
+                        <v n="BoxType">"Sensore_Allarme"</v>
+                        <o n="Instance" t="Operand">
+                          <v n="Operand">"sensori_mov[1]"</v>
+                          <v n="Type">"sensore_allarme"</v>
+                          <v n="Comment">""</v>
+                          <v n="SymbolComment">""</v>
+                          <v n="Address">""</v>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">false</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <v n="LValue">false</v>
+                          <v n="Boolean">false</v>
+                          <v n="IsInstance">true</v>
+                          <v n="Id">32L</v>
+                        </o>
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems" cet="Operand">
+                            <n />
+                            <o>
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">11L</v>
+                            </o>
+                            <o>
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">12L</v>
+                            </o>
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">true</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <n n="InputFlags" />
+                        <l2 n="InputItems" cet="BoxTreeOperand">
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"1"</v>
+                              <v n="Type">"INT"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">14L</v>
+                            </o>
+                            <v n="Id">13L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"SM_C1"</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">16L</v>
+                            </o>
+                            <v n="Id">15L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">18L</v>
+                            </o>
+                            <v n="Id">17L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"'sensore sinistro capannone attivo'"</v>
+                              <v n="Type">"STRING(INT#33)"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">35L</v>
+                            </o>
+                            <v n="Id">34L</v>
+                          </o>
+                        </l2>
+                        <o n="InputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>i_allarme</v>
+                            <v>ingresso</v>
+                            <v>tamper</v>
+                            <v>testo</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>INT</v>
+                            <v>BOOL</v>
+                            <v>BOOL</v>
+                            <v>STRING</v>
+                          </l2>
+                        </o>
+                        <o n="OutputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>segnale_sensore</v>
+                            <v>allarme_sensore</v>
+                            <v>errore</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>BOOL</v>
+                            <v>BOOL</v>
+                            <v>BYTE</v>
+                          </l2>
+                        </o>
+                        <v n="CallType" t="Operator">FunctionBlock</v>
+                        <v n="EN">false</v>
+                        <v n="ENO">false</v>
+                        <n n="STSnippet" />
+                        <v n="ContainsExtensibleInputs">false</v>
+                        <v n="ProvidesSTSnippet">false</v>
+                        <v n="Id">33L</v>
+                      </o>
+                    </l2>
+                    <l2 n="Connectors" />
+                    <v n="Id">1L</v>
+                  </o>
+                  <o>
+                    <v n="ILActive">false</v>
+                    <v n="FBDValid">false</v>
+                    <v n="ILValid">false</v>
+                    <l2 n="ILLines" />
+                    <v n="Comment">""</v>
+                    <v n="Title">""</v>
+                    <v n="Label">""</v>
+                    <v n="OutCommented">false</v>
+                    <l2 n="NetworkItems" cet="BoxTreeBox">
+                      <o>
+                        <v n="BoxType">"Sensore_Allarme"</v>
+                        <o n="Instance" t="Operand">
+                          <v n="Operand">"sensori_mov[2]"</v>
+                          <v n="Type">"sensore_allarme"</v>
+                          <v n="Comment">""</v>
+                          <v n="SymbolComment">""</v>
+                          <v n="Address">""</v>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">false</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <v n="LValue">false</v>
+                          <v n="Boolean">false</v>
+                          <v n="IsInstance">true</v>
+                          <v n="Id">20L</v>
+                        </o>
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems" cet="Operand">
+                            <n />
+                            <o>
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">22L</v>
+                            </o>
+                            <o>
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">23L</v>
+                            </o>
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">false</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <n n="InputFlags" />
+                        <l2 n="InputItems" cet="BoxTreeOperand">
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"2"</v>
+                              <v n="Type">"INT"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">25L</v>
+                            </o>
+                            <v n="Id">24L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">27L</v>
+                            </o>
+                            <v n="Id">26L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">29L</v>
+                            </o>
+                            <v n="Id">28L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"'sensore centrale capannone attivo'"</v>
+                              <v n="Type">"STRING(INT#33)"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">31L</v>
+                            </o>
+                            <v n="Id">30L</v>
+                          </o>
+                        </l2>
+                        <o n="InputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>i_allarme</v>
+                            <v>ingresso</v>
+                            <v>tamper</v>
+                            <v>testo</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>INT</v>
+                            <v>BOOL</v>
+                            <v>BOOL</v>
+                            <v>STRING</v>
+                          </l2>
+                        </o>
+                        <o n="OutputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>segnale_sensore</v>
+                            <v>allarme_sensore</v>
+                            <v>errore</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>BOOL</v>
+                            <v>BOOL</v>
+                            <v>BYTE</v>
+                          </l2>
+                        </o>
+                        <v n="CallType" t="Operator">FunctionBlock</v>
+                        <v n="EN">false</v>
+                        <v n="ENO">false</v>
+                        <n n="STSnippet" />
+                        <v n="ContainsExtensibleInputs">false</v>
+                        <v n="ProvidesSTSnippet">false</v>
+                        <v n="Id">21L</v>
+                      </o>
+                    </l2>
+                    <l2 n="Connectors" />
+                    <v n="Id">19L</v>
+                  </o>
+                  <o>
+                    <v n="ILActive">false</v>
+                    <v n="FBDValid">false</v>
+                    <v n="ILValid">false</v>
+                    <l2 n="ILLines" />
+                    <v n="Comment">""</v>
+                    <v n="Title">""</v>
+                    <v n="Label">""</v>
+                    <v n="OutCommented">false</v>
+                    <l2 n="NetworkItems" cet="BoxTreeBox">
+                      <o>
+                        <v n="BoxType">"Sensore_Allarme"</v>
+                        <o n="Instance" t="Operand">
+                          <v n="Operand">"sensori_mov[3]"</v>
+                          <v n="Type">"sensore_allarme"</v>
+                          <v n="Comment">""</v>
+                          <v n="SymbolComment">""</v>
+                          <v n="Address">""</v>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">false</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <v n="LValue">false</v>
+                          <v n="Boolean">false</v>
+                          <v n="IsInstance">true</v>
+                          <v n="Id">37L</v>
+                        </o>
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems" cet="Operand">
+                            <n />
+                            <o>
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">39L</v>
+                            </o>
+                            <o>
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">40L</v>
+                            </o>
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">false</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <n n="InputFlags" />
+                        <l2 n="InputItems" cet="BoxTreeOperand">
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"3"</v>
+                              <v n="Type">"INT"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">42L</v>
+                            </o>
+                            <v n="Id">41L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"SM_U2"</v>
+                              <v n="Type">"BOOL"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">44L</v>
+                            </o>
+                            <v n="Id">43L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">46L</v>
+                            </o>
+                            <v n="Id">45L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">"'sensore ufficio attivo'"</v>
+                              <v n="Type">"STRING(INT#22)"</v>
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">48L</v>
+                            </o>
+                            <v n="Id">47L</v>
+                          </o>
+                        </l2>
+                        <o n="InputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>i_allarme</v>
+                            <v>ingresso</v>
+                            <v>tamper</v>
+                            <v>testo</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>INT</v>
+                            <v>BOOL</v>
+                            <v>BOOL</v>
+                            <v>STRING</v>
+                          </l2>
+                        </o>
+                        <o n="OutputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>segnale_sensore</v>
+                            <v>allarme_sensore</v>
+                            <v>errore</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>BOOL</v>
+                            <v>BOOL</v>
+                            <v>BYTE</v>
+                          </l2>
+                        </o>
+                        <v n="CallType" t="Operator">FunctionBlock</v>
+                        <v n="EN">false</v>
+                        <v n="ENO">false</v>
+                        <n n="STSnippet" />
+                        <v n="ContainsExtensibleInputs">false</v>
+                        <v n="ProvidesSTSnippet">false</v>
+                        <v n="Id">38L</v>
+                      </o>
+                    </l2>
+                    <l2 n="Connectors" />
+                    <v n="Id">36L</v>
+                  </o>
+                </l2>
+                <v n="BranchCounter">0</v>
+                <v n="ValidIds">true</v>
+              </o>
+            </Data>
+            <TypeList>
+              <Type n="Boolean">System.Boolean</Type>
+              <Type n="BoxTreeBox">{acfc6f68-8e3a-4af5-bf81-3dd512095a46}</Type>
+              <Type n="BoxTreeOperand">{9de7f100-1b87-424c-a62e-45b0cfc85ed2}</Type>
+              <Type n="Flags">{668066f2-6069-46b3-8962-8db8d13d7db2}</Type>
+              <Type n="Int32">System.Int32</Type>
+              <Type n="Int64">System.Int64</Type>
+              <Type n="Network">{d9a99d73-b633-47db-b876-a752acb25871}</Type>
+              <Type n="NWLImplementationObject">{25e509de-33d4-4447-93f8-c9e4ea381c8b}</Type>
+              <Type n="Operand">{c9b2f165-48a2-4a45-8326-3952d8a3d708}</Type>
+              <Type n="Operator">{bffb3c53-f105-4e85-aba2-e30df579d75f}</Type>
+              <Type n="OutputItemList">{f40d3e09-c02c-4522-a88c-dac23558cfc4}</Type>
+              <Type n="ParamList">{71496971-9e0c-4677-a832-b9583b571130}</Type>
+              <Type n="String">System.String</Type>
+            </TypeList>
+          </XmlArchive>
+        </NWL>
+      </Implementation>
+    </Action>
+    <LineIds Name="Alarm">
+      <LineId Id="3" Count="32" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="220" Count="0" />
+      <LineId Id="219" Count="0" />
+      <LineId Id="59" Count="1" />
+      <LineId Id="65" Count="2" />
+      <LineId Id="75" Count="3" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="114" Count="3" />
+      <LineId Id="113" Count="0" />
+      <LineId Id="119" Count="3" />
+      <LineId Id="118" Count="0" />
+      <LineId Id="124" Count="3" />
+      <LineId Id="123" Count="0" />
+      <LineId Id="129" Count="0" />
+      <LineId Id="134" Count="2" />
+      <LineId Id="130" Count="1" />
+      <LineId Id="137" Count="2" />
+      <LineId Id="132" Count="1" />
+      <LineId Id="146" Count="2" />
+      <LineId Id="140" Count="1" />
+      <LineId Id="149" Count="2" />
+      <LineId Id="142" Count="1" />
+      <LineId Id="152" Count="2" />
+      <LineId Id="144" Count="1" />
+      <LineId Id="155" Count="2" />
+      <LineId Id="128" Count="0" />
+      <LineId Id="159" Count="0" />
+      <LineId Id="166" Count="2" />
+      <LineId Id="160" Count="1" />
+      <LineId Id="169" Count="2" />
+      <LineId Id="162" Count="1" />
+      <LineId Id="172" Count="2" />
+      <LineId Id="164" Count="1" />
+      <LineId Id="182" Count="3" />
+      <LineId Id="175" Count="0" />
+      <LineId Id="186" Count="3" />
+      <LineId Id="176" Count="0" />
+      <LineId Id="70" Count="2" />
+      <LineId Id="61" Count="1" />
+      <LineId Id="190" Count="2" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="194" Count="3" />
+      <LineId Id="193" Count="0" />
+      <LineId Id="597" Count="1" />
+      <LineId Id="600" Count="0" />
+      <LineId Id="603" Count="1" />
+      <LineId Id="602" Count="0" />
+      <LineId Id="608" Count="1" />
+      <LineId Id="607" Count="0" />
+      <LineId Id="221" Count="1" />
+      <LineId Id="224" Count="1" />
+      <LineId Id="227" Count="17" />
+      <LineId Id="612" Count="0" />
+      <LineId Id="614" Count="0" />
+      <LineId Id="226" Count="0" />
+      <LineId Id="304" Count="18" />
+      <LineId Id="303" Count="0" />
+      <LineId Id="383" Count="0" />
+      <LineId Id="382" Count="0" />
+      <LineId Id="384" Count="9" />
+      <LineId Id="534" Count="3" />
+      <LineId Id="473" Count="0" />
+      <LineId Id="472" Count="0" />
+      <LineId Id="461" Count="9" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

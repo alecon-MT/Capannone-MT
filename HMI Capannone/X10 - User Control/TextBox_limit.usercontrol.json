@@ -1,0 +1,67 @@
+﻿{
+  "parameters": [
+    {
+      "name": "data-tchmi-value",
+      "displayName": "Value",
+      "visible": true,
+      "type": "tchmi:general#/definitions/Number",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "Value",
+      "propertySetterName": "setValue",
+      "propertyGetterName": "getValue"
+    },
+    {
+      "name": "data-tchmi-max",
+      "displayName": "Max",
+      "visible": true,
+      "type": "tchmi:general#/definitions/Number",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "Max",
+      "propertySetterName": "setMax",
+      "propertyGetterName": "getMax"
+    },
+    {
+      "name": "data-tchmi-min",
+      "displayName": "MIn",
+      "visible": true,
+      "type": "tchmi:general#/definitions/Number",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "MIn",
+      "propertySetterName": "setMIn",
+      "propertyGetterName": "getMIn"
+    },
+    {
+      "name": "data-tchmi-top_pos",
+      "displayName": "Top_Pos",
+      "visible": true,
+      "type": "tchmi:general#/definitions/Number",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "Top_Pos",
+      "propertySetterName": "setTop_Pos",
+      "propertyGetterName": "getTop_Pos"
+    }
+  ],
+  "virtualRights": [],
+  "$schema": "C:/TwinCAT/Functions/TE2000-HMI-Engineering/Infrastructure/TcHmiFramework/Latest/Schema/UserControlConfig.Schema.json",
+  "description": ""
+}

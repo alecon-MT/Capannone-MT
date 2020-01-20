@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.11">
+  <Task Name="PlcTask" Id="{2ebe7dcb-8e83-4135-8b7b-79553ef02259}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>10000</CycleTime>
+    <Priority>20</Priority>
+    <PouCall>
+      <Name>MAIN</Name>
+    </PouCall>
+    <PouCall>
+      <Name>Timbrature</Name>
+    </PouCall>
+    <TaskFBGuid>{f9f9059c-9919-4a14-80eb-642752052e11}</TaskFBGuid>
+    <Fb_init>{018431a9-3a02-4c2c-8e69-36de55e3aa6e}</Fb_init>
+    <Fb_exit>{54826aff-9e6d-44a2-bce6-df16c2c1e55d}</Fb_exit>
+    <CycleUpdate>{05a1b538-9d09-4aa0-bf9e-e3b493749a0a}</CycleUpdate>
+    <PostCycleUpdate>{a9a0c0d8-db6d-4ee4-b111-717e672ddbaa}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

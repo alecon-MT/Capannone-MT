@@ -1,0 +1,34 @@
+{
+    "USERS": {
+        "Default": {
+            "ENABLED": true,
+            "PASSWORD": "9fd955417686b40a23becc7bb05ed2eb097a07c44462749538eeaa3f0d331e81",
+            "SALT": "sr2guGYvpyrh6YR+DdseG9gmN2LMSZ+9XE1IrQDCSx7MkZgwYDwiy5qrAYPtQm/gz4tCAy4XoV7R3GaUfKo7AA=="
+        },
+        "__SystemAdministrator": {
+            "ENABLED": false,
+            "PASSWORD": "",
+            "SALT": ""
+        },
+        "__SystemGuest": {
+            "ENABLED": true,
+            "PASSWORD": "",
+            "SALT": ""
+        },
+        "a.consonni": {
+            "ENABLED": true,
+            "PASSWORD": "1c4d6f3bbff0350db3ee1975d222be64255f42ef3ecce37ea65fa3d1e4699b33",
+            "SALT": "4Ruw3049HmAN/Y/jIHJS8DYtsSosJh2699md6SH1XfVhekisy6NAcnlCTM68e0kyXkePU9tVT5DMFW1rur53AA=="
+        },
+        "l.volonte": {
+            "ENABLED": true,
+            "PASSWORD": "1ed6dac26c8b43bb89c5adaf220a1affb52c76c31e401c75ecc2d3383fa18925",
+            "SALT": "G4MRjdxfty9t5Rf6ple0VaOdHAfqJPM6hxZEa2n1d7f9GLtK+pDLbnqDre7hP3y8q3P8/7kGDTdvv8wfPpfrAA=="
+        },
+        "t.bassi": {
+            "ENABLED": true,
+            "PASSWORD": "4db759b9e7650e7bac7eb1f2efe14af61fdd272e51406a7c572484f8fd0b20e7",
+            "SALT": "8YdkgfYbYre35Ilg5ahzEzSgOemL7yipx4L75aRYfPJurDUz+f16NjCH4dOI7Dw9KbeHv3h0QefgsQt1m10eAA=="
+        }
+    }
+}

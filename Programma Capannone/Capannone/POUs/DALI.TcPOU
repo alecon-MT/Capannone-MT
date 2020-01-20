@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.7">
+  <POU Name="DALI" Id="{33959b3a-1008-42f8-ae25-3fb4612b95a1}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM DALI
+VAR
+	DALI_COMM1: FB_DALIV2Communication;	
+	DALI_IN1 AT %I*: ST_DALIV2InData;
+	DALI_OUT1 AT %Q*: ST_DALIV2OutData;
+	DALI_COMM2: FB_DALIV2Communication;
+	DALI_IN2 AT %I*: ST_DALIV2InData;
+	DALI_OUT2 AT %Q*: ST_DALIV2OutData;
+	DALI_POWER_1: FB_DALIV2DirectArcPowerControl;
+	LAMP_1_OFF: FB_DALIV2Off;
+	office_POWER_1: FB_DALIV2DirectArcPowerControl;
+	office_OFF: FB_DALIV2Off;
+	all_on: BOOL;
+	naddr_on: byte;
+	start_lighton: BOOL;
+	arcpowerlevel: BYTE := 80;
+	light_ON_delay: BYTE;
+	dali_power_start: BOOL;
+	
+	Level_LuceServer: Luci_Mov_Dali;
+	Comando_diretto: FB_DALIV2DirectArcPowerControl;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[DALI_COMM1(
+	bResetMaximumDemandCounter:= , 
+	bResetOverflowCounter:= , 
+	arrBufferDemandMeter=> , 
+	arrBufferMaximumDemandMeter=> , 
+	arrBufferOverflowCounter=> , 
+	bLineIsBusy=> , 
+	bLineIsInitialized=> , 
+	stDALIInData:=DALI_IN1, 
+	stDALIOutData:= DALI_OUT1, 
+	stCommandBuffer:= DALI_BUFFER1);
+	
+DALI_COMM2(
+	bResetMaximumDemandCounter:= , 
+	bResetOverflowCounter:= , 
+	arrBufferDemandMeter=> , 
+	arrBufferMaximumDemandMeter=> , 
+	arrBufferOverflowCounter=> , 
+	bLineIsBusy=> , 
+	bLineIsInitialized=> , 
+	stDALIInData:=DALI_IN2, 
+	stDALIOutData:= DALI_OUT2, 
+	stCommandBuffer:= DALI_BUFFER2);
+
+//comando manuale luce
+comando_diretto(
+	bStart:=  , 
+	nAddr:= , 
+	eAddrType:=, 
+	eCommandPriority:= , 
+	nArcPowerLevel:= , 
+	bBusy=> , 
+	bError=> , 
+	nErrorId=> , 
+	stCommandBuffer:= DALI_BUFFER2);]]></ST>
+    </Implementation>
+    <LineIds Name="DALI">
+      <LineId Id="3" Count="33" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

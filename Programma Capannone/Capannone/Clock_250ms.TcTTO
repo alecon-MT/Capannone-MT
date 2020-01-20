@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.6">
+  <Task Name="Clock_250ms" Id="{3086e330-f581-4d93-9713-4f2b77673cc4}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>250000</CycleTime>
+    <Priority>1</Priority>
+    <PouCall>
+      <Name>TIMER</Name>
+    </PouCall>
+    <TaskFBGuid>{62197fbd-7d0f-4886-9b28-664f4e29d122}</TaskFBGuid>
+    <Fb_init>{714c30db-5869-42c9-8ba7-e1bd4e002e17}</Fb_init>
+    <Fb_exit>{7e27d3a3-5145-473b-a8d9-c84c225886aa}</Fb_exit>
+    <CycleUpdate>{19248b81-9c16-471c-a63e-943e08ef56f1}</CycleUpdate>
+    <PostCycleUpdate>{4a05267f-4307-4e35-b6a8-90d6826b6485}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

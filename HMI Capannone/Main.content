@@ -1,0 +1,798 @@
+﻿<div id="Main" data-tchmi-type="tchmi-content" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="1900" data-tchmi-height="1090" data-tchmi-zindex="1" data-tchmi-creator-viewport-width="1920" data-tchmi-creator-viewport-height="1200">
+
+<div id="Iframe_Meteo" data-tchmi-type="tchmi-iframe" data-tchmi-height="200" data-tchmi-height-unit="px" data-tchmi-left="17" data-tchmi-left-unit="px" data-tchmi-top="89" data-tchmi-top-unit="px" data-tchmi-width="250" data-tchmi-width-unit="px" data-tchmi-src="https://www.ilmeteo.it/box/previsioni.php?citta=1709&amp;type=real1&amp;width=200&amp;ico=1&amp;lang=ita&amp;days=6&amp;font=Arial&amp;fontsize=12&amp;bg=FFFFFF&amp;fg=000000&amp;bgtitle=000000&amp;fgtitle=FFFFFF&amp;bgtab=F0F0F0&amp;fglink=000000" data-tchmi-zindex="1" data-tchmi-background-image-horizontal-alignment="Left" data-tchmi-background-image-vertical-alignment="Bottom">
+
+
+
+
+
+</div>
+
+<div id="TcHmiTextblock_68" data-tchmi-type="tchmi-textblock" data-tchmi-height="60" data-tchmi-height-unit="px" data-tchmi-left="17" data-tchmi-left-unit="px" data-tchmi-text="Situazione" data-tchmi-top="19" data-tchmi-top-unit="px" data-tchmi-width="250" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-size="40" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-horizontal-alignment="Center" data-tchmi-zindex="1">
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="TcHmiTextblock_69" data-tchmi-type="tchmi-textblock" data-tchmi-height="60" data-tchmi-height-unit="px" data-tchmi-left="264" data-tchmi-left-unit="px" data-tchmi-text="Previsione" data-tchmi-top="19" data-tchmi-top-unit="px" data-tchmi-width="220" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-size="40" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-horizontal-alignment="Center" data-tchmi-zindex="1">
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Iframe_Prev_Giorno" data-tchmi-type="tchmi-iframe" data-tchmi-height="400" data-tchmi-height-unit="px" data-tchmi-left="264" data-tchmi-left-unit="px" data-tchmi-top="89" data-tchmi-top-unit="px" data-tchmi-width="220" data-tchmi-width-unit="px" data-tchmi-src="https://www.ilmeteo.it/box/previsioni.php?citta=1709&amp;type=mps1&amp;width=200&amp;ico=1&amp;lang=ita&amp;days=3&amp;font=Arial&amp;fontsize=12&amp;bg=FFFFFF&amp;fg=000000&amp;bgtitle=000000&amp;fgtitle=FFFFFF&amp;bgtab=F0F0F0&amp;fglink=000000" data-tchmi-zindex="1">
+
+
+
+
+
+</div>
+
+<div id="Iframe_Prev_Sett" data-tchmi-type="tchmi-iframe" data-tchmi-height="253" data-tchmi-height-unit="px" data-tchmi-left="507" data-tchmi-left-unit="px" data-tchmi-top="89" data-tchmi-top-unit="px" data-tchmi-width="400" data-tchmi-width-unit="px" data-tchmi-src="https://www.ilmeteo.it/box/previsioni.php?citta=1709&amp;type=day1&amp;width=400&amp;ico=1&amp;lang=ita&amp;days=6&amp;font=Arial&amp;fontsize=12&amp;bg=FFFFFF&amp;fg=000000&amp;bgtitle=000000&amp;fgtitle=FFFFFF&amp;bgtab=F0F0F0&amp;fglink=000000" data-tchmi-zindex="1">
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+</div>
+
+<div id="TcHmiTextblock_70" data-tchmi-type="tchmi-textblock" data-tchmi-height="60" data-tchmi-height-unit="px" data-tchmi-left="507" data-tchmi-left-unit="px" data-tchmi-text="Settimana" data-tchmi-top="19" data-tchmi-top-unit="px" data-tchmi-width="400" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-size="40" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-horizontal-alignment="Center" data-tchmi-zindex="1">
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Image_Telec1" data-tchmi-type="tchmi-image" data-tchmi-height="400" data-tchmi-height-unit="px" data-tchmi-left="928" data-tchmi-left-unit="px"  data-tchmi-top="90" data-tchmi-top-unit="px" data-tchmi-width="760" data-tchmi-width-unit="px" data-tchmi-src="%s%PLC1.GVL.camera1%/s%" data-tchmi-zindex="1">
+
+</div>
+
+<div id="TcHmiTextblock_196" data-tchmi-type="tchmi-textblock" data-tchmi-height="60" data-tchmi-height-unit="px" data-tchmi-left="928" data-tchmi-left-unit="px" data-tchmi-text="Telecamera Ingresso" data-tchmi-top="20" data-tchmi-top-unit="px" data-tchmi-width="760" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-size="40" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-horizontal-alignment="Center" data-tchmi-zindex="1">
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+
+<div id="Image_Staz_Main" data-tchmi-type="tchmi-image" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="41" data-tchmi-left-unit="px" data-tchmi-top="325" data-tchmi-top-unit="px" data-tchmi-width="90" data-tchmi-width-unit="px" data-tchmi-zindex="12" data-tchmi-src="Images/Icone Domotica/Teben MeteoData.jpg">
+
+</div>
+
+<div id="TcHmiRectangle_25" data-tchmi-type="tchmi-rectangle" data-tchmi-height="130" data-tchmi-height-unit="px" data-tchmi-left="30" data-tchmi-left-unit="px" data-tchmi-stroke-thickness="1" data-tchmi-top="315" data-tchmi-top-unit="px" data-tchmi-width="220" data-tchmi-width-unit="px" data-tchmi-zindex="0">
+<script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+<script data-tchmi-target-attribute="data-tchmi-stroke-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 2,
+  "right": 2,
+  "top": 2,
+  "bottom": 2,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+</div>
+
+<div id="Textblock_Temp_Est" data-tchmi-type="tchmi-textblock" data-tchmi-height="25" data-tchmi-height-unit="px" data-tchmi-left="175" data-tchmi-left-unit="px" data-tchmi-text="%f%%s%PLC1.GVL.Temp_OUTSIDE%/s%.toFixed(1) + &quot; °C&quot;%/f%" data-tchmi-top="331" data-tchmi-top-unit="px" data-tchmi-width="60" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-is-enabled="True" data-tchmi-text-font-size="20" data-tchmi-text-horizontal-alignment="Right" data-tchmi-zindex="12">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+
+</div>
+
+<div id="Textblock_Wind" data-tchmi-type="tchmi-textblock" data-tchmi-height="25" data-tchmi-height-unit="px" data-tchmi-left="147" data-tchmi-left-unit="px" data-tchmi-text="%f%%s%PLC1.GVL.wind_speed%/s%.toFixed(2) + &quot; m/s&quot;%/f%" data-tchmi-top="365" data-tchmi-top-unit="px" data-tchmi-width="88" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-is-enabled="True" data-tchmi-text-font-size="20" data-tchmi-text-horizontal-alignment="Right" data-tchmi-zindex="13">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+
+</div>
+
+<div id="Textblock_Lux_Est" data-tchmi-type="tchmi-textblock" data-tchmi-height="25" data-tchmi-height-unit="px" data-tchmi-left="147" data-tchmi-left-unit="px" data-tchmi-top="400" data-tchmi-top-unit="px" data-tchmi-width="88" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-is-enabled="True" data-tchmi-text-font-size="20" data-tchmi-text-horizontal-alignment="Right" data-tchmi-zindex="15" data-tchmi-text="%f%%s%PLC1.GVL.LUX_OUTSIDEF%/s%.toFixed(0) + &quot; Lux&quot;%/f%">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+
+</div>
+
+<div id="Image_Pioggia" data-tchmi-type="tchmi-image" data-tchmi-height="60" data-tchmi-height-unit="px" data-tchmi-left="51" data-tchmi-left-unit="px" data-tchmi-src="Images/Icone Domotica/Pioggia.svg" data-tchmi-top="380" data-tchmi-top-unit="px" data-tchmi-width="60" data-tchmi-width-unit="px" data-tchmi-is-enabled="True" data-tchmi-visibility="Visible" data-tchmi-zindex="16">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%s%PLC1.GVL.RAIN%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.RAIN%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": true
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Image_Pioggia::Visibility%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Visibility",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Visibility",
+              "value": "Visible"
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Image_Pioggia::Visibility%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Visibility",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Visibility",
+              "value": "Hidden"
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+
+<div id="Button_Allarme_Ins" data-tchmi-type="tchmi-button" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="15" data-tchmi-left-unit="px" data-tchmi-top="520" data-tchmi-top-unit="px" data-tchmi-width="270" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="25">
+
+
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 3,
+  "right": 3,
+  "top": 3,
+  "bottom": 3,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "Button_Allarme_Ins.onMouseDown",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.HMI_Allarme%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": true
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "Button_Allarme_Ins.onMouseUp",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.HMI_Allarme%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": false
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%s%PLC1.GVL.allarme_Attivo%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.allarme_Attivo%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BYTE",
+              "value": 0
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Button_Allarme_Ins::Text%/ctrl%",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/String",
+              "value": "INSERIMENTO ALLARME"
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Button_Allarme_Ins::Text%/ctrl%",
+            "valueType": "tchmi:general#/definitions/String",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/String",
+              "value": "ALLARME INSERITO"
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+
+<div id="Image_Stato_KNX" data-tchmi-type="tchmi-image" data-tchmi-height="25" data-tchmi-height-unit="px" data-tchmi-left="42" data-tchmi-left-unit="px"  data-tchmi-top="337" data-tchmi-top-unit="px" data-tchmi-width="25" data-tchmi-width-unit="px" data-tchmi-zindex="17">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%s%PLC1.GVL.stato_temp%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.stato_temp%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": false
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Image_Stato_KNX::Src%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Path",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Path",
+              "value": "Images/Icone Domotica/Spot Verde.svg"
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Image_Stato_KNX::Src%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Path",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Path",
+              "value": "Images/Icone Domotica/Spot Rosso.svg"
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+
+<div id="Checkbox_Alarm" data-tchmi-type="tchmi-checkbox" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="15" data-tchmi-left-unit="px" data-tchmi-top="585" data-tchmi-top-unit="px" data-tchmi-width="35" data-tchmi-width-unit="px" data-tchmi-state-symbol="%s%PLC1.GVL.auto_allarm%/s%" data-tchmi-zindex="3" data-tchmi-visibility="Hidden">
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%s%PLC1.GVL.indice_utente%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%GetCurrentUser::name%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "string",
+              "value": "l.volonte"
+            },
+            "compareOperator": "==",
+            "logic": null
+          },
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%GetCurrentUser::name%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "string",
+              "value": "g.panzeri"
+            },
+            "compareOperator": "==",
+            "logic": "OR"
+          },
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%GetCurrentUser::name%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "string",
+              "value": "c.pifferi"
+            },
+            "compareOperator": "==",
+            "logic": "OR"
+          },
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%GetCurrentUser::name%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "string",
+              "value": "a.consonni"
+            },
+            "compareOperator": "==",
+            "logic": "OR"
+          },
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%GetCurrentUser::name%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "string",
+              "value": "l.accardo"
+            },
+            "compareOperator": "==",
+            "logic": "OR"
+          },
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%GetCurrentUser::name%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "string",
+              "value": "a.mercuri"
+            },
+            "compareOperator": "==",
+            "logic": "OR"
+          },
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%GetCurrentUser::name%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "string",
+              "value": "s.speronati"
+            },
+            "compareOperator": "==",
+            "logic": "OR"
+          },
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%GetCurrentUser::name%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "string",
+              "value": "d.vigano"
+            },
+            "compareOperator": "==",
+            "logic": "OR"
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Checkbox_Alarm::Visibility%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Visibility",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Visibility",
+              "value": "Visible"
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Checkbox_Alarm::Visibility%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Visibility",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Visibility",
+              "value": "Collapsed"
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+
+<div id="Textblock_Alarm" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="60" data-tchmi-left-unit="px" data-tchmi-text="Inserimento Automatico Allarme" data-tchmi-top="585" data-tchmi-top-unit="px" data-tchmi-width="310" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="3" data-tchmi-text-font-size="24" data-tchmi-visibility="Hidden">
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%s%PLC1.GVL.indice_utente%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%GetCurrentUser::name%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "string",
+              "value": "l.volonte"
+            },
+            "compareOperator": "==",
+            "logic": null
+          },
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%GetCurrentUser::name%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "string",
+              "value": "g.panzeri"
+            },
+            "compareOperator": "==",
+            "logic": "OR"
+          },
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%GetCurrentUser::name%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "string",
+              "value": "c.pifferi"
+            },
+            "compareOperator": "==",
+            "logic": "OR"
+          },
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%GetCurrentUser::name%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "string",
+              "value": "a.consonni"
+            },
+            "compareOperator": "==",
+            "logic": "OR"
+          },
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%GetCurrentUser::name%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "string",
+              "value": "l.accardo"
+            },
+            "compareOperator": "==",
+            "logic": "OR"
+          },
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%GetCurrentUser::name%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "string",
+              "value": "a.mercuri"
+            },
+            "compareOperator": "==",
+            "logic": "OR"
+          },
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%GetCurrentUser::name%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "string",
+              "value": "s.speronati"
+            },
+            "compareOperator": "==",
+            "logic": "OR"
+          },
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%GetCurrentUser::name%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "string",
+              "value": "d.vigano"
+            },
+            "compareOperator": "==",
+            "logic": "OR"
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Textblock_Alarm::Visibility%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Visibility",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Visibility",
+              "value": "Visible"
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Textblock_Alarm::Visibility%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Visibility",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Visibility",
+              "value": "Collapsed"
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+
+</div>

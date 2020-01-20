@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="Comando_Luce" Id="{50516c4a-730b-4005-bafc-699fc53e52a7}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Comando_Luce
+VAR_INPUT
+	pulsante: BOOL;
+	ON:BOOL;
+	OFF:BOOL;
+END_VAR
+VAR_OUTPUT
+	LUCE: BOOL;
+	ADV:BOOL;
+END_VAR
+VAR
+	livello_luce: BYTE;
+	pulsa: R_TRIG;
+	advanced_function: TON;
+	adv_Rtrig: R_TRIG;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[pulsa(CLK:= pulsante, Q=> );
+IF pulsa.Q AND luce THEN
+	luce:=FALSE;
+ELSIF pulsa.Q AND NOT luce THEN
+	luce:=TRUE;
+END_IF;
+IF on THEN
+	luce:=TRUE;
+END_IF
+IF OFF THEN
+	luce:=FALSE;
+END_IF
+advanced_function(IN:=pulsante , PT:=T#2S, Q=> , ET=> );
+adv_Rtrig(CLK:=advanced_function.Q , Q=>adv );]]></ST>
+    </Implementation>
+    <LineIds Name="Comando_Luce">
+      <LineId Id="4" Count="12" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

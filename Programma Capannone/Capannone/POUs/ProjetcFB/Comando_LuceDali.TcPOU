@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4020.6">
+  <POU Name="Comando_LuceDali" Id="{0f483970-4194-4fc9-9fb6-011ed425af50}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Comando_LuceDali
+VAR_INPUT
+	pulsante AT %I*: BOOL;
+	ON AT %I*:BOOL;
+	OFF AT %I*:BOOL;
+	up AT %I*:BOOL;
+	down at %I*:BOOL;
+END_VAR
+VAR_OUTPUT
+	light_level: BYTE;
+	ADV:BOOL;
+END_VAR
+VAR
+	livello_luce: BYTE;
+	pulsa: R_TRIG;
+	advanced_function: TON;
+	adv_Rtrig: R_TRIG;
+	luce:BOOL;
+	level: word;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[pulsa(CLK:= pulsante, Q=> );
+IF pulsa.Q AND luce THEN
+	luce:=FALSE;
+ELSIF pulsa.Q AND NOT luce THEN
+	luce:=TRUE;
+END_IF;
+IF on THEN
+	luce:=TRUE;
+END_IF
+IF OFF THEN
+	luce:=FALSE;
+END_IF
+advanced_function(IN:=pulsante , PT:=T#2S, Q=> , ET=> );
+adv_Rtrig(CLK:=advanced_function.Q , Q=>adv );
+
+IF level<2540 AND up AND luce THEN
+	level:=level+1;
+ELSIF level>840 AND down AND luce THEN
+	level:=level-1;
+END_IF
+
+IF luce OR ON THEN
+	light_level:=REAL_TO_BYTE(TRUNC(level/10));
+ELSIF NOT luce OR OFF THEN
+	 light_level:=0;
+END_IF]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

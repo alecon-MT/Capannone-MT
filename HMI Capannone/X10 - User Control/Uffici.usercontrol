@@ -1,0 +1,814 @@
+﻿<div id="Uffici" data-tchmi-type="tchmi-user-control" 
+     data-tchmi-top="0" data-tchmi-left="0" 
+     data-tchmi-width="320" data-tchmi-height="350" data-tchmi-width-unit="px" data-tchmi-height-unit="px"
+     data-tchmi-creator-viewport-width="1024" data-tchmi-creator-viewport-height="768" data-tchmi-zindex="12" data-tchmi-creator-locked="False">
+
+<div id="Text_Lux" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="15" data-tchmi-left-unit="px" data-tchmi-top="56" data-tchmi-top-unit="px" data-tchmi-width="242" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="26" data-tchmi-text="%f%&quot;Luminosità&quot;+%l%Spazio_2punti_spazio%/l%+%pp%LUX%/pp%+&quot; &quot;+&quot;LUX&quot;%/f%" data-tchmi-text-font-size="25" data-tchmi-text-font-size-unit="px" data-tchmi-visibility="Visible" data-tchmi-creator-visibility="Visible">
+
+
+
+
+
+</div>
+
+<div id="Text_Temp" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="15" data-tchmi-left-unit="px" data-tchmi-top="92" data-tchmi-top-unit="px" data-tchmi-width="292" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="12" data-tchmi-creator-locked="False" data-tchmi-text="%f%&quot;Temperatura Attuale&quot;+%l%Spazio_2punti_spazio%/l%+(%pp%Temp%/pp%/10)+&quot; &quot;+&quot;°C&quot;%/f%" data-tchmi-text-font-size="25" data-tchmi-text-font-size-unit="px" data-tchmi-visibility="Visible" data-tchmi-creator-visibility="Visible">
+
+
+
+</div>
+
+<div id="TcHmiRectangle_21" data-tchmi-type="tchmi-rectangle" data-tchmi-height="350" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="320" data-tchmi-width-unit="px" data-tchmi-radius-x="5" data-tchmi-radius-y="5" data-tchmi-zindex="1">
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-fill-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-stroke-color" type="application/json">
+{
+  "color": "rgba(23, 1, 1, 1)"
+}
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 5,
+  "right": 5,
+  "top": 5,
+  "bottom": 5,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-radius" type="application/json">
+{
+  "topLeft": 5.0,
+  "topRight": 5.0,
+  "bottomLeft": 5.0,
+  "bottomRight": 5.0,
+  "topLeftUnit": "px",
+  "topRightUnit": "px",
+  "bottomLeftUnit": "px",
+  "bottomRightUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+</div>
+
+<div id="TcHmiText" data-tchmi-type="tchmi-textblock" data-tchmi-height="35" data-tchmi-height-unit="px" data-tchmi-left="15" data-tchmi-left-unit="px" data-tchmi-top="20" data-tchmi-top-unit="px" data-tchmi-width="242" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="27" data-tchmi-zindex="13" data-tchmi-text="%pp%Text%/pp%" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-size-unit="px">
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+
+</div>
+
+
+
+<div id="Button_Chiudi" data-tchmi-type="tchmi-button" data-tchmi-height="40" data-tchmi-height-unit="px" data-tchmi-left="267" data-tchmi-left-unit="px" data-tchmi-top="20" data-tchmi-top-unit="px" data-tchmi-width="40" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-zindex="22" data-tchmi-creator-visibility="Visible" data-tchmi-background-image="Images/Icone Domotica/X Rossa bordo nero.svg">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "Button_Chiudi.onPressed",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%ctrl%Region_Uffici::Visibility%/ctrl%",
+        "valueType": "tchmi:framework#/definitions/Visibility",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:framework#/definitions/Visibility",
+          "value": "Collapsed"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+
+<div id="ToggleButton_Luci" data-tchmi-type="tchmi-toggle-button" data-tchmi-height="70" data-tchmi-height-unit="px" data-tchmi-left="57" data-tchmi-left-unit="px" data-tchmi-top="176" data-tchmi-top-unit="px" data-tchmi-width="70" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-zindex="15" data-tchmi-creator-visibility="Visible">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "ToggleButton_Luci.onStatePressed",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%pp%Accendi_luce%/pp%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": true
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%pp%Spegni_luce%/pp%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": false
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "ToggleButton_Luci.onStateReleased",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%pp%Accendi_luce%/pp%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": false
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%pp%Spegni_luce%/pp%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": true
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%pp%Luce_ON%/pp%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%pp%Luce_ON%/pp%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 0.0
+            },
+            "compareOperator": "!=",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%ToggleButton_Luci::ToggleState%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/ToggleState",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/ToggleState",
+              "value": "Active"
+            },
+            "asyncWait": true
+          },
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%ToggleButton_Luci::BackgroundImage%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Path",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Path",
+              "value": "Images/Icone Domotica/Lampadina accesa.svg"
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%ToggleButton_Luci::ToggleState%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/ToggleState",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/ToggleState",
+              "value": "Normal"
+            },
+            "asyncWait": true
+          },
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%ToggleButton_Luci::BackgroundImage%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Path",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Path",
+              "value": "Images/Icone Domotica/Lampadina bianca.svg"
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+</div>
+
+<div id="ToggleButton_Cond" data-tchmi-type="tchmi-toggle-button" data-tchmi-height="70" data-tchmi-height-unit="px" data-tchmi-left="195" data-tchmi-left-unit="px" data-tchmi-top="176" data-tchmi-top-unit="px" data-tchmi-width="70" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-creator-visibility="Visible" data-tchmi-zindex="23" data-tchmi-state-symbol="%pp%Cond_ON%/pp%">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "ToggleButton_Cond.onStatePressed",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%pp%Cond_ON_OFF%/pp%",
+        "valueType": "tchmi:general#/definitions/Number",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/Number",
+          "value": 1.0
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "ToggleButton_Cond.onStateReleased",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%pp%Cond_ON_OFF%/pp%",
+        "valueType": "tchmi:general#/definitions/Number",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/Number",
+          "value": 0.0
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%pp%Cond_ON%/pp%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%pp%Cond_ON%/pp%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": true
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%ToggleButton_Cond::ToggleState%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/ToggleState",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/ToggleState",
+              "value": "Active"
+            },
+            "asyncWait": true
+          },
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%ToggleButton_Cond::BackgroundImage%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Path",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Path",
+              "value": "Images/Icone Domotica/Sole.svg"
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%ToggleButton_Cond::ToggleState%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/ToggleState",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/ToggleState",
+              "value": "Normal"
+            },
+            "asyncWait": true
+          },
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%ToggleButton_Cond::BackgroundImage%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Path",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Path",
+              "value": "Images/Icone Domotica/Fiocco di neve.svg"
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%s%PLC1.GVL.OFFICE_VHAC_EI%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.OFFICE_VHAC_EI%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": false
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%ToggleButton_Cond::IsEnabled%/ctrl%",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Boolean",
+              "value": false
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%ToggleButton_Cond::IsEnabled%/ctrl%",
+            "valueType": "tchmi:general#/definitions/Boolean",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Boolean",
+              "value": true
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+</div>
+
+<div id="LinearGauge_Lux" data-tchmi-type="tchmi-linear-gauge" data-tchmi-base-animation-time="1" data-tchmi-height="106" data-tchmi-height-unit="px" data-tchmi-label-range="252" data-tchmi-left="57" data-tchmi-left-unit="px" data-tchmi-show-labels="False" data-tchmi-show-ticks="False" data-tchmi-show-value-text="False" data-tchmi-start-from-zero="False" data-tchmi-top="242" data-tchmi-top-unit="px" data-tchmi-width="208" data-tchmi-width-unit="px" data-tchmi-editable="False" data-tchmi-min-value="73" data-tchmi-max-value="254" data-tchmi-label-font-weight="Normal" data-tchmi-label-position="Right" data-tchmi-zindex="0" data-tchmi-visibility="Visible" data-tchmi-orientation="Horizontal" data-tchmi-grid-column-index="0" data-tchmi-label-font-size="14" data-tchmi-creator-visibility="Visible" data-tchmi-value="%pp%Luce_ON%/pp%">
+
+<script data-tchmi-target-attribute="data-tchmi-value-format" type="application/json">
+{
+  "objectType": "Function",
+  "active": true,
+  "fn": "GaugeValueFormatter",
+  "fnParams": [
+    {
+      "objectType": "StaticValue",
+      "valueType": "tchmi:general#/definitions/Number",
+      "value": 0.0
+    }
+  ]
+}
+</script>
+<script data-tchmi-target-attribute="data-tchmi-tick-definition" type="application/json">
+{
+  "mainTickRange": 63.0,
+  "subTickRange": 0.0
+}
+</script>
+
+
+
+
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "None"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%pp%Luce_ON%/pp%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%pp%Luce_ON%/pp%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 0.0
+            },
+            "compareOperator": "!=",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%LinearGauge_Lux::Value%/ctrl%",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": {
+              "objectType": "Symbol",
+              "symbolExpression": "%pp%Dimmer_Ulux%/pp%"
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%LinearGauge_Lux::Value%/ctrl%",
+            "valueType": "tchmi:general#/definitions/Number",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/String",
+              "value": "0"
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-range" type="application/json">
+[
+  {
+    "color": null,
+    "start": 85.0,
+    "end": 254.0
+  }
+]
+</script>
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-progress-foreground-color" type="application/json">
+{
+  "color": "rgba(0, 128, 0, 1)"
+}
+</script>
+</div>
+
+<div id="Button_-_Lux" data-tchmi-type="tchmi-button" data-tchmi-height="60" data-tchmi-height-unit="px" data-tchmi-left="15" data-tchmi-left-unit="px" data-tchmi-top="265" data-tchmi-top-unit="px" data-tchmi-width="60" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-zindex="24" data-tchmi-visibility="Visible" data-tchmi-creator-visibility="Visible" data-tchmi-background-image="Images/Icone Domotica/Lampadina -.svg">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "Button_-_Lux.onMouseDown",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%pp%Dimmer_PLC%/pp%",
+        "valueType": "tchmi:general#/definitions/Number",
+        "value": {
+          "objectType": "FunctionExpression",
+          "functionExpression": "%pp%Dimmer_PLC%/pp%-12"
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%pp%Dimmer_ON_PLC%/pp%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": false
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "Button_-_Lux.onMouseUp",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%pp%Dimmer_ON_PLC%/pp%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": true
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%pp%Dimmer_PLC%/pp%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%pp%Dimmer_PLC%/pp%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 0.0
+            },
+            "compareOperator": "<=",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Button_-_Lux::Visibility%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Visibility",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Visibility",
+              "value": "Hidden"
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Button_-_Lux::Visibility%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Visibility",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Visibility",
+              "value": "Visible"
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+
+<div id="Button_+_Lux" data-tchmi-type="tchmi-button" data-tchmi-height="60" data-tchmi-height-unit="px" data-tchmi-left="247" data-tchmi-left-unit="px" data-tchmi-top="265" data-tchmi-top-unit="px" data-tchmi-width="60" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-zindex="25" data-tchmi-visibility="Visible" data-tchmi-creator-visibility="Visible" data-tchmi-background-image="Images/Icone Domotica/Lampadina +.svg">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%pp%Dimmer_PLC%/pp%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%pp%Dimmer_PLC%/pp%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/Number",
+              "value": 252.0
+            },
+            "compareOperator": ">=",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Button_+_Lux::Visibility%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Visibility",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Visibility",
+              "value": "Hidden"
+            },
+            "asyncWait": true
+          }
+        ],
+        "false": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%Button_+_Lux::Visibility%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/Visibility",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/Visibility",
+              "value": "Visible"
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "Button_+_Lux.onMouseDown",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%pp%Dimmer_PLC%/pp%",
+        "valueType": "tchmi:general#/definitions/Number",
+        "value": {
+          "objectType": "FunctionExpression",
+          "functionExpression": "%pp%Dimmer_PLC%/pp%+12"
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%pp%Dimmer_ON_PLC%/pp%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": false
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "Button_+_Lux.onMouseUp",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%pp%Dimmer_ON_PLC%/pp%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": true
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+
+
+</div>
+
+<div id="TextBox_limit_Temp" data-tchmi-type="tchmi-user-control-host" data-tchmi-height="45" data-tchmi-height-unit="px" data-tchmi-left="194" data-tchmi-left-unit="px" data-tchmi-target-user-control="X10 - User Control/TextBox_limit.usercontrol" data-tchmi-top="121" data-tchmi-top-unit="px" data-tchmi-width="55" data-tchmi-width-unit="px" data-tchmi-max="%f%(%s%PLC1.GVL.HMI_TEMPuff_max%/s%/10)%/f%" data-tchmi-min="%f%(%s%PLC1.GVL.HMI_TEMPuff_min%/s%/10)%/f%" data-tchmi-zindex="16" data-tchmi-value="%pp%Temp_Rif%/pp%" data-tchmi-visibility="Visible" data-tchmi-creator-visibility="Visible">
+
+
+
+</div>
+
+
+
+
+<div id="Text_Temp_1" data-tchmi-type="tchmi-textblock" data-tchmi-height="30" data-tchmi-height-unit="px" data-tchmi-left="14" data-tchmi-left-unit="px" data-tchmi-top="128" data-tchmi-top-unit="px" data-tchmi-width="272" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="12" data-tchmi-creator-locked="False" data-tchmi-text="%f%&quot;Temp. Impostata&quot;+%l%Spazio_2punti_spazio%/l%+&quot;           &quot;+&quot;°C&quot;%/f%" data-tchmi-text-font-size="25" data-tchmi-text-font-size-unit="px" data-tchmi-visibility="Visible" data-tchmi-creator-visibility="Visible">
+
+
+
+</div>
+
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "rgba(192, 192, 192, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "None",
+  "bottom": "None"
+}
+</script>
+</div>

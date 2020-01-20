@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="Dali_arcpower_control" Id="{ea6133cc-7095-4b53-ae4c-54067864c456}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Dali_arcpower_control
+VAR_INPUT
+	light_level:BYTE; // VALUE FROM 85 TO 254 ADMITTED
+	ADDR:BYTE; //INDIRIZZO DALI DA COMANDARE
+	MODE: E_DALIV2AddrType; //TIPO DI COMANDO DA MANDARE 0=SINGOLO NODO - 1= GROUP - 2 - BROADCAST
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR_IN_OUT
+	daliBuffer:ST_DALIV2CommandBuffer;
+END_VAR
+VAR
+	arcpower: FB_DALIV2DirectArcPowerControl;
+	light_level_temp:BYTE;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF light_level<>light_level_temp THEN
+	arcpower.bStart:=TRUE;
+	light_level_temp:=light_level;
+ELSE 
+	arcpower.bStart:=FALSE;
+END_IF
+arcpower(
+	bStart:= , 
+	nAddr:= ADDR, 
+	eAddrType:=MODE , 
+	eCommandPriority:= , 
+	nArcPowerLevel:=light_level , 
+	bBusy=> , 
+	bError=> , 
+	nErrorId=> , 
+	stCommandBuffer:=daliBuffer);]]></ST>
+    </Implementation>
+    <LineIds Name="Dali_arcpower_control">
+      <LineId Id="3" Count="14" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

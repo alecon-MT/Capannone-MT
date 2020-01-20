@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="Timbrature" Id="{ce7c1d2b-cce7-4416-b587-177b6f00dcbf}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Timbrature
+VAR
+	puls_timbro: BOOL;
+	stringa_2: STRING;
+	stringa:STRING(23);
+	i:STRING;
+	Tempo_scrittura: TP;
+	Tempo_chiusura: TP;
+	chiudi: BOOL;
+	Scrivi_action: F_TRIG;
+	Chiudi_action:F_TRIG;
+	anno: STRING;
+	
+	i_utente_su: R_TRIG;
+	i_utente_giu: R_TRIG;
+	save_par_all: R_TRIG;
+	
+	stampa_report: NT_StartProcess;
+	HMI_stampa: BOOL;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Creazione stringa per file di testo
+anno:=word_to_decstr(ora_plc.TIMESTR.wYear-2000,2);
+IF ekey_scanner_produzione.bGoodFinger THEN
+	stringa:=concat(stringa,'01');
+	stringa:=concat(stringa,WORD_TO_DECSTR(ora_plc.TIMESTR.wMonth,2));
+	stringa:=concat(stringa,WORD_TO_DECSTR(ora_plc.TIMESTR.wDay,2));
+	stringa:=concat(stringa,WORD_TO_DECSTR(ora_plc.TIMESTR.wHour,2));
+	stringa:=concat(stringa,WORD_TO_DECSTR(ora_plc.TIMESTR.wMinute,2));
+	stringa:=concat(stringa,utenti[ekey_scanner_produzione.byRecUserID].num_badge);
+	stringa:=concat(stringa,'0000E');
+	stringa:=concat(stringa,anno);
+	stringa_2:=stringa;
+	stringa:='';
+END_IF
+//Apertura file di testo
+apri_file(
+	sNetId:= , 
+	sPathName:= 'C:\timbrature\Datafil.txt', 
+	nMode:= FOPEN_MODEAPPEND, 
+	ePath:= , 
+	bExecute:= ekey_scanner_produzione.bGoodFinger AND NOT hmi_finger AND NOT hmi_finger_RFID,
+	tTimeout:= , 
+	bBusy=> , 
+	bError=> , 
+	nErrId=> , 
+	hFile=> );
+Tempo_scrittura(IN:= ekey_scanner_produzione.bGoodFinger, PT:=T#1S , Q=> , ET=> );
+//Inserimento orari nel file di testo
+Scrivi_action(CLK:=tempo_scrittura.Q , Q=> );
+inserisci_testo(
+	sNetId:= , 
+	hFile:= apri_file.hFile, 
+	sLine:= concat(stringa_2,'$R$N'), 
+	bExecute:= scrivi_action.Q, 
+	tTimeout:= , 
+	bBusy=> , 
+	bError=> , 
+	nErrId=> );
+Tempo_chiusura(IN:= scrivi_action.Q, PT:= T#1S, Q=> , ET=> );
+
+//Chiusura file di testo
+Chiudi_action(CLK:=tempo_chiusura.Q , Q=> );
+chiudi_file(
+	sNetId:= , 
+	hFile:= apri_file.hFile, 
+	bExecute:= chiudi_action.Q OR chiudi, 
+	tTimeout:= , 
+	bBusy=> , 	
+	bError=> , 
+	nErrId=> );
+	
+//Gestione utenti su HMI
+i_utente_su(CLK:= hmi_utentesu , Q=> );
+i_utente_giu(CLK:= hmi_utentegiu , Q=> );
+IF i_utente_su.Q AND indice_utente<Nmu THEN
+	indice_utente:= indice_utente+1;
+END_IF
+IF i_utente_giu.Q AND indice_utente>1 THEN
+	indice_utente:= indice_utente-1;
+END_IF
+IF i_utente_giu.Q OR i_utente_su.Q OR HMI_annulla THEN
+	HMI_user_type:= utenti[indice_utente].user_type;
+	HMI_num_badge:= utenti[indice_utente].num_badge;
+	HMI_nome_utente:= utenti[indice_utente].nome_utente;
+END_IF;
+save_par_all(CLK:= HMI_save_utente, Q=> );
+IF save_par_all.Q THEN
+	utenti[indice_utente].user_type:= HMI_user_type;
+	utenti[indice_utente].num_badge:= HMI_num_badge;
+	utenti[indice_utente].nome_utente:= HMI_nome_utente;
+END_IF
+
+stampa_report(
+	NETID:= , 
+	PATHSTR:= 'powershell.exe', 
+	DIRNAME:= , 
+	COMNDLINE:= 'Get-Content c:\prova.txt | Out-Printer', 
+	START:= HMI_stampa, 
+	TMOUT:= T#5S, 
+	BUSY=> , 
+	ERR=> , 
+	ERRID=> );]]></ST>
+    </Implementation>
+    <LineIds Name="Timbrature">
+      <LineId Id="27" Count="48" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="166" Count="0" />
+      <LineId Id="168" Count="12" />
+      <LineId Id="190" Count="6" />
+      <LineId Id="214" Count="9" />
+      <LineId Id="213" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

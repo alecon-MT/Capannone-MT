@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="Sensore_Allarme_STRU" Id="{ee67a0b7-c79b-4928-b59a-2f8a53fcd4e4}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Sensore_Allarme_STRU
+VAR_INPUT
+	indice:BYTE;
+END_VAR
+VAR
+	pulse_sensore: TP; //Tempo impulso suono sirena
+	trig_sensore: F_TRIG;
+	Ritardo_Off_Sens: TON; //Ritardo spegnimento sensore
+	att_ritardo_off: BOOL; //Attivazione timer ritardo spegnimento sensore
+	SR_tamper: SR;
+	Ritardo_inserimento: TON;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Conversione tempi ritardi da INT a TIME
+sens_allarme_stru[indice].ritardo_ON:=REAL_TO_TIME(sens_allarme_stru[indice].HMI_Ritardo_ON*1000);
+sens_allarme_stru[indice].ritardo_OFF:=REAL_TO_TIME(sens_allarme_stru[indice].HMI_Ritardo_OFF*1000);
+//Ritardo attivazione sensore
+Ritardo_inserimento(IN:= allarme_attivo<>0, PT:= sens_allarme_stru[indice].ritardo_ON, Q=> , ET=> );
+
+IF sens_allarme_stru[indice].sens_ON_OFF AND Ritardo_inserimento.Q THEN
+	IF 	(allarme_Attivo=1 AND sens_allarme_stru[indice].sens_zonaA) OR
+		(allarme_attivo=2 AND sens_allarme_stru[indice].sens_zonaB) OR
+		(allarme_attivo=3 AND sens_allarme_stru[indice].sens_zonaC) OR
+		(allarme_Attivo=4 AND sens_allarme_stru[indice].sens_zonaD) THEN
+		trig_sensore(CLK:= ingresso_sens[indice], Q=> );
+		IF trig_sensore.Q THEN
+			att_ritardo_off:=TRUE;
+			sens_allarme_stru[indice].sensore_preallarme:=TRUE;
+		END_IF
+		Ritardo_Off_Sens(IN:= att_ritardo_off, PT:= sens_allarme_stru[indice].ritardo_off, Q=> , ET=> );
+		pulse_sensore(IN:= ritardo_off_sens.Q, PT:= T#1M, Q=> sens_allarme_stru[indice].allarme_sensore, ET=> );
+	END_IF
+END_IF
+
+IF allarme_Attivo=0 THEN
+	sens_allarme_stru[indice].allarme_sensore:=FALSE;
+	att_ritardo_off:=FALSE;
+	sens_allarme_stru[indice].sensore_preallarme:=FALSE;
+END_IF
+//Reset allarme sensore
+IF reset_Allarme THEN
+	sens_allarme_stru[indice].allarme_sensore:=FALSE;
+END_IF
+//Gestione tamper sensore
+SR_tamper(SET1:= NOT tamper[indice], RESET:= reset_tamper, Q1=> sens_allarme_stru[indice].tamper_sensore);
+//Designazione bit di stato sensore
+IF NOT sens_allarme_stru[indice].sens_ON_OFF THEN
+	sens_allarme_stru[indice].stato_sensore:=0;
+ELSIF sens_allarme_stru[indice].sens_ON_OFF AND sens_allarme_stru[indice].allarme_sensore THEN
+	sens_allarme_stru[indice].stato_sensore:=1;
+ELSIF NOT tamper[indice] THEN
+	sens_allarme_stru[indice].stato_sensore:=2;
+ELSIF 	sens_allarme_stru[indice].sens_ON_OFF AND
+		((allarme_attivo=1 AND sens_allarme_stru[indice].sens_zonaA) OR
+		(allarme_attivo=2 AND sens_allarme_stru[indice].sens_zonaB) OR
+		(allarme_Attivo=3 AND sens_allarme_stru[indice].sens_zonaC) OR
+		(allarme_attivo=4 AND sens_allarme_stru[indice].sens_zonaD)) AND NOT ingresso_sens[indice] THEN
+	sens_allarme_stru[indice].stato_sensore:=3;
+ELSIF 	sens_allarme_stru[indice].sens_ON_OFF AND
+		((allarme_attivo=1 AND sens_allarme_stru[indice].sens_zonaA) OR
+		(Allarme_attivo=2 AND sens_allarme_stru[indice].sens_zonaB) OR
+		(Allarme_attivo=3 AND sens_allarme_stru[indice].sens_zonaC) OR
+		(Allarme_attivo=4 AND sens_allarme_stru[indice].sens_zonaD)) AND ingresso_sens[indice] THEN
+	sens_allarme_stru[indice].stato_sensore:=4;
+ELSIF sens_allarme_stru[indice].sens_ON_OFF AND ingresso_sens[indice] THEN
+	sens_allarme_stru[indice].stato_sensore:=5;
+ELSIF sens_allarme_stru[indice].sens_ON_OFF AND NOT ingresso_sens[indice] THEN
+	sens_allarme_stru[indice].stato_sensore:=6;
+END_IF
+//Gestione manutenzione sensore
+IF manutenzione_sensore THEN
+	sens_allarme_stru[indice].sens_ON_OFF:=FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Sensore_Allarme_STRU">
+      <LineId Id="468" Count="0" />
+      <LineId Id="466" Count="1" />
+      <LineId Id="449" Count="0" />
+      <LineId Id="451" Count="0" />
+      <LineId Id="454" Count="0" />
+      <LineId Id="135" Count="0" />
+      <LineId Id="193" Count="0" />
+      <LineId Id="371" Count="2" />
+      <LineId Id="209" Count="0" />
+      <LineId Id="284" Count="1" />
+      <LineId Id="448" Count="0" />
+      <LineId Id="289" Count="0" />
+      <LineId Id="303" Count="0" />
+      <LineId Id="282" Count="0" />
+      <LineId Id="195" Count="0" />
+      <LineId Id="408" Count="0" />
+      <LineId Id="162" Count="0" />
+      <LineId Id="169" Count="1" />
+      <LineId Id="205" Count="0" />
+      <LineId Id="395" Count="0" />
+      <LineId Id="202" Count="0" />
+      <LineId Id="334" Count="3" />
+      <LineId Id="283" Count="0" />
+      <LineId Id="300" Count="0" />
+      <LineId Id="179" Count="0" />
+      <LineId Id="183" Count="1" />
+      <LineId Id="186" Count="1" />
+      <LineId Id="189" Count="1" />
+      <LineId Id="192" Count="0" />
+      <LineId Id="374" Count="3" />
+      <LineId Id="293" Count="1" />
+      <LineId Id="379" Count="3" />
+      <LineId Id="295" Count="4" />
+      <LineId Id="185" Count="0" />
+      <LineId Id="304" Count="3" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

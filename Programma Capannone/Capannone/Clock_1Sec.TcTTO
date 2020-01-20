@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.12">
+  <Task Name="Clock_1Sec" Id="{97108a9a-54d6-4c28-93e8-ede0a4c546e8}">
+    <!--CycleTime in micro seconds.-->
+    <CycleTime>1000000</CycleTime>
+    <Priority>21</Priority>
+    <PouCall>
+      <Name>Clock_5Sec_refresh</Name>
+    </PouCall>
+    <PouCall>
+      <Name>Clock_2Sec_refresh_</Name>
+    </PouCall>
+    <TaskFBGuid>{e3ad7be3-c1f1-424c-9b09-0cb7c6406290}</TaskFBGuid>
+    <Fb_init>{9c79d211-2eaf-42fc-828d-333eeb960071}</Fb_init>
+    <Fb_exit>{4aa6bf84-c588-4b90-a842-addb6d38e682}</Fb_exit>
+    <CycleUpdate>{f617aea6-7bcc-4425-ae24-0532dc38b820}</CycleUpdate>
+    <PostCycleUpdate>{b54eb013-9b3d-47de-8382-fc2f43579ee8}</PostCycleUpdate>
+  </Task>
+</TcPlcObject>

@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="F_COIL" Id="{383c0bee-e217-4f3f-b365-59f7c333c072}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK F_COIL
+VAR_INPUT
+	C1_TH2o:BOOL;
+	C2_TH2o:BOOL;
+	mode:BYTE; // 0= ESTATE - 1 INVERNO PDC - 2 INVERNO MISTO 
+	T_AMB:UINT;
+	T_RIF:UINT;
+	Forza_VOpen:BOOL;
+	winterON: BOOL;
+END_VAR
+VAR_OUTPUT
+	C1_VOPEN:BOOL;
+	C2_VOPEN:BOOL;
+	V1:BOOL;
+	V2:BOOL;
+	V3:BOOL;
+	C1_pompa:BOOL;
+	C2_Pompa:BOOL;
+END_VAR
+VAR
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF T_amb>T_rif AND mode=0 AND winterON THEN
+	C1_VOPEN:=TRUE;
+	C2_VOPEN:=FALSE;
+	C1_pompa:=TRUE;
+	C2_Pompa:=FALSE;
+ELSIF (T_amb<=T_rif OR NOT winterON) AND mode=0  THEN
+	C1_VOPEN:=FALSE;
+	C2_VOPEN:=FALSE;
+	C1_pompa:=FALSE;
+	C2_Pompa:=FALSE;
+ELSIF T_amb<T_rif AND mode=1 THEN
+	C1_VOPEN:=TRUE;
+	C2_VOPEN:=FALSE;
+	C1_pompa:=TRUE;
+	C2_Pompa:=FALSE;
+ELSIF T_amb<T_rif AND mode=2 THEN
+	C1_VOPEN:=TRUE;
+	C2_VOPEN:=TRUE;
+	C1_pompa:=TRUE;
+	C2_Pompa:=TRUE;
+ELSIF T_amb>=T_rif AND (MODE=1 OR MODE=2) THEN
+	C1_VOPEN:=FALSE;
+	C2_VOPEN:=FALSE;
+	C1_pompa:=FALSE;
+	C2_Pompa:=FALSE;
+END_IF
+IF Forza_VOpen THEN
+	C1_VOPEN:=TRUE;
+END_IF
+IF MODE=0 AND T_AMB>T_RIF AND winteron THEN
+	V1:=FALSE;
+	V2:=TRUE;
+	V3:=FALSE;
+ELSIF MODE=0 AND (T_AMB<=T_RIF OR NOT winterON) THEN
+	V1:=FALSE;
+	V2:=FALSE;
+	V3:=FALSE;	
+ELSIF  T_amb>(T_rif-5)AND T_amb<T_rif THEN 
+	V1:=TRUE;
+	V2:=FALSE;
+	V3:=FALSE;
+ELSIF (T_amb>(T_rif-10) AND T_amb<T_rif) OR ( T_amb<T_rif AND NOT c1_th2o) THEN 
+	V1:=FALSE;
+	V2:=TRUE;
+	V3:=FALSE;
+ELSIF  T_amb<T_rif AND c1_th2o THEN 
+	V1:=FALSE;
+	V2:=FALSE;
+	V3:=TRUE;
+ELSE
+	V1:=FALSE;
+	V2:=FALSE;
+	V3:=FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="F_COIL">
+      <LineId Id="3" Count="53" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

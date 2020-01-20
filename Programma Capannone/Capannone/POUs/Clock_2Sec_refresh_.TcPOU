@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="Clock_2Sec_refresh_" Id="{56e45688-2d72-4592-86cd-5aed819ea41a}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Clock_2Sec_refresh_
+VAR
+	timer:INT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[timer:=timer+1;
+IF timer=4 THEN
+	timer:=0;
+END_IF
+IF timer < 2 THEN
+	HMI_blink_2:=TRUE;
+ELSE 
+	HMI_blink_2:=FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Clock_2Sec_refresh_">
+      <LineId Id="3" Count="7" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

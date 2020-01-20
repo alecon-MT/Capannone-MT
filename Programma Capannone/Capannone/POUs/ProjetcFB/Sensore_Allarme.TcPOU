@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="Sensore_Allarme" Id="{7d4addef-7b63-4976-b4b8-d1b7b0d86ee8}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Sensore_Allarme
+VAR_INPUT
+	i_allarme: INT;
+	ingresso: BOOL; // segnale fisico sensore BOOL
+	tamper: BOOL;
+	testo: STRING;
+END_VAR
+VAR_OUTPUT
+	segnale_sensore: BOOL;
+	allarme_sensore: BOOL;
+	errore: BYTE; //0=OK-1=allarme attivo-2=dispositivo aperto-3=movimento diffettoso-4=tamper
+END_VAR
+VAR
+	delay_on: TON;
+	a1: BOOL;
+	timer_sendif: TON;//timer per rilevamento sensore difettoso
+	sensore: BOOL;
+	pulse_sensor: TP;
+	
+	x: INT:=1; //Indice per testo allarmi
+	trig_ingresso: F_TRIG;
+	ufficio1: F_TRIG;
+	ufficio2: F_TRIG;
+	ufficio3: F_TRIG;
+	capannone: F_TRIG;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[pulse_sensor(IN:=ingresso , PT:=T#1S , Q=>sensore , ET=> );
+sens_allarme[i_allarme].sens_mov:=TRUE;
+IF sens_allarme[i_allarme].sens_attivo THEN
+	IF (mode_a=0 AND sens_allarme[i_allarme].mode_a0) OR 
+		(mode_a=1 AND sens_allarme[i_allarme].mode_a1) OR
+		(mode_a=2 AND sens_allarme[i_allarme].mode_a2) OR
+		(mode_a=3 AND sens_allarme[i_allarme].mode_a3) OR
+		(mode_a=4 AND sens_allarme[i_allarme].mode_a4) THEN
+		IF sens_allarme[i_allarme].sens_ritardato THEN
+			delay_on(IN:= NOT sensore AND allarme_on, PT:= sens_allarme[i_allarme].delay_allarme, Q=> , ET=> );
+		ELSE
+			a1:=NOT sensore AND allarme_on;	
+		END_IF
+	allarme_sensore:=a1 OR delay_on.Q;
+	END_IF
+END_IF
+timer_sendif(IN:= NOT sensore AND allarme_on, PT:= T#1H, Q=> , ET=> );
+IF sensore THEN
+	errore:=0;
+ELSIF allarme_sensore THEN
+	errore:=1;
+ELSIF sens_allarme[i_allarme].porta_fin AND NOT sensore THEN
+	errore:=2;
+ELSIF NOT sens_allarme[i_allarme].porta_fin AND timer_sendif.Q  THEN
+	errore:=3;
+ELSIF NOT tamper THEN
+	errore:=4;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Sensore_Allarme">
+      <LineId Id="3" Count="27" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

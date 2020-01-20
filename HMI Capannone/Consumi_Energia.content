@@ -1,0 +1,1072 @@
+﻿<div id="Consumi_Energia" data-tchmi-type="tchmi-content" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="1900" data-tchmi-height="1090" data-tchmi-min-height="%f%%/f%" data-tchmi-zindex="2">
+
+<div id="TcHmiTextblock_171" data-tchmi-type="tchmi-textblock" data-tchmi-height="60" data-tchmi-height-unit="px" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-text="Consumi Energetici" data-tchmi-top="10" data-tchmi-top-unit="px" data-tchmi-width="511" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-vertical-alignment="Center" data-tchmi-text-font-size="60" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-horizontal-alignment="Left" data-tchmi-zindex="2" data-tchmi-text-font-size-unit="px">
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+</div>><!-- Generator: Adobe Illustrator 23.0.0, SVG Export Plug-In  -->
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="57.9px" height="81.8px" viewbox="0 0 57.9 81.8" style="enable-background:new 0 0 57.9 81.8;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#4D4D4D;}
+</style>
+<defs>
+</defs>
+<g>
+	<path class="st0" d="M49,61.4v6.7h-3.5v-6.7h-8.8v6.7h-3.5v-6.7h-8.5v6.7h-3.9v-6.7H12v6.7H8.8v-6.7H0v20.5h57.9V61.4H49z
+		 M55.7,79.7H2.1V63.5h4.6v6.7h7.4v-6.7h4.6v6.7h8.1v-6.7H31v6.7h7.8v-6.7h4.6v6.7h7.8v-6.7h4.6V79.7z"></path>
+	<path class="st0" d="M8.3,39.4c0,9.4,14.2,16.5,14.9,16.8l3.6,1.8l-2-3.5c-4-6.9-6.3-11.4-2.5-15.2c2.5-2.6,3.5-5,3.8-6.9
+		c2.2,2.5,3.4,4.9,3.3,7c0,2.3-1.5,3.6-1.5,3.7L25,45.3l3.7-0.2c1.8-0.1,3.2-0.9,4.2-2.2c2.5-3.6,1.4-10.9,0.4-15.3
+		c3.1,2.7,4.9,5.8,5.2,9.2c0.8,9.3-8.9,18.5-9,18.7l-2.3,2.1h3.1c9.2,0,19.2-13.1,19.2-22.4c0-8.7-8.1-22.1-8.4-22.6L35.8,4l3.1,9.7
+		c0.7,2.3,0.8,4.2,0.7,5.7c-3.5-8-13.5-15.5-14-15.9L20.9,0l2.9,5.1c4.4,7.7-2,15.8-4.9,18.9c-2-3.9-6.3-6.4-6.5-6.5l-3.7-2.1l2,3.7
+		c1.5,2.9,0.6,6-0.5,10C9.3,32.2,8.3,35.6,8.3,39.4z M12.6,29.9c0.8-2.8,1.6-5.5,1.4-8.2c1.3,1.2,2.8,2.9,3.3,4.8l0.5,1.9l1.5-1.3
+		c0.5-0.4,10.1-9,8.3-18.7c4,3.6,10.2,10,10.7,15.6l0.3,3.5l2-2.9c0.1-0.1,1.2-1.9,1.5-5c2.3,4.6,5,11,5,15.7c0,3.8-2.1,8.8-5.5,13
+		c-2.4,3-5.1,5.1-7.7,6.2c3.1-3.7,7.7-10.5,7.1-17.8c-0.5-5.2-3.5-9.6-9.1-13.1l-2.8-1.8l1,3.2c0.8,2.7,2.4,9.2,1.8,13.5
+		c-0.3-3.2-2.3-6.6-6.2-10.1l-3-2.7l1,3.9c0,0.2,0.9,3.8-3.2,7.9c-4.2,4.3-2.8,9.1-0.1,14.2c-4-2.6-9.6-7.2-9.6-12.3
+		C10.8,35.9,11.7,32.9,12.6,29.9z"></path>
+</g>
+</svg>
+
+<div id="TcHmiTextblock_173" data-tchmi-type="tchmi-textblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="1230" data-tchmi-left-unit="px" data-tchmi-text="%f%&quot;Temperatua Richiesta Capannone :                 °C &quot;%/f%" data-tchmi-top="373" data-tchmi-top-unit="px" data-tchmi-width="400" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="20" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-zindex="2">
+
+</div>
+
+<div id="TcHmiTextblock_174" data-tchmi-type="tchmi-textblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="1230" data-tchmi-left-unit="px" data-tchmi-text="%f%&quot;Umidità Attuale Capannone : &quot; + %s%PLC1.GVL.HMI_Umidita%/s% + &quot; %&quot;%/f%" data-tchmi-top="303" data-tchmi-top-unit="px" data-tchmi-width="400" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-horizontal-alignment="Left" data-tchmi-zindex="2" data-tchmi-text-font-size="20" data-tchmi-is-enabled="True">
+
+
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+</div>s%PLC1.GVL.HMI_TEMPprod%/s%
+
+<div id="TcHmiTextbox_24" data-tchmi-type="tchmi-textbox" data-tchmi-height="30" data-tchmi-height-unit="px" data-tchmi-left="1509" data-tchmi-left-unit="px" data-tchmi-text="%f%%s%PLC1.GVL.HMI_TEMPprod%/s% / 10%/f%" data-tchmi-top="373" data-tchmi-top-unit="px" data-tchmi-width="60" data-tchmi-width-unit="px" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="20" data-tchmi-zindex="2">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
+  {
+    "event": "TcHmiTextbox_24.onTextChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.HMI_TEMPprod%/s%",
+        "valueType": "tchmi:general#/definitions/UINT",
+        "value": {
+          "objectType": "FunctionExpression",
+          "functionExpression": "%ctrl%TcHmiTextbox_24::Text%/ctrl% * 10"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "operate",
+    "group": "user",
+    "permission": "Deny"
+  },
+  {
+    "accessright": "observe",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "observe",
+    "group": "user",
+    "permission": "Allow"
+  }
+]
+</script>
+</div>
+
+<div id="TcHmiTextbox_25" data-tchmi-type="tchmi-textbox" data-tchmi-height="25" data-tchmi-height-unit="px" data-tchmi-left="560" data-tchmi-left-unit="px" data-tchmi-text="%f%%s%PLC1.GVL.TempOffSabiana1%/s% / 10%/f%" data-tchmi-top="180" data-tchmi-top-unit="px" data-tchmi-width="40" data-tchmi-width-unit="px" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="15" data-tchmi-zindex="3">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
+  {
+    "event": "TcHmiTextbox_25.onTextChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.TempOffSabiana1%/s%",
+        "valueType": "tchmi:general#/definitions/INT",
+        "value": {
+          "objectType": "FunctionExpression",
+          "functionExpression": "%ctrl%TcHmiTextbox_25::Text%/ctrl% * 10"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "operate",
+    "group": "user",
+    "permission": "Deny"
+  },
+  {
+    "accessright": "observe",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "observe",
+    "group": "user",
+    "permission": "Allow"
+  }
+]
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+</div>
+
+<div id="TcHmiTextblock_176" data-tchmi-type="tchmi-textblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="523" data-tchmi-left-unit="px" data-tchmi-text="%f%&quot;T_off               °C &quot;%/f%" data-tchmi-top="180" data-tchmi-top-unit="px" data-tchmi-width="105" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="15" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="2">
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+</div>
+
+<div id="TcHmiTextbox_26" data-tchmi-type="tchmi-textbox" data-tchmi-height="25" data-tchmi-height-unit="px" data-tchmi-left="560" data-tchmi-left-unit="px" data-tchmi-text="%f%%s%PLC1.GVL.TempOffSabiana2%/s% / 10%/f%" data-tchmi-top="410" data-tchmi-top-unit="px" data-tchmi-width="40" data-tchmi-width-unit="px" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="15" data-tchmi-zindex="3">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
+  {
+    "event": "TcHmiTextbox_26.onTextChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.TempOffSabiana2%/s%",
+        "valueType": "tchmi:general#/definitions/INT",
+        "value": {
+          "objectType": "FunctionExpression",
+          "functionExpression": "%ctrl%TcHmiTextbox_26::Text%/ctrl% * 10"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "operate",
+    "group": "user",
+    "permission": "Deny"
+  },
+  {
+    "accessright": "observe",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "observe",
+    "group": "user",
+    "permission": "Allow"
+  }
+]
+</script>
+</div>
+
+<div id="TcHmiTextblock_177" data-tchmi-type="tchmi-textblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="523" data-tchmi-left-unit="px" data-tchmi-text="%f%&quot;T_off               °C &quot;%/f%" data-tchmi-top="410" data-tchmi-top-unit="px" data-tchmi-width="105" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="15" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="2">
+
+</div>
+
+<div id="TcHmiTextbox_27" data-tchmi-type="tchmi-textbox" data-tchmi-height="25" data-tchmi-height-unit="px" data-tchmi-left="740" data-tchmi-left-unit="px" data-tchmi-text="%f%%s%PLC1.GVL.TempOffSabiana3%/s% / 10%/f%" data-tchmi-top="287" data-tchmi-top-unit="px" data-tchmi-width="40" data-tchmi-width-unit="px" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="15" data-tchmi-zindex="3">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
+  {
+    "event": "TcHmiTextbox_27.onTextChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.TempOffSabiana3%/s%",
+        "valueType": "tchmi:general#/definitions/INT",
+        "value": {
+          "objectType": "FunctionExpression",
+          "functionExpression": "%ctrl%TcHmiTextbox_27::Text%/ctrl% * 10"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "operate",
+    "group": "user",
+    "permission": "Deny"
+  },
+  {
+    "accessright": "observe",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "observe",
+    "group": "user",
+    "permission": "Allow"
+  }
+]
+</script>
+</div>
+
+<div id="TcHmiTextblock_178" data-tchmi-type="tchmi-textblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="703" data-tchmi-left-unit="px" data-tchmi-text="%f%&quot;T_off               °C &quot;%/f%" data-tchmi-top="287" data-tchmi-top-unit="px" data-tchmi-width="105" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="15" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="2">
+
+</div>
+
+<div id="TcHmiTextbox_28" data-tchmi-type="tchmi-textbox" data-tchmi-height="25" data-tchmi-height-unit="px" data-tchmi-left="915" data-tchmi-left-unit="px" data-tchmi-text="%f%%s%PLC1.GVL.TempOffSabiana4%/s% / 10%/f%" data-tchmi-top="180" data-tchmi-top-unit="px" data-tchmi-width="40" data-tchmi-width-unit="px" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="15" data-tchmi-zindex="3">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
+  {
+    "event": "TcHmiTextbox_28.onTextChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.TempOffSabiana4%/s%",
+        "valueType": "tchmi:general#/definitions/INT",
+        "value": {
+          "objectType": "FunctionExpression",
+          "functionExpression": "%ctrl%TcHmiTextbox_28::Text%/ctrl% * 10"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "operate",
+    "group": "user",
+    "permission": "Deny"
+  },
+  {
+    "accessright": "observe",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "observe",
+    "group": "user",
+    "permission": "Allow"
+  }
+]
+</script>
+</div>
+
+<div id="TcHmiTextblock_179" data-tchmi-type="tchmi-textblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="881" data-tchmi-left-unit="px" data-tchmi-text="%f%&quot;T_off               °C &quot;%/f%" data-tchmi-top="180" data-tchmi-top-unit="px" data-tchmi-width="105" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="15" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="2">
+
+</div>
+
+<div id="TcHmiTextbox_29" data-tchmi-type="tchmi-textbox" data-tchmi-height="25" data-tchmi-height-unit="px" data-tchmi-left="918" data-tchmi-left-unit="px" data-tchmi-text="%f%%s%PLC1.GVL.TempOffSabiana5%/s% /10%/f%" data-tchmi-top="410" data-tchmi-top-unit="px" data-tchmi-width="40" data-tchmi-width-unit="px" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="15" data-tchmi-zindex="3">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
+  {
+    "event": "TcHmiTextbox_29.onTextChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.TempOffSabiana5%/s%",
+        "valueType": "tchmi:general#/definitions/INT",
+        "value": {
+          "objectType": "FunctionExpression",
+          "functionExpression": "%ctrl%TcHmiTextbox_29::Text%/ctrl% * 10"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "operate",
+    "group": "user",
+    "permission": "Deny"
+  },
+  {
+    "accessright": "observe",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "observe",
+    "group": "user",
+    "permission": "Allow"
+  }
+]
+</script>
+</div>
+
+<div id="TcHmiTextblock_180" data-tchmi-type="tchmi-textblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="881" data-tchmi-left-unit="px" data-tchmi-text="%f%&quot;T_off               °C &quot;%/f%" data-tchmi-top="410" data-tchmi-top-unit="px" data-tchmi-width="105" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="15" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="2">
+
+</div>
+
+<div id="TcHmiTextbox_30" data-tchmi-type="tchmi-textbox" data-tchmi-height="25" data-tchmi-height-unit="px" data-tchmi-left="1099" data-tchmi-left-unit="px" data-tchmi-text="%f%%s%PLC1.GVL.TempOffSabiana6%/s% / 10%/f%" data-tchmi-top="287" data-tchmi-top-unit="px" data-tchmi-width="40" data-tchmi-width-unit="px" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-font-size="15" data-tchmi-zindex="3">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
+  {
+    "event": "TcHmiTextbox_30.onTextChanged",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.GVL.TempOffSabiana6%/s%",
+        "valueType": "tchmi:general#/definitions/INT",
+        "value": {
+          "objectType": "FunctionExpression",
+          "functionExpression": "%ctrl%TcHmiTextbox_30::Text%/ctrl% * 10"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(0, 0, 0, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-access-config" type="application/json">
+[
+  {
+    "accessright": "operate",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "operate",
+    "group": "user",
+    "permission": "Deny"
+  },
+  {
+    "accessright": "observe",
+    "group": "Administartor",
+    "permission": "Allow"
+  },
+  {
+    "accessright": "observe",
+    "group": "user",
+    "permission": "Allow"
+  }
+]
+</script>
+</div>
+
+<div id="TcHmiTextblock_181" data-tchmi-type="tchmi-textblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="1063" data-tchmi-left-unit="px" data-tchmi-text="%f%&quot;T_off               °C &quot;%/f%" data-tchmi-top="287" data-tchmi-top-unit="px" data-tchmi-width="105" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="15" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="2">
+
+</div>
+
+
+<script data-tchmi-target-attribute="data-tchmi-box-shadow" type="application/json">
+[
+  {
+    "color": {
+      "color": "None"
+    },
+    "offsetX": 0.0,
+    "offsetXUnit": "px",
+    "offsetY": 0.0,
+    "offsetYUnit": "px",
+    "inset": false,
+    "blur": 0.0,
+    "blurUnit": "px",
+    "spread": 0.0,
+    "spreadUnit": "px"
+  }
+]
+</script>
+
+<div id="TcHmiToggleButton_15" data-tchmi-type="tchmi-toggle-button" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="1245" data-tchmi-left-unit="px" data-tchmi-text="FORZA" data-tchmi-top="71" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-state-symbol="%s%PLC1.Riscaldamento.riscaldamento_man%/s%">
+
+</div>
+
+<div id="TcHmiToggleButton_16" data-tchmi-type="tchmi-toggle-button" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="524" data-tchmi-left-unit="px" data-tchmi-text="FORZA" data-tchmi-top="482" data-tchmi-top-unit="px" data-tchmi-width="69" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-state-symbol="%s%PLC1.Riscaldamento.forza_Sabiana2L%/s%">
+
+</div>
+
+<div id="TcHmiToggleButton_17" data-tchmi-type="tchmi-toggle-button" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="605" data-tchmi-left-unit="px" data-tchmi-text="FORZA" data-tchmi-top="482" data-tchmi-top-unit="px" data-tchmi-width="69" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-state-symbol="%s%PLC1.Riscaldamento.forza_Sabiana3L%/s%">
+
+</div>
+
+<div id="TcHmiToggleButton_18" data-tchmi-type="tchmi-toggle-button" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="688" data-tchmi-left-unit="px" data-tchmi-text="FORZA" data-tchmi-top="482" data-tchmi-top-unit="px" data-tchmi-width="69" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-state-symbol="%s%PLC1.Riscaldamento.forza_Sabiana4L%/s%">
+
+</div>
+
+<div id="TcHmiToggleButton_19" data-tchmi-type="tchmi-toggle-button" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="774" data-tchmi-left-unit="px" data-tchmi-text="FORZA" data-tchmi-top="482" data-tchmi-top-unit="px" data-tchmi-width="69" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-state-symbol="%s%PLC1.Riscaldamento.forza_Sabiana5L%/s%">
+
+</div>
+
+<div id="TcHmiToggleButton_20" data-tchmi-type="tchmi-toggle-button" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="852" data-tchmi-left-unit="px" data-tchmi-text="FORZA" data-tchmi-top="482" data-tchmi-top-unit="px" data-tchmi-width="69" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-state-symbol="%s%PLC1.Riscaldamento.forza_Sabiana6L%/s%">
+
+</div>
+
+<div id="TcHmiCheckbox_8" data-tchmi-type="tchmi-checkbox" data-tchmi-height="20" data-tchmi-height-unit="px" data-tchmi-left="524" data-tchmi-left-unit="px" data-tchmi-top="208" data-tchmi-top-unit="px" data-tchmi-width="20" data-tchmi-width-unit="px" data-tchmi-toggle-group="%i%numero%/i%" data-tchmi-is-enabled="%s%PLC1.Riscaldamento.riscaldamento_man%/s%" data-tchmi-state-symbol="%s%PLC1.Riscaldamento.sab1_state%/s%">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
+  {
+    "event": "TcHmiCheckbox_8.onMouseClick",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.Riscaldamento.forza_Sabiana1L%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": false
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.Riscaldamento.forza_Sabiana1H%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": false
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+</div>
+
+<div id="TcHmiCheckbox_9" data-tchmi-type="tchmi-checkbox" data-tchmi-height="20" data-tchmi-height-unit="px" data-tchmi-left="524" data-tchmi-left-unit="px" data-tchmi-top="233" data-tchmi-top-unit="px" data-tchmi-width="20" data-tchmi-width-unit="px" data-tchmi-toggle-group="%i%numero%/i%" data-tchmi-is-enabled="%s%PLC1.Riscaldamento.riscaldamento_man%/s%">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
+  {
+    "event": "TcHmiCheckbox_9.onMouseClick",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.Riscaldamento.forza_Sabiana1L%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": true
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.Riscaldamento.forza_Sabiana1H%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": false
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+</div>
+
+<div id="TcHmiCheckbox_10" data-tchmi-type="tchmi-checkbox" data-tchmi-height="20" data-tchmi-height-unit="px" data-tchmi-left="524" data-tchmi-left-unit="px" data-tchmi-top="258" data-tchmi-top-unit="px" data-tchmi-width="20" data-tchmi-width-unit="px" data-tchmi-toggle-group="%i%numero%/i%" data-tchmi-is-enabled="%s%PLC1.Riscaldamento.riscaldamento_man%/s%">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
+  {
+    "event": "TcHmiCheckbox_10.onMouseClick",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.Riscaldamento.forza_Sabiana1L%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": false
+        },
+        "asyncWait": true
+      },
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%s%PLC1.Riscaldamento.forza_Sabiana1H%/s%",
+        "valueType": "tchmi:general#/definitions/BOOL",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/BOOL",
+          "value": true
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+</div>
+
+<div id="TcHmiTextblock_182" data-tchmi-type="tchmi-textblock" data-tchmi-height="20" data-tchmi-height-unit="px" data-tchmi-left="548" data-tchmi-left-unit="px" data-tchmi-text="%f%'OFF'%/f%" data-tchmi-top="205" data-tchmi-top-unit="px" data-tchmi-width="60" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="15" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="2">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
+  {
+    "event": "%s%PLC1.GVL.aggiorna_sec%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.Sabiana1L%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": false
+            },
+            "compareOperator": "==",
+            "logic": null
+          },
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.Sabiana2L%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": false
+            },
+            "compareOperator": "==",
+            "logic": "AND"
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%TcHmiTextblock_182::TextColor%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/SolidColor",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/SolidColor",
+              "value": {
+                "color": "rgba(0, 255, 0, 1)"
+              }
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.Sabiana1L%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": true
+            },
+            "compareOperator": "==",
+            "logic": null
+          },
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.Sabiana2L%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": true
+            },
+            "compareOperator": "==",
+            "logic": "OR"
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%TcHmiTextblock_182::TextColor%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/SolidColor",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/SolidColor",
+              "value": {
+                "color": "rgba(0, 0, 0, 1)"
+              }
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+</div>
+
+<div id="TcHmiTextblock_183" data-tchmi-type="tchmi-textblock" data-tchmi-height="20" data-tchmi-height-unit="px" data-tchmi-left="552" data-tchmi-left-unit="px" data-tchmi-text="%f%'SLOW'%/f%" data-tchmi-top="233" data-tchmi-top-unit="px" data-tchmi-width="60" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="15" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="2">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
+  {
+    "event": "%s%PLC1.GVL.aggiorna_sec%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.Sabiana1L%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": true
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%TcHmiTextblock_183::TextColor%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/SolidColor",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/SolidColor",
+              "value": {
+                "color": "rgba(0, 255, 0, 1)"
+              }
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.Sabiana1L%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": false
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%TcHmiTextblock_183::TextColor%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/SolidColor",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/SolidColor",
+              "value": {
+                "color": "rgba(0, 0, 0, 1)"
+              }
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+</div>
+
+<div id="TcHmiTextblock_184" data-tchmi-type="tchmi-textblock" data-tchmi-height="20" data-tchmi-height-unit="px" data-tchmi-left="552" data-tchmi-left-unit="px" data-tchmi-text="%f%'FAST'%/f%" data-tchmi-top="258" data-tchmi-top-unit="px" data-tchmi-width="60" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-horizontal-alignment="Left" data-tchmi-text-font-size="15" data-tchmi-background-image-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center" data-tchmi-zindex="2">
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">[
+  {
+    "event": "%s%PLC1.GVL.aggiorna%/s%",
+    "actions": [
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.Sabiana1H%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": true
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%TcHmiTextblock_184::TextColor%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/SolidColor",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/SolidColor",
+              "value": {
+                "color": "rgba(0, 255, 0, 1)"
+              }
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "Condition",
+        "active": true,
+        "expressions": [
+          {
+            "compare1": {
+              "objectType": "Symbol",
+              "symbolExpression": "%s%PLC1.GVL.Sabiana1H%/s%"
+            },
+            "compare2": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:general#/definitions/BOOL",
+              "value": false
+            },
+            "compareOperator": "==",
+            "logic": null
+          }
+        ],
+        "true": [
+          {
+            "objectType": "WriteToSymbol",
+            "active": true,
+            "symbolExpression": "%ctrl%TcHmiTextblock_184::TextColor%/ctrl%",
+            "valueType": "tchmi:framework#/definitions/SolidColor",
+            "value": {
+              "objectType": "StaticValue",
+              "valueType": "tchmi:framework#/definitions/SolidColor",
+              "value": {
+                "color": "rgba(0, 0, 0, 1)"
+              }
+            },
+            "asyncWait": true
+          }
+        ],
+        "asyncWait": true
+      }
+    ]
+  }
+]</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 0,
+  "right": 0,
+  "top": 0,
+  "bottom": 0,
+  "leftUnit": "",
+  "rightUnit": "",
+  "topUnit": "",
+  "bottomUnit": null
+}
+</script>
+</div>
+
+</div>

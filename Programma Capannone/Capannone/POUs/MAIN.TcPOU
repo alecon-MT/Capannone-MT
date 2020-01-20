@@ -1,0 +1,581 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="MAIN" Id="{e0859f41-33d8-4113-9dbe-37c16c52d498}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	SAVE_RETAIN: FB_S_UPS_CX51x0;
+	puls_chiamata AT %I*: BOOL;
+	sirena_canc AT %Q*: BOOL;
+	apert_canc AT %Q*: BOOL;
+	Sirena_cancello: TP;
+	apertura_porta_ingr: TP;
+	apert_canc1 : BOOL; //Apertura cancello per trasportatori
+	apert_canc2 : BOOL; //Apertura cancello per dipendenti
+	apert_canc3 : BOOL; //Apertura cancello con sensore e con allarme
+	compr_pistone AT %Q* : BOOL;
+	compr_vite AT %Q* : BOOL;
+	luce : ARRAY [1..10] OF comando_luce;
+	
+	//controllo Energia
+	energy_ch1_control AT %Q* : USINT;
+	energy_ch2_control AT %Q* : USINT;
+	energy_ch3_control AT %Q* : USINT;
+	energy_ch1_dataIN AT %I* : INT;
+	energy_ch2_dataIN AT %I* : INT;
+	energy_ch3_dataIN AT %I* : INT;
+	energy_ch1_state AT %I* : USINT;
+	energy_ch2_state AT %I* : USINT;
+	energy_ch3_state AT %I* : USINT;
+	energy_function:INT;
+	
+	//Tempo_Cancello_trasp: RS;
+	//Tempo_Cancello_Dip: RS;
+	Entrata_Trasp: TP;
+	timer_allarme: TON;
+	Energydata_update: R_TRIG;
+	alarm_counter: INT;
+	Accensione_luci: F_TRIG;
+	Spegnimento_luci: R_TRIG;
+	Delay_allarme: TON;
+	led_allarmeon: BOOL;
+	ins_allarme: R_TRIG;
+	ins_AUTOallarme: F_TRIG;
+	allarme_off: R_TRIG;
+	puls_allarme: TON;
+	HMI_puls_allarme: TON; //Inserimento allarme da pannello
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//ads_CX8080();
+enocean();
+DALI();
+Ekey();
+RISCALDAMENTO();
+luci();
+ULUX();
+KNX();
+Alarm();
+// Salvataggio dati con UPS Interno
+SAVE_RETAIN(
+	sNetID:= '', 
+	iPLCPort:= 851, 
+	iUPSPort:= , 
+	tTimeout:= , 
+	eUpsMode:= , 
+	ePersistentMode:= , 
+	tRecoverTime:= , 
+	bPowerFailDetect=> , 
+	eState=> );
+
+(*Gestione e Conversione ORA*)
+time_now := (ORA_PLC.TIMESTR.wHour*100)+ ora_plc.TIMESTR.wMinute;
+(*Gestione Orari GUEST*)
+GuestIN_OK:= ((time_now>=time_work_IN1 AND time_now<=time_work_OUT1)
+			OR (time_now>=time_work_IN2 AND time_now<=time_work_OUT2))
+			AND allarme_Attivo=0;
+(*Gestione Orari USER*)
+IF holidays OR ora_plc.TIMESTR.wDayOfWeek=0 THEN
+	USERIN_OK:=FALSE;
+ELSIF (ora_plc.TIMESTR.wDayOfWeek=6 AND saturday_work) AND (time_now>=time_IN1 AND time_now<=time_OUT1) THEN
+	USERIN_OK:=TRUE;
+ELSIF (ora_plc.TIMESTR.wDayOfWeek>=1 AND ora_plc.TIMESTR.wDayOfWeek<=5) AND ((time_now>=time_IN1 AND time_now<=time_OUT1)
+																		OR (time_now>=time_IN2 AND time_now<=time_OUT2)) THEN
+	USERIN_OK:=TRUE;
+ELSE
+	USERIN_OK:=FALSE;	
+END_IF
+(*Segnale allarme*)
+(*allarme_off(CLK:= time_now=0730, Q=> );
+IF allarme_off.Q THEN
+	allarme:=FALSE;
+END_IF*)
+//Inserimento allarme con pulsante a muro o HMI
+puls_allarme(IN:= puld1, PT:= T#5S, Q=> , ET=> );
+HMI_puls_allarme(IN:= HMI_Allarme, PT:= T#5S, Q=> , ET=> );
+IF puls_allarme.Q OR hmi_puls_allarme.Q THEN
+	allarme_Attivo:=1;
+END_IF
+ins_allarme(CLK:= time_now=1730, Q=> );
+ins_AUTOallarme(CLK:= time_now=1730, Q=> );
+IF ins_allarme.Q AND auto_allarm THEN
+	allarme_Attivo:=1;
+END_IF
+IF ins_AUTOallarme.Q THEN
+	auto_allarm:=TRUE;
+END_IF
+luce[1].pulsante:=TRUE;
+//Compressori
+compr_vite:=TRUE;
+compr_pistone:=allarme_Attivo=0;
+
+//--> GESTIONE CANCELLO
+//Apertura cancello per tipo utente per dipendenti + spegnimento allarme
+IF ekey_scanner_cancello.bGoodFinger AND utenti[ekey_scanner_cancello.byRecUserID].user_type=3 THEN
+	apert_canc2:=TRUE;
+	allarme_attivo:=0;
+ELSIF ekey_scanner_cancello.bGoodFinger AND utenti[ekey_scanner_cancello.byRecUserID].user_type=0 AND userin_OK THEN
+	apert_canc2:=TRUE;
+	allarme_Attivo:=0;
+ELSE
+	apert_canc2:=FALSE;
+END_IF
+//Spegnimento allarme con scanner ingresso
+IF ekey_scanner_ingresso.bGoodFinger AND utenti[ekey_scanner_cancello.byRecUserID].user_type=3 THEN
+	allarme_Attivo:=0;
+END_IF
+//Spegnimento allarme automatico con scanner ingresso per pulizia
+IF ekey_scanner_ingresso.bGoodFinger AND ekey_scanner_ingresso.byRecUserID=26 AND allarme_Attivo=0 AND time_now<1730 THEN
+	auto_allarm:=FALSE;
+END_IF
+//Apertura porta ingresso con ekey e HMI
+apertura_porta_ingr(IN:= (ekey_scanner_ingresso.bGoodFinger AND allarme_Attivo=0) OR HMI_porta, PT:= T#1S, Q=> out_Pingresso, ET=> );
+//Apertura cancello con pulsante per trasportatori
+IF puls_chiamata AND guestin_ok THEN
+	apert_canc1:=TRUE;
+ELSE
+	apert_canc1:=FALSE;
+END_IF
+//Apertura cancello con sensore auto e con allarme
+timer_allarme(IN:= allarme_Attivo<>0, PT:= delay_allarme_on, Q=> , ET=> );
+apert_canc3:=NOT timer_Allarme.Q AND sens_cancello_auto;
+
+apert_canc:=apert_canc1 OR apert_canc2 OR apert_canc3 OR hmi_cancello OR IN_CITOR1;
+Sirena_cancello(IN:= puls_chiamata, PT:= T#5S, Q=> sirena_canc, ET=> );
+
+//Apertura cancello pedonale
+OUT_Pcanc_ped:=IN_CITOR2 OR HMI_Cancelletto;
+//<-- GESTIONE CANCELLO
+
+//Controllo Energia	
+CASE energy_function OF
+	0:	energy_ch1_control :=0;
+		IF energy_ch1_control=energy_ch1_state THEN
+			HMI_currentL1:=energy_ch1_dataIN;
+			energy_function:=energy_function+1;
+		END_IF;
+	1:	energy_ch2_control :=0;
+		IF energy_ch2_control=energy_ch2_state THEN
+			HMI_currentL2:=energy_ch2_dataIN;
+			energy_function:=energy_function+1;
+		END_IF;
+	2:	energy_ch3_control :=0;
+		IF energy_ch3_control=energy_ch3_state THEN
+			HMI_currentL3:=energy_ch3_dataIN;
+			energy_function:=energy_function+1;
+		END_IF;
+	3:	energy_ch1_control :=1;
+		IF energy_ch1_control=energy_ch1_state THEN
+			HMI_voltageL1:=energy_ch1_dataIN;
+			energy_function:=energy_function+1;
+		END_IF;
+	4:	energy_ch2_control :=1;
+		IF energy_ch2_control=energy_ch2_state THEN
+			HMI_voltageL2:=energy_ch2_dataIN;
+			energy_function:=energy_function+1;
+		END_IF;
+	5:	energy_ch3_control :=1;
+		IF energy_ch3_control=energy_ch3_state THEN
+			HMI_voltageL3:=energy_ch3_dataIN;
+			energy_function:=energy_function+1;
+		END_IF;	
+	6:	energy_ch1_control :=2;
+		IF energy_ch1_control=energy_ch1_state THEN
+			HMI_PowerL1:=energy_ch1_dataIN;
+			energy_function:=energy_function+1;
+		END_IF;
+	7:	energy_ch2_control :=2;
+		IF energy_ch2_control=energy_ch2_state THEN
+			HMI_PowerL2:=energy_ch2_dataIN;
+			energy_function:=energy_function+1;
+		END_IF;
+	8:	energy_ch3_control :=2;
+		IF energy_ch3_control=energy_ch3_state THEN
+			HMI_PowerL3:=energy_ch3_dataIN;
+			energy_function:=energy_function+1;
+		END_IF;	
+	9:	energy_ch1_control :=4;
+		IF energy_ch1_control=energy_ch1_state THEN
+			HMI_energyL1:=energy_ch1_dataIN;
+			energy_function:=energy_function+1;
+		END_IF;
+	10:	energy_ch2_control :=4;
+		IF energy_ch2_control=energy_ch2_state THEN
+			HMI_energyL2:=energy_ch2_dataIN;
+			energy_function:=energy_function+1;
+		END_IF;
+	11:	energy_ch3_control :=4;
+		IF energy_ch3_control=energy_ch3_state THEN
+			HMI_energyL3:=energy_ch3_dataIN;
+			energy_function:=energy_function+1;
+		END_IF;	
+	12:	energy_ch1_control :=8;
+		IF energy_ch1_control=energy_ch1_state THEN
+			HMI_frequencyL1:=energy_ch1_dataIN;
+			energy_function:=energy_function+1;
+		END_IF;
+	13:	energy_ch2_control :=8;
+		IF energy_ch2_control=energy_ch2_state THEN
+			HMI_frequencyL2:=energy_ch2_dataIN;
+			energy_function:=energy_function+1;
+		END_IF;
+	14:	energy_ch3_control :=8;
+		IF energy_ch3_control=energy_ch3_state THEN
+			HMI_frequencyL3:=energy_ch3_dataIN;
+			energy_function:=0;
+		END_IF;	
+END_CASE;]]></ST>
+    </Implementation>
+    <Action Name="ACT" Id="{85c3a37f-9c0f-43f9-9b74-f1aa6adfbeb0}">
+      <Implementation>
+        <NWL>
+          <XmlArchive>
+            <Data>
+              <o xml:space="preserve" t="NWLImplementationObject">
+                <v n="NetworkListComment">""</v>
+                <v n="DefaultViewMode">"Fbd"</v>
+                <l2 n="NetworkList" cet="Network">
+                  <o>
+                    <v n="ILActive">false</v>
+                    <v n="FBDValid">false</v>
+                    <v n="ILValid">false</v>
+                    <l2 n="ILLines" />
+                    <v n="Comment">""</v>
+                    <v n="Title">""</v>
+                    <v n="Label">""</v>
+                    <v n="OutCommented">false</v>
+                    <l2 n="NetworkItems" cet="BoxTreeBox">
+                      <o>
+                        <v n="BoxType">"Comando_Luce"</v>
+                        <o n="Instance" t="Operand">
+                          <v n="Operand">"luce[1]"</v>
+                          <v n="Type">"comando_luce"</v>
+                          <v n="Comment">""</v>
+                          <v n="SymbolComment">""</v>
+                          <v n="Address">""</v>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">false</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <v n="LValue">false</v>
+                          <v n="Boolean">false</v>
+                          <v n="IsInstance">true</v>
+                          <v n="Id">3L</v>
+                        </o>
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems" cet="Operand">
+                            <n />
+                            <o>
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">5L</v>
+                            </o>
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">false</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <n n="InputFlags" />
+                        <l2 n="InputItems" cet="BoxTreeOperand">
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">7L</v>
+                            </o>
+                            <v n="Id">6L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">9L</v>
+                            </o>
+                            <v n="Id">8L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">11L</v>
+                            </o>
+                            <v n="Id">10L</v>
+                          </o>
+                        </l2>
+                        <o n="InputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>pulsante</v>
+                            <v>ON</v>
+                            <v>OFF</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>BOOL</v>
+                            <v>BOOL</v>
+                            <v>BOOL</v>
+                          </l2>
+                        </o>
+                        <o n="OutputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>LUCE</v>
+                            <v>ADV</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>BOOL</v>
+                            <v>BOOL</v>
+                          </l2>
+                        </o>
+                        <v n="CallType" t="Operator">FunctionBlock</v>
+                        <v n="EN">false</v>
+                        <v n="ENO">false</v>
+                        <n n="STSnippet" />
+                        <v n="ContainsExtensibleInputs">false</v>
+                        <v n="ProvidesSTSnippet">false</v>
+                        <v n="Id">4L</v>
+                      </o>
+                    </l2>
+                    <l2 n="Connectors" />
+                    <v n="Id">2L</v>
+                  </o>
+                  <o>
+                    <v n="ILActive">false</v>
+                    <v n="FBDValid">false</v>
+                    <v n="ILValid">false</v>
+                    <l2 n="ILLines" />
+                    <v n="Comment">""</v>
+                    <v n="Title">""</v>
+                    <v n="Label">""</v>
+                    <v n="OutCommented">false</v>
+                    <l2 n="NetworkItems" cet="BoxTreeBox">
+                      <o>
+                        <v n="BoxType">"Comando_Luce"</v>
+                        <o n="Instance" t="Operand">
+                          <v n="Operand">"luce[2]"</v>
+                          <v n="Type">"comando_luce"</v>
+                          <v n="Comment">""</v>
+                          <v n="SymbolComment">""</v>
+                          <v n="Address">""</v>
+                          <o n="Flags" t="Flags">
+                            <v n="Flags">0</v>
+                            <v n="Fixed">false</v>
+                            <v n="Extensible">false</v>
+                          </o>
+                          <v n="LValue">false</v>
+                          <v n="Boolean">false</v>
+                          <v n="IsInstance">true</v>
+                          <v n="Id">12L</v>
+                        </o>
+                        <o n="OutputItems" t="OutputItemList">
+                          <l2 n="OutputItems" cet="Operand">
+                            <n />
+                            <o>
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">true</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">14L</v>
+                            </o>
+                          </l2>
+                        </o>
+                        <o n="Flags" t="Flags">
+                          <v n="Flags">0</v>
+                          <v n="Fixed">false</v>
+                          <v n="Extensible">false</v>
+                        </o>
+                        <n n="InputFlags" />
+                        <l2 n="InputItems" cet="BoxTreeOperand">
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">16L</v>
+                            </o>
+                            <v n="Id">15L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">18L</v>
+                            </o>
+                            <v n="Id">17L</v>
+                          </o>
+                          <o>
+                            <o n="Operand" t="Operand">
+                              <v n="Operand">""</v>
+                              <n n="Type" />
+                              <v n="Comment">""</v>
+                              <v n="SymbolComment">""</v>
+                              <v n="Address">""</v>
+                              <o n="Flags" t="Flags">
+                                <v n="Flags">0</v>
+                                <v n="Fixed">false</v>
+                                <v n="Extensible">false</v>
+                              </o>
+                              <v n="LValue">false</v>
+                              <v n="Boolean">false</v>
+                              <v n="IsInstance">false</v>
+                              <v n="Id">20L</v>
+                            </o>
+                            <v n="Id">19L</v>
+                          </o>
+                        </l2>
+                        <o n="InputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>pulsante</v>
+                            <v>ON</v>
+                            <v>OFF</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>BOOL</v>
+                            <v>BOOL</v>
+                            <v>BOOL</v>
+                          </l2>
+                        </o>
+                        <o n="OutputParam" t="ParamList">
+                          <l2 n="Names" cet="String">
+                            <v>LUCE</v>
+                            <v>ADV</v>
+                          </l2>
+                          <l2 n="Types" cet="String">
+                            <v>BOOL</v>
+                            <v>BOOL</v>
+                          </l2>
+                        </o>
+                        <v n="CallType" t="Operator">FunctionBlock</v>
+                        <v n="EN">false</v>
+                        <v n="ENO">false</v>
+                        <n n="STSnippet" />
+                        <v n="ContainsExtensibleInputs">false</v>
+                        <v n="ProvidesSTSnippet">false</v>
+                        <v n="Id">13L</v>
+                      </o>
+                    </l2>
+                    <l2 n="Connectors" />
+                    <v n="Id">1L</v>
+                  </o>
+                </l2>
+                <v n="BranchCounter">0</v>
+                <v n="ValidIds">true</v>
+              </o>
+            </Data>
+            <TypeList>
+              <Type n="Boolean">System.Boolean</Type>
+              <Type n="BoxTreeBox">{acfc6f68-8e3a-4af5-bf81-3dd512095a46}</Type>
+              <Type n="BoxTreeOperand">{9de7f100-1b87-424c-a62e-45b0cfc85ed2}</Type>
+              <Type n="Flags">{668066f2-6069-46b3-8962-8db8d13d7db2}</Type>
+              <Type n="Int32">System.Int32</Type>
+              <Type n="Int64">System.Int64</Type>
+              <Type n="Network">{d9a99d73-b633-47db-b876-a752acb25871}</Type>
+              <Type n="NWLImplementationObject">{25e509de-33d4-4447-93f8-c9e4ea381c8b}</Type>
+              <Type n="Operand">{c9b2f165-48a2-4a45-8326-3952d8a3d708}</Type>
+              <Type n="Operator">{bffb3c53-f105-4e85-aba2-e30df579d75f}</Type>
+              <Type n="OutputItemList">{f40d3e09-c02c-4522-a88c-dac23558cfc4}</Type>
+              <Type n="ParamList">{71496971-9e0c-4677-a832-b9583b571130}</Type>
+              <Type n="String">System.String</Type>
+            </TypeList>
+          </XmlArchive>
+        </NWL>
+      </Implementation>
+    </Action>
+    <LineIds Name="MAIN">
+      <LineId Id="3" Count="8" />
+      <LineId Id="13" Count="35" />
+      <LineId Id="283" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="330" Count="0" />
+      <LineId Id="51" Count="3" />
+      <LineId Id="332" Count="0" />
+      <LineId Id="56" Count="4" />
+      <LineId Id="62" Count="7" />
+      <LineId Id="334" Count="0" />
+      <LineId Id="71" Count="1" />
+      <LineId Id="333" Count="0" />
+      <LineId Id="74" Count="2" />
+      <LineId Id="235" Count="1" />
+      <LineId Id="331" Count="0" />
+      <LineId Id="234" Count="0" />
+      <LineId Id="218" Count="0" />
+      <LineId Id="225" Count="0" />
+      <LineId Id="233" Count="0" />
+      <LineId Id="222" Count="0" />
+      <LineId Id="77" Count="95" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

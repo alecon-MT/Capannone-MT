@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="Speed_Sabiana" Id="{35dc02f2-544a-4b2b-b30a-93f825c851b5}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Speed_Sabiana
+VAR_INPUT
+	modo : BYTE;(*Tipo Velocità*)
+	Hmodo: BYTE ;(*tipo riscaldamento*)
+	Tzona: UINT; (*Temperatura attuale della zona*)
+	Trif:UINT;	(*temperatura di riferimento programmata*)
+	Hspeed:BOOL; (*per forzare veloctà alta*)
+	TH20:BOOL;
+	TCiller:INT;
+	TCiller1:BOOL;
+	Toffciller:INT;
+END_VAR
+VAR_OUTPUT
+	L :BOOL;
+	H :BOOL;
+	pompa:BOOL;
+END_VAR
+VAR
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[	(*--Sabiana X --*)
+	//TCiller1:=Toffciller-Tciller(*Tciller/10*);
+	IF Tciller>(Toffciller+1) THEN
+		tciller1:=TRUE;
+	ELSIF tciller<toffciller THEN
+		tciller1:=FALSE;
+	END_IF
+	IF 	Hmodo=0 THEN
+			L :=FALSE;
+			H :=FALSE;
+			pompa:=FALSE;
+	ELSIF Hmodo=1 THEN
+		pompa:=TRUE;
+		IF modo=1 THEN
+			L :=TRUE;
+			H :=FALSE;
+		ELSIF modo=2 THEN
+			L :=FALSE;
+			H :=TRUE;
+		ELSE
+			L :=FALSE;
+			H :=FALSE;
+		END_IF;
+	ELSIF Hmodo=2 THEN
+		IF tzona<Trif AND NOT Hspeed AND tciller1(*>Toffciller*) THEN
+			L :=TRUE AND TH20;
+			H :=FALSE;
+			pompa:=TRUE;
+		ELSIF tzona<Trif AND Hspeed AND Tciller1(*>Toffciller*) THEN
+			L :=FALSE;
+			H :=TRUE AND TH20;
+			pompa:=TRUE;
+		ELSIF tzona>=Trif OR Tciller<=Toffciller THEN
+			L :=FALSE;
+			H :=FALSE;
+			pompa:=FALSE;
+		END_IF
+	ELSIF Hmodo=3 THEN
+		IF prod_summer_fan=0 THEN
+			L :=FALSE;
+			H :=FALSE;
+			pompa:=FALSE;
+		ELSIF prod_summer_fan=1 THEN
+			L :=TRUE;
+			H :=FALSE;
+			pompa:=FALSE;
+		ELSIF prod_summer_fan=2 THEN
+			L :=FALSE;
+			H :=TRUE;
+			pompa:=FALSE;
+		END_IF
+	END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Speed_Sabiana">
+      <LineId Id="3" Count="0" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="71" Count="1" />
+      <LineId Id="74" Count="0" />
+      <LineId Id="76" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="4" Count="43" />
+      <LineId Id="49" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

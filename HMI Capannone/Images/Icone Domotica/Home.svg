@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 23.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Livello_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 60 60" style="enable-background:new 0 0 60 60;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{fill:#FFFFFF;}
+	.st2{fill:#1D1D1B;}
+</style>
+<g id="Sfondo">
+	<g>
+		
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="30" y1="0.39" x2="30" y2="59.39" gradientTransform="matrix(1 0 0 -1 0 59.89)">
+			<stop  offset="0" style="stop-color:#E6E6EB"/>
+			<stop  offset="0.1738" style="stop-color:#E2E2E6"/>
+			<stop  offset="0.352" style="stop-color:#D5D4D8"/>
+			<stop  offset="0.5323" style="stop-color:#C0BFC2"/>
+			<stop  offset="0.7139" style="stop-color:#A4A2A4"/>
+			<stop  offset="0.8949" style="stop-color:#828282"/>
+			<stop  offset="1" style="stop-color:#6B6E6E"/>
+		</linearGradient>
+		<path class="st0" d="M10,59.5c-5.2,0-9.5-4.3-9.5-9.5V10c0-5.2,4.3-9.5,9.5-9.5h40c5.2,0,9.5,4.3,9.5,9.5v40
+			c0,5.2-4.3,9.5-9.5,9.5H10z"/>
+		<path class="st1" d="M50,1c5,0,9,4,9,9v40c0,5-4,9-9,9H10c-5,0-9-4-9-9V10c0-5,4-9,9-9H50 M50,0H10C4.5,0,0,4.5,0,10v40
+			c0,5.5,4.5,10,10,10h40c5.5,0,10-4.5,10-10V10C60,4.5,55.5,0,50,0L50,0z"/>
+	</g>
+</g>
+<path class="st2" d="M43.5,18.7V9.9h-6V13L30,5.9L5.6,29l6.9,0v25.1h14.9V41.5h5.1v12.6h15.1V29l6.8,0L43.5,18.7z M45.7,27v25.1
+	H34.5V39.5h-9v12.6h-11V27l-3.9,0L30,8.6l9.5,9v-5.7h2.1v7.7l7.9,7.5L45.7,27z"/>
+</svg>

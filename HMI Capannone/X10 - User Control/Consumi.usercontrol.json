@@ -1,0 +1,82 @@
+﻿{
+  "parameters": [
+    {
+      "name": "data-tchmi-text",
+      "displayName": "Text",
+      "visible": true,
+      "type": "tchmi:general#/definitions/String",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "Text",
+      "propertySetterName": "setText",
+      "propertyGetterName": "getText"
+    },
+    {
+      "name": "data-tchmi-l1",
+      "displayName": "L1",
+      "visible": true,
+      "type": "tchmi:general#/definitions/INT",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "L1",
+      "propertySetterName": "setL1",
+      "propertyGetterName": "getL1"
+    },
+    {
+      "name": "data-tchmi-l2",
+      "displayName": "L2",
+      "visible": true,
+      "type": "tchmi:general#/definitions/INT",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "L2",
+      "propertySetterName": "setL2",
+      "propertyGetterName": "getL2"
+    },
+    {
+      "name": "data-tchmi-l3",
+      "displayName": "L3",
+      "visible": true,
+      "type": "tchmi:general#/definitions/INT",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "L3",
+      "propertySetterName": "setL3",
+      "propertyGetterName": "getL3"
+    },
+    {
+      "name": "data-tchmi-unita_misura",
+      "displayName": "unita_misura",
+      "visible": true,
+      "type": "tchmi:general#/definitions/String",
+      "category": "",
+      "description": "",
+      "requiredOnCompile": false,
+      "readOnly": false,
+      "bindable": true,
+      "heritable": true,
+      "propertyName": "unita_misura",
+      "propertySetterName": "setUnita_misura",
+      "propertyGetterName": "getUnita_misura"
+    }
+  ],
+  "virtualRights": [],
+  "$schema": "C:/TwinCAT/Functions/TE2000-HMI-Engineering/Infrastructure/TcHmiFramework/Latest/Schema/UserControlConfig.Schema.json",
+  "description": ""
+}

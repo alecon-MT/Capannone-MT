@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="Luci_Mov_Dali" Id="{0b41dd4e-fe15-45b6-b8a5-1c4a4dbbdc62}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK Luci_Mov_Dali
+VAR_INPUT
+	Movimento:BOOL;
+	Delay:TIME;
+	Addr:BYTE;
+	Lux:WORD;
+END_VAR
+VAR_OUTPUT
+END_VAR
+VAR
+	Tempo_oFF: TOF;
+	mempower: WORD;
+	Luce: FB_DALIV2DirectArcPowerControl;
+	power:BYTE;
+	TRx:BOOL;
+	timer:WORD;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[timer:=Timer+1;
+Tempo_oFF(IN:=Movimento , PT:=Delay , Q=> , ET=> );
+IF Tempo_off.Q THEN 
+	power:=254;
+ELSE
+	power:=0;
+END_IF
+IF power=0 AND lux>30 AND timer=25000 THEN
+	TRx:=TRUE;
+ELSIF power <> mempower THEN
+	TRx:=TRUE;
+	mempower:=power;
+ELSE
+	TRx:=FALSE;
+END_IF
+Luce(
+	bStart:=TRx  , 
+	nAddr:=ADDR, 
+	eAddrType:= 0, 
+	eCommandPriority:= , 
+	nArcPowerLevel:=power , 
+	bBusy=> , 
+	bError=> , 
+	nErrorId=> , 
+	stCommandBuffer:=DALI_BUFFER2 );
+	
+IF timer>25000 THEN
+	timer:=0;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Luci_Mov_Dali">
+      <LineId Id="3" Count="27" />
+      <LineId Id="2" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,15 @@
+﻿<div id="Desktop" data-tchmi-view="" data-tchmi-type="tchmi-view" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="1920" data-tchmi-height="1080" data-tchmi-background-image="Images/Background.png" data-tchmi-background-image-height="100" data-tchmi-background-image-width="100" data-tchmi-background-image-height-unit="%" data-tchmi-background-image-width-unit="%">
+
+    <div id="ViewDesktopBeckhoffLogo" data-tchmi-type="tchmi-image" data-tchmi-image="" data-tchmi-src="Images/Beckhoff_Logo.svg" data-tchmi-width="194" data-tchmi-height="57" data-tchmi-left="20" data-tchmi-top="20">
+
+    </div>
+
+    <div id="TcHmiImage" data-tchmi-type="tchmi-image" data-tchmi-image="" data-tchmi-height="80" data-tchmi-height-unit="px" data-tchmi-left="157" data-tchmi-left-unit="px" data-tchmi-src="Imports/Images/message_draggin.svg" data-tchmi-top="655" data-tchmi-top-unit="px" data-tchmi-width="80" data-tchmi-width-unit="px">
+
+    </div>
+
+    <div id="TcHmiImage_1" data-tchmi-type="tchmi-image" data-tchmi-image="" data-tchmi-height="450" data-tchmi-height-unit="px" data-tchmi-left="258" data-tchmi-left-unit="px" data-tchmi-src="Imports/Images/beckhoff-hmi-plain-no_bg-v01.png" data-tchmi-top="130" data-tchmi-top-unit="px" data-tchmi-width="800" data-tchmi-width-unit="px">
+
+    </div>
+
+</div>

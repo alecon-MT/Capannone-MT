@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="Ekey" Id="{f8d560f9-ec71-4dc2-a9dd-5d664012e9f5}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM Ekey
+VAR
+	ekey_comm: FB_EKEY_Communication;
+	ekey_in AT %I*: kl6indata22b;
+	ekey_out AT %Q*: kl6outdata22b;
+	ekey_buffer: ST_EKEY_CommandBuffer;
+	template_utenti: ST_EKEY_FingerTemplate;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Comunicazione Ekey	
+ekey_comm(
+	bEnable:= TRUE, 
+	eMode:= seriallinemode_kl6_22b_standard, 
+	pComIn:= ADR(ekey_in), 
+	pComOut:= ADR(ekey_out), 
+	uiSizeComIn:= SIZEOF(ekey_in), 
+	bBusy=> , 
+	bError=> , 
+	udiErrorID=> , 
+	stCommandBuffer:= ekey_buffer);
+//Scanner Ekey cancello carraio
+ekey_scanner_cancello(
+	bEnable:= TRUE, 
+	sSN:= '31160073', 
+	bNewFinger:= , 
+	byFingerID:= , 
+	byUserID:= , 
+	bFingerControlRelay:= , 
+	eEnrollmentFunction:= eEKEYEnrollNormal, 
+	bRemoveUser:= , 
+	bRemoveAllUsers:= , 
+	byRemoveUserID:= , 
+	eLedFunction:= , 
+	diLedClock:= , 
+	bRelayOn:= , 
+	bResetAll:= , 
+	bReadTemplate:= , 
+	bWriteUser:= , 
+	bWriteTemplate:= , 
+	byReadTempFingerID:= , 
+	byReadTempUserID:= , 
+	bySetUserID:= , 
+	byWriteTempFingerID:= , 
+	byWriteTempUserID:= , 
+	stWriteTemplate:= , 
+	bNewRFID:= , 
+	bReadRFID:= , 
+	bWriteRFID:= , 
+	bSwitchFSensor_ON:= , 
+	bSwitchFSensor_OFF:= , 
+	bRFIDControlRelay:= , 
+	byRFIDUserID:= , 
+	arrWriteRFID:= , 
+	bBusy=> , 
+	bError=> , 
+	udiErrorID=> , 
+	bBufferOverload=> , 
+	eState=> , 
+	bReceived=> , 
+	byRecUserID=> , 
+	byRecFingerID=> , 
+	byRecTempUserID=> , 
+	byRecTempFingerID=> , 
+	byRecRFIDUserID=> , 
+	bBadFinger=> , 
+	dwBadFingers=> , 
+	bGoodFinger=> , 
+	dwMaxConfigUser=> , 
+	dwMaxConfigFinger=> , 
+	stRecTemplate=> template_utenti, 
+	arrRecRFID=> , 
+	stCommandBuffer:= ekey_buffer);
+	
+//Scanner Ekey produzione
+ekey_scanner_produzione(
+	bEnable:= TRUE, 
+	sSN:= '24180820', 
+	bNewFinger:= , 
+	byFingerID:= , 
+	byUserID:= , 
+	bFingerControlRelay:= , 
+	eEnrollmentFunction:= eEKEYEnrollNormal, 
+	bRemoveUser:= , 
+	bRemoveAllUsers:= , 
+	byRemoveUserID:= , 
+	eLedFunction:= , 
+	diLedClock:= , 
+	bRelayOn:= , 
+	bResetAll:= , 
+	bReadTemplate:= , 
+	bWriteUser:= , 
+	bWriteTemplate:= , 
+	byReadTempFingerID:= , 
+	byReadTempUserID:= , 
+	bySetUserID:= , 
+	byWriteTempFingerID:= , 
+	byWriteTempUserID:= , 
+	stWriteTemplate:= , 
+	bNewRFID:= , 
+	bReadRFID:= , 
+	bWriteRFID:= , 
+	bSwitchFSensor_ON:= , 
+	bSwitchFSensor_OFF:= , 
+	bRFIDControlRelay:= , 
+	byRFIDUserID:= , 
+	arrWriteRFID:= , 
+	bBusy=> , 
+	bError=> , 
+	udiErrorID=> , 
+	bBufferOverload=> , 
+	eState=> , 
+	bReceived=> , 
+	byRecUserID=> , 
+	byRecFingerID=> , 
+	byRecTempUserID=> , 
+	byRecTempFingerID=> , 
+	byRecRFIDUserID=> , 
+	bBadFinger=> , 
+	dwBadFingers=> , 
+	bGoodFinger=> , 
+	dwMaxConfigUser=> , 
+	dwMaxConfigFinger=> , 
+	stRecTemplate=> , 
+	arrRecRFID=> , 
+	stCommandBuffer:= ekey_buffer);
+	
+//Scanner Ekey porta ingresso
+ekey_scanner_ingresso(
+	bEnable:= TRUE, 
+	sSN:= '37160694', 
+	bNewFinger:= , 
+	byFingerID:= , 
+	byUserID:= , 
+	bFingerControlRelay:= , 
+	eEnrollmentFunction:= eEKEYEnrollNormal, 
+	bRemoveUser:= , 
+	bRemoveAllUsers:= , 
+	byRemoveUserID:= , 
+	eLedFunction:= , 
+	diLedClock:= , 
+	bRelayOn:= , 
+	bResetAll:= , 
+	bReadTemplate:= , 
+	bWriteUser:= , 
+	bWriteTemplate:= , 
+	byReadTempFingerID:= , 
+	byReadTempUserID:= , 
+	bySetUserID:= , 
+	byWriteTempFingerID:= , 
+	byWriteTempUserID:= , 
+	stWriteTemplate:= template_utenti, 
+	bNewRFID:= , 
+	bReadRFID:= , 
+	bWriteRFID:= , 
+	bSwitchFSensor_ON:= , 
+	bSwitchFSensor_OFF:= , 
+	bRFIDControlRelay:= , 
+	byRFIDUserID:= , 
+	arrWriteRFID:= , 
+	bBusy=> , 
+	bError=> , 
+	udiErrorID=> , 
+	bBufferOverload=> , 
+	eState=> , 
+	bReceived=> , 
+	byRecUserID=> , 
+	byRecFingerID=> , 
+	byRecTempUserID=> , 
+	byRecTempFingerID=> , 
+	byRecRFIDUserID=> , 
+	bBadFinger=> , 
+	dwBadFingers=> , 
+	bGoodFinger=> , 
+	dwMaxConfigUser=> , 
+	dwMaxConfigFinger=> , 
+	stRecTemplate=> , 
+	arrRecRFID=> , 
+	stCommandBuffer:= ekey_buffer);
+	
+ekey_scanner_cancello.arrWriteRFID:=ekey_scanner_produzione.arrRecRFID;
+//Registrazione del dito dell'utente
+IF hmi_finger THEN
+	ekey_scanner_produzione.byUserID:=ekey_scanner_produzione.byRecUserID;
+	ekey_Scanner_produzione.byFingerID:=1(*ekey_Scanner_produzione.byRecFingerID*);
+	IF ekey_scanner_produzione.bGoodFinger THEN
+		ekey_scanner_produzione.bNewFinger:=TRUE;
+	ELSE
+		ekey_scanner_produzione.bNewFinger:=FALSE;
+	END_IF
+END_IF
+//Registrazione del RFID dell'utente
+IF hmi_finger_RFID THEN
+	ekey_scanner_produzione.byRFIDUserID:=HMI_userRFID;
+	ekey_scanner_produzione.bNewRFID:=TRUE;
+ELSE
+	ekey_scanner_produzione.bNewRFID:=FALSE;
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="Ekey">
+      <LineId Id="3" Count="170" />
+      <LineId Id="204" Count="0" />
+      <LineId Id="174" Count="0" />
+      <LineId Id="205" Count="0" />
+      <LineId Id="207" Count="0" />
+      <LineId Id="225" Count="3" />
+      <LineId Id="223" Count="0" />
+      <LineId Id="206" Count="0" />
+      <LineId Id="249" Count="0" />
+      <LineId Id="2" Count="0" />
+      <LineId Id="238" Count="0" />
+      <LineId Id="242" Count="0" />
+      <LineId Id="262" Count="1" />
+      <LineId Id="239" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,55 @@
+﻿{
+  "$schema": "",
+  "basePath": "./Libraries",
+  "locale": "en-US",
+  "scaleMode": "None",
+  "startupView": "Desktop.view",
+  "tcHmiServer": {
+    "websocketIntervalTime": 200,
+    "websocketTimeout": 5000
+  },
+  "activeTheme": "",
+  "themes": {
+    "Base": {
+      "resources": [
+        {
+          "name": "Themes/Base/Base.theme",
+          "description": "",
+          "type": "ThemedValues"
+        }
+      ],
+      "replacesThemeForControls": []
+    }
+  },
+  "dependencyFiles": [
+    {
+      "name": "Fonts/Fonts.css",
+      "description": "",
+      "type": "Stylesheet"
+    }
+  ],
+  "userControls": [],
+  "content": [],
+  "views": [
+    {
+      "url": "Desktop.view",
+      "preload": false
+    }
+  ],
+  "userFunctions": [],
+  "symbols": {
+    "internal": {}
+  },
+  "trigger": null,
+  "actionTemplates": [],
+  "languages": {
+    "de-DE": "Localization\\de-DE.localization",
+    "en-US": "Localization\\en-US.localization"
+  },
+  "creatorSettings": {
+    "viewport": {
+      "defaultWidth": 800,
+      "defaultHeight": 600
+    }
+  }
+}

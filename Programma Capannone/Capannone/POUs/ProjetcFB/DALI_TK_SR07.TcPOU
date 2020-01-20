@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4022.18">
+  <POU Name="DALI_TK_SR07" Id="{4c16401b-44a3-4bce-be3e-79d380d27df3}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK DALI_TK_SR07
+VAR_INPUT
+	ID : DWORD;
+END_VAR
+VAR_OUTPUT
+	Temp : UINT; (*Valore * 10 - 10,0°C => 100*)
+END_VAR
+VAR
+	READ: FB_Rec_Generic;
+	temperatura: DINT;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[READ(
+	str_KL6581:=enocean_buffer , 
+	byNode:=1 , 
+	dw_ID:=ID , 
+	ar_Value=> , 
+	by_Node=> , 
+	by_STATE=> , 
+	bReceive=> , 
+	EnOceanTyp=> );
+temperatura:=TRUNC((255-read.ar_Value[1])/0.6375);	
+temp:=DINT_TO_UINT (temperatura);]]></ST>
+    </Implementation>
+    <LineIds Name="DALI_TK_SR07">
+      <LineId Id="3" Count="10" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
